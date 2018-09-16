@@ -1,8 +1,8 @@
 # Dotfiles
 
-> A terminal setup using *tmux vim and zsh* 
+> Yet another dotfiles setup using **tmux vim and zsh**
 
-## Instalattion
+## Installation
 
 Fist clone the repository in your home folder by doing
 
@@ -11,7 +11,6 @@ Fist clone the repository in your home folder by doing
 Then install it by running
 
 `sudo chmod +x ~/.dotfiles/install.sh && ~/.dotfiles/install.sh`
-
 
 ## Description
 
@@ -22,4 +21,3 @@ For exemple, if you need to use proxy variables on your work, you could simply a
 ## Contribution
 
 Feel free to **ask or suggest anything at the issues tab** on GitHub. More than modular, this setup was designed to be personal so please, feel free to **fork and adapt to your own necessities**
-
