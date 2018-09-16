@@ -19,7 +19,7 @@ bind-key -n M-l select-pane -R
 bind-key -n M-p select-window -t :- # Previous Window
 bind-key -n M-n select-window -t :+ # Next Window
 
-# Toggle Xoom
+# Toggle Zoom
 bind-key -n M-z resize-pane -Z
 
 # Split pane with same directory
@@ -28,7 +28,7 @@ unbind-key %
 bind-key - split-window -v -c '#{pane_current_path}'
 bind-key \ split-window -h -c '#{pane_current_path}'
 bind-key _ split-window -fv -c '#{pane_current_path}' # Full Width
-bind-key | splt-window -fh -c '#{pane_current_path}'  # Full Height
+bind-key | split-window -fh -c '#{pane_current_path}'  # Full Height
 
 # Resize Panes
 unbind-key C-Up

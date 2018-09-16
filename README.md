@@ -10,7 +10,7 @@ Fist clone the repository in your home folder by doing
 
 Then install it by running
 
-`sh ~/.dotfiles/install.sh`
+`sudo chmod +x ~/.dotfiles/install.sh && ~/.dotfiles/install.sh`
 
 
 ## Description

@@ -25,10 +25,10 @@ set-option -g renumber-windows on
 set-option -g allow-rename on
 
 # Dont show "Activity in window x" messages.
-set-option -g visual activity off
+set-option -g visual-activity off
 
-# Enable supported focous events
-set-option -g focous-events on
+# Enable supported focus events
+set-option -g focus-events on
 
 # Switch off automatic window renaming
 set-option -g automatic-rename off

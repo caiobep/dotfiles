@@ -22,36 +22,58 @@ prompt_install() {
           echo "Could not find your package manager. Please install $1 manually."
       fi
   fi
-
-  echo
 }
 
 
 check_installation() {
-  echo
   echo "Checking your $1 installation"
-  if ! [-x "$(command -v $1)" ]; then
+  if ! [ -x "$(command -v $1)" ]; then
     prompt_install $1
   else
-     echo "[ok] $1 installation"
+     tput setaf 2; echo  "[ok] $1 installation"
+     tput setaf 7;
   fi
 }
 
 check_default_shell() {
-    if [ -z "${SHELL##*zsh*}" ]; then
+    echo
+    if [ -z "${SHELL##*zsh*}" ] ;then
         echo "Your default shell is ZSH."
     else
-        echo -n "Default shell is not zsh. Do you want to chsh -s \$(witch zsh)? (y/n)"
+        echo "Default shell is not zsh. Do you want to set it as default now? (y/n)"
         old_stty_cfg=$(stty -g)
         stty raw -echo
-        answer = $( while ! head -c 1 | grep -i '[ny]'; do true; done)
+        answer=$(while ! head -c 1 | grep -i '[ny]'; do true; done)
         stty $old_stty_cfg && echo
         if echo "$answer" | grep -iq "^y"; then
             chsh -s $(which zsh)
+            echo "Please log out and log back in to reload your default shell"
         else
-            echo "Could not set zsh as your default shell"
+            echo "Skipping Setting Default shell..."
         fi
     fi
+}
+
+backup_dotfiles() {
+    echo
+    echo "Would you like to backup your current dotfiles? (y/n) "
+    old_stty_cfg=$(stty -g)
+    stty raw -echo
+    answer=$(while ! head -c 1 | grep -i '[ny]'; do true; done)
+    stty $old_stty_cfg
+    if echo "$answer" | grep -iq "^y"; then
+        mv ~/.zshrc ~/.zshrc.old
+        mv ~/.tmux.conf ~/.tmux.conf.old
+        mv ~/.vimrc ~/.vimrc.old
+    else
+        echo "Skpping backup..."
+    fi
+}
+
+change_default_configuration_source() {
+    printf "source '$HOME/.dotfiles/zsh/zshrc_manager.sh'" > ~/.zshrc
+    printf "so $HOME/.dotfiles/vim/vimrc.vim" > ~/.vimrc
+    printf "source-file $HOME/.dotfiles/tmux/tmux.conf" > ~/.tmux.conf
 }
 
 main() {
@@ -62,6 +84,7 @@ main() {
     echo " 3. Check your default shell"
     echo " 4. Try to change your default shell"
     echo
+
     echo "Do you want to continue? (y/n)"
     old_stty_cfg=$(stty -g)
     stty raw -echo
@@ -81,24 +104,9 @@ main() {
 
     check_default_shell
 
-    echo
-    echo -n "Would you like to backup your current dotfiles? (y/n) "
-    old_stty_cfg=$(stty -g)
-    stty raw -echo
-    answer=$(while ! head -c 1 | grep -i '[ny]'; do true; done)
-    stty $old_stty_cfg
-    if echo "$answer" | grep -iq "^y"; then
-        mv "~/.zshrc ~/.zshrc.old"
-        mv "~/.tmux.conf ~/.tmux.conf.old"
-        mv "~/.vimrc ~/.vimrc.old"
-    fi
+    backup_dotfiles
 
-    printf "source '$HOME/.dotfiles/zsh/zshrc_manager.sh'" > ~/.zshrc
-    printf "so $HOME/.dotfiles/vim/vimrc.vim" > ~/.vimrc
-    printf "source-file $HOME/.dotfiles/tmux/tmux.conf" > ~/.tmux.conf
-
-    echo
-    echo "Please log out and log back in to reload your default shell"
+    change_default_configuration_source
 }
 
 main
