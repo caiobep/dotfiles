@@ -1,10 +1,11 @@
 #!/usr/bin/env zsh
 
 if ! [ -f ~/.antigen.zsh ]; then
-    curl -L git.io/antigen > ~/.antigen/.antigen.zsh
+    curl -L git.io/antigen > ~/.antigen.zsh
+    echo "Downloading antigen to ~/.antigen.zsh ..."
 fi
 
-source ~/.antigen/.antigen.zsh
+source ~/.antigen.zsh
 
 ANTIGEN=$HOME/.antigen/
 
@@ -46,10 +47,16 @@ antigen bundle pylint
 # GO
 antigen bundle go
 
+# Clojure's Leinigen
+antigen bundle lein
+
 # ZSH Experience plugins
+antigen bundle kutsan/zsh-system-clipboard
+antigen bundle hlissner/zsh-autopair
 antigen bundle zsh_reload
 antigen bundle zsh-navigation-tools
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 antigen apply
+
