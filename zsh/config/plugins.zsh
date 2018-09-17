@@ -51,12 +51,12 @@ antigen bundle go
 antigen bundle lein
 
 # ZSH Experience plugins
-antigen bundle kutsan/zsh-system-clipboard
-antigen bundle hlissner/zsh-autopair
 antigen bundle zsh_reload
 antigen bundle zsh-navigation-tools
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle hlissner/zsh-autopair
+antigen bundle kutsan/zsh-system-clipboard
 
 antigen apply
 
