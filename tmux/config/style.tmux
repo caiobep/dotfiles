@@ -18,7 +18,7 @@ set-option -g status-left '#[fg=brightwhite,bg=brightblack] #S #[fg=default,bg=d
 
 # Window status
 set-option -g window-status-format '#[fg=white,bg=brightblack] #I #[fg=white,bg=black] #W '
-set-option -g window-status-current-format '#[fg=brightblack,bg=blue] #I #[fg=brightblack,bg=magenta] #W '
+set-option -g window-status-current-format '#[fg=brightblack,bg=blue] #I #[fg=black,bg=magenta] #W '
 set-option -g window-status-separator " "
 set-option -g status-justify left
 
