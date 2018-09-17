@@ -3,4 +3,5 @@ foreach piece (
 	exports.zsh
 	functions.zsh
 	plugins.zsh
-) { source ~/.zsh/config/$piece }
+    mappings.zsh
+) { source ~/.dotfiles/zsh/config/$piece }
