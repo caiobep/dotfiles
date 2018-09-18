@@ -8,7 +8,7 @@ alias rm="trash" # Use trash program instead of permantly removing
 alias mv='mv -i -v' # Move nodes with interactive
 alias cp='cp -i -v' # Copy nodes with interactive mode
 alias ln='ln -i -v'
-alias mkdir='mkdir --parents'
+alias mkdir='mkdir -p'
 alias du='du --max-depth=1 --si'
 alias df='df --all --si --print-type'
 alias tmp='command mkdir --parents --verbose $TMPDIR/$(whoami) && cd $TMPDIR/$(whoami)'

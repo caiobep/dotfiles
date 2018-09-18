@@ -1,5 +1,5 @@
 if command -v tmux > /dev/null; then
-     [ -z $TMUX ] && exec tmux
+    [ -z $TMUX ] && exec tmux new -A -s Erso
 else
     echo "Tmux not installed."
 fi
