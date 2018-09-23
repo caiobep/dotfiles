@@ -13,6 +13,7 @@ alias du='du --max-depth=1 --si'
 alias df='df --all --si --print-type'
 alias tmp='command mkdir --parents --verbose $TMPDIR/$(whoami) && cd $TMPDIR/$(whoami)'
 alias jq='jq --tab --indent 4'
+alias td='todoist'
 
 # Custom Shortcuts
 alias sayl="say -v luciana "
