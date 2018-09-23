@@ -3,6 +3,8 @@ unbind-key C-b
 
 # Bind 'C-a C-a' to send 'C-a'
 bind-key C-a send-prefix
+set-option -g prefix C-a
+set-option -g prefix2 `
 
 # Reload configuration
 bind-key r \
@@ -31,10 +33,6 @@ bind-key _ split-window -fv -c '#{pane_current_path}' # Full Width
 bind-key | split-window -fh -c '#{pane_current_path}'  # Full Height
 
 # Resize Panes
-unbind-key C-Up
-unbind-key C-Down
-unbind-key C-Left
-unbind-key C-Right
 bind-key -n M-H resize-pane -L 2
 bind-key -n M-J resize-pane -D 1
 bind-key -n M-K resize-pane -U 1
@@ -45,6 +43,14 @@ unbind-key {
 unbind-key }
 bind-key -r H swap-pane -U
 bind-key -r L swap-pane -D
+
+# Pane Navigation
+bind -r h select-pane -L  # move left
+bind -r j select-pane -D  # move down
+bind -r k select-pane -U  # move up
+bind -r l select-pane -R  # move right
+bind > swap-pane -D       # swap current pane with the next one
+bind < swap-pane -U       # swap current pane with the previous one
 
 # Kill panes without prompt
 bind-key X kill-pane
@@ -59,7 +65,7 @@ bind-key x kill-window
 
 # Enter copy mode
 unbind-key [
-bind -n M-v copy-mode
+bind Escape copy-mode
 
 # Select
 bind-key -T copy-mode-vi v send-keys -X begin-selection
