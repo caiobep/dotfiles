@@ -6,6 +6,9 @@
     Plug 'honza/vim-snippets'
     Plug 'junegunn/fzf.vim'
     Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+    Plug 'scrooloose/nerdcommenter'
+    Plug 'Xuyuanp/nerdtree-git-plugin'
+    Plug 'ryanoasis/vim-devicons'
     Plug 'w0rp/ale'
     Plug '/opt/fzf' | Plug 'junegunn/fzf'
     Plug 'junegunn/fzf.vim'
@@ -32,6 +35,7 @@
     Plug 'venantius/vim-eastwood', { 'for': 'clojure' }
     Plug 'venantius/vim-cljfmt', { 'for': 'clojure' }
     Plug 'kien/rainbow_parentheses.vim', { 'for': 'clojure' }
+    Plug 'bhurlow/vim-parinfer', { 'for': 'clojure' }
 
     " Csharp
     Plug 'OmniSharp/omnisharp-vim', { 'for': 'csharp' }
@@ -53,6 +57,7 @@
     set hidden
 
 " Plugins Settings
+
     " Ale
     let g:airline#extensions#ale#enabled = 1
     let g:ale_lint_on_text_changed = 0
@@ -68,6 +73,20 @@
     let g:ale_fixers = { 'javascript': 'eslint', 'typescript': 'tslint' }
     map <leader>f :ALEFix<cr>
     map <leader>l :ALELint<cr>
+
+    " Nerd Tree
+    map <leader>n :NERDTreeToggle<CR>
+    map <leader>r :NERDTreeFind<cr>
+    autocmd StdinReadPre * let s:std_in=1
+    let NERDTreeShowHidden=1
+    let NERDTreeIgnore=['\.git$[[dir]]']
+
+    " Fugitive
+    noremap <leader>g :Git<space>
+
+    " JSX
+    highlight link xmlEndTag xmlTag
+    let g:jsx_ext_required = 0
 
 " Configurations
     set autoindent
