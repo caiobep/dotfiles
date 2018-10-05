@@ -19,7 +19,6 @@ antigen bundle sindresorhus/pure
 
 # Core Plugins
 antigen bundle gnu-utils
-antigen bundle osx
 antigen bundle tmux
 antigen bundle globalalias
 antigen bundle history
