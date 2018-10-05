@@ -6,6 +6,7 @@
     Plug 'honza/vim-snippets'
     Plug 'junegunn/fzf.vim'
     Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+    Plug 'w0rp/ale'
     Plug '/opt/fzf' | Plug 'junegunn/fzf'
     Plug 'junegunn/fzf.vim'
     Plug 'vim-syntastic/syntastic'
@@ -51,6 +52,23 @@
 
     set hidden
 
+" Plugins Settings
+    " Ale
+    let g:airline#extensions#ale#enabled = 1
+    let g:ale_lint_on_text_changed = 0
+    let g:ale_lint_on_save = 1
+    let g:ale_sign_warning = ''
+    let g:ale_sign_error = ''
+    let g:ale_echo_msg_format = '%severity%: %s [%linter%]'
+    let g:ale_statusline_format = ['E:%s', 'W:%s', 'Ok']
+    highlight ALEErrorSign ctermbg=NONE ctermfg=red
+    highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
+    highlight ALEError cterm=undercurl ctermfg=none
+    highlight ALEWarning cterm=undercurl ctermfg=none
+    let g:ale_fixers = { 'javascript': 'eslint', 'typescript': 'tslint' }
+    map <leader>f :ALEFix<cr>
+    map <leader>l :ALELint<cr>
+
 " Configurations
     set autoindent
 
@@ -68,7 +86,7 @@
     set list
     set listchars=tab:->,trail:·,extends:>,precedes:<
 
-    "Autocompletion
+" Autocompletion
     set wildmenu
     set wildmode=list:longest
 
