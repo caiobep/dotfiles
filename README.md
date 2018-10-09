@@ -6,7 +6,7 @@
 
 Fist clone the repository in your home folder by doing
 
-`git clone https://github.com/caiobep/terminal ~/.dotfiles`
+`git clone https://github.com/caiobep/.dotfiles ~/.dotfiles`
 
 Then install it by running
 
