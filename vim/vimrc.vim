@@ -59,7 +59,7 @@ highlight link xmlEndTag xmlTag
 let g:jsx_ext_required = 0
 
 set backspace=2
-set colorcolumn=80
+" set colorcolumn=80 " Set length limit bar
 set autoindent
 
 set number
@@ -81,7 +81,6 @@ set wildmode=list:longest
 
 set foldmethod=indent
 set foldnestmax=10
-
 
 
 
