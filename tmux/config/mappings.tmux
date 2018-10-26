@@ -73,8 +73,8 @@ bind-key -T copy-mode-vi V send-keys -X select-line
 bind-key -T copy-mode-vi C-v send-keys -X retangle-toggle
 
 # Copy
-bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'clipboard' # Copy to system clipboard.
-bind-key -T copy-mode-vi Y send-keys -X copy-pipe-and-cancel 'clipboard; tmux paste-buffer -s ""' # Copy and paste immediately to shell prompt.
+bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'reattach-to-user-namespace pbcopy' # Copy to system clipboard.
+bind-key -T copy-mode-vi Y send-keys -X copy-pipe-and-cancel ';reattach-to-user-namespace pbcopy; tmux paste-buffer -s ""' # Copy and paste immediately to shell prompt.
 
 # Paste
 unbind-key ]
