@@ -4,7 +4,6 @@ alias grep="grep --color=auto"
 alias du="du --max-depth=1 --si"
 alias pcat="pygmentize -O style=borland -f console256 -g"
 
-alias rm="trash" # Use trash program instead of permantly removing
 alias mv='mv -i -v' # Move nodes with interactive
 alias cp='cp -i -v' # Copy nodes with interactive mode
 alias ln='ln -i -v'

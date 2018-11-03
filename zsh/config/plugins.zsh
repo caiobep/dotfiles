@@ -51,7 +51,6 @@ antigen bundle lein
 
 # ZSH Experience plugins
 antigen bundle zsh_reload
-antigen bundle vi-mode
 antigen bundle zsh-navigation-tools
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
