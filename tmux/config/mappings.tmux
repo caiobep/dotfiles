@@ -25,8 +25,6 @@ bind-key -n M-n select-window -t :+ # Next Window
 bind-key -n M-z resize-pane -Z
 
 # Split pane with same directory
-unbind-key '"'
-unbind-key %
 bind-key - split-window -v -c '#{pane_current_path}'
 bind-key \ split-window -h -c '#{pane_current_path}'
 bind-key _ split-window -fv -c '#{pane_current_path}' # Full Width
@@ -74,7 +72,7 @@ bind-key -T copy-mode-vi C-v send-keys -X retangle-toggle
 
 # Copy
 bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'reattach-to-user-namespace pbcopy' # Copy to system clipboard.
-bind-key -T copy-mode-vi Y send-keys -X copy-pipe-and-cancel ';reattach-to-user-namespace pbcopy; tmux paste-buffer -s ""' # Copy and paste immediately to shell prompt.
+bind-key -T copy-mode-vi Y send-keys -X copy-pipe-and-cancel 'reattach-to-user-namespace pbcopy; tmux paste-buffer -s ""' # Copy and paste immediately to shell prompt.
 
 # Paste
 unbind-key ]
