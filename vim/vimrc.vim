@@ -122,8 +122,7 @@ set wildmode=list:longest
 " Use Italic Fonts
 hi htmlArg cterm=italic
 hi Comment cterm=italic
-"hi Type    cterm=italic
-
+hi Type    cterm=italic
 
 " NERD Tree
 map <leader>n :NERDTreeToggle<CR>
@@ -133,7 +132,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 let NERDTreeShowHidden=1
 let NERDTreeMinimalUI=1
 "let NERDTreeQuitOnOpen=1
-let NERDTreeIgnore=['\.git$[[dir]]']
+let NERDTreeIgnore=['\.git$[[dir]]','\.DS_Store$']
 
 " Fugetive
 noremap <leader>g :Git<space>
