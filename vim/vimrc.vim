@@ -165,10 +165,11 @@ map <leader>l :ALELint<cr>
 " NERD Tree
 map <leader>n :NERDTreeToggle<CR>
 map <leader>r :NERDTreeFind<cr>
-autocmd StdinReadPre * let s:std_in=1
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.git$[[dir]]']
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd StdinReadPre * let s:std_in=1
+
 
 " Fugetive
 noremap <leader>g :Git<space>
