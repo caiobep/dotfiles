@@ -90,6 +90,8 @@ map <leader>r :NERDTreeFind<cr>
 autocmd StdinReadPre * let s:std_in=1
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.git$[[dir]]']
+autocmd StdinReadPre * let g:isReadingFromStdin = 1
+autocmd VimEnter * if !argc() && !exists('g:isReadingFromStdin') | NERDTree | endif
 
 " Fugetive
 noremap <leader>g :Git<space>
