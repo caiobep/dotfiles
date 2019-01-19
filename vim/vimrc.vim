@@ -2,7 +2,6 @@ call plug#begin('~/.dotfiles/vim/plugged')
     " Vim Tooling
     Plug 'terryma/vim-multiple-cursors'
     Plug 'honza/vim-snippets'
-    Plug 'junegunn/fzf.vim'
     Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
     Plug 'scrooloose/nerdcommenter'
     Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -14,6 +13,9 @@ call plug#begin('~/.dotfiles/vim/plugged')
     Plug 'vim-airline/vim-airline'
     Plug 'tpope/vim-surround'
     Plug 'christoomey/vim-tmux-navigator'
+
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'junegunn/fzf.vim'
 
     " Git Conflict - merge tool
     Plug 'tpope/vim-fugitive'
@@ -63,9 +65,27 @@ set backspace=2
 set autoindent
 
 set number
+set ruler
+set encoding=utf-8
+set backspace=2
+set colorcolumn=80
+
+set ignorecase
+set smartcase
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+
+set expandtab " Use spaces instead of tabs
+
+set hlsearch
+set listchars=tab:▶-,trail:•,extends:»,precedes:«,eol:¬
+
 set relativenumber
 set termguicolors
-set clipboard=unnamed
+set clipboard=unnamed "shared clipboard with macOS
 
 
 set tabstop=4
@@ -79,99 +99,13 @@ set listchars=tab:->,trail:·,extends:>,precedes:<
 set wildmenu
 set wildmode=list:longest
 
-set foldmethod=indent
-set foldnestmax=10
-
-
-
 " NERD Tree
 map <leader>n :NERDTreeToggle<CR>
 map <leader>r :NERDTreeFind<cr>
 autocmd StdinReadPre * let s:std_in=1
-let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\.git$[[dir]]']
-autocmd StdinReadPre * let g:isReadingFromStdin = 1
-autocmd VimEnter * if !argc() && !exists('g:isReadingFromStdin') | NERDTree | endif
-
-" Fugetive
-noremap <leader>g :Git<space>
-
-" Ariline
-let g:airline#extensions#ale#enabled = 1
-let g:ale_lint_on_text_changed = 0
-let g:ale_lint_on_save = 1
-let g:ale_sign_warning = ''
-let g:ale_sign_error = ''
-let g:ale_echo_msg_format = '%severity%: %s [%linter%]'
-let g:ale_statusline_format = ['E:%s', 'W:%s', 'Ok']
-highlight ALEErrorSign ctermbg=NONE ctermfg=red
-highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
-highlight ALEError cterm=undercurl ctermfg=none
-highlight ALEWarning cterm=undercurl ctermfg=none
-let g:ale_fixers = { 'javascript': 'eslint', 'typescript': 'tslint' }
-map <leader>f :ALEFix<cr>
-map <leader>l :ALELint<cr>
-
-" NERD Tree
-map <leader>n :NERDTreeToggle<CR>
-map <leader>r :NERDTreeFind<cr>
-autocmd StdinReadPre * let s:std_in=1
-let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\.git$[[dir]]']
-
-" Fugetive
-noremap <leader>g :Git<space>
-
-" Ariline
-let g:airline#extensions#ale#enabled = 1
-let g:ale_lint_on_text_changed = 0
-let g:ale_lint_on_save = 1
-let g:ale_sign_warning = ''
-let g:ale_sign_error = ''
-let g:ale_echo_msg_format = '%severity%: %s [%linter%]'
-let g:ale_statusline_format = ['E:%s', 'W:%s', 'Ok']
-highlight ALEErrorSign ctermbg=NONE ctermfg=red
-highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
-highlight ALEError cterm=undercurl ctermfg=none
-highlight ALEWarning cterm=undercurl ctermfg=none
-let g:ale_fixers = { 'javascript': 'eslint', 'typescript': 'tslint' }
-map <leader>f :ALEFix<cr>
-map <leader>l :ALELint<cr>
-
-" NERD Tree
-map <leader>n :NERDTreeToggle<CR>
-map <leader>r :NERDTreeFind<cr>
-autocmd StdinReadPre * let s:std_in=1
-let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\.git$[[dir]]']
-
-" Fugetive
-noremap <leader>g :Git<space>
-
-" Ariline
-let g:airline#extensions#ale#enabled = 1
-let g:ale_lint_on_text_changed = 0
-let g:ale_lint_on_save = 1
-let g:ale_sign_warning = ''
-let g:ale_sign_error = ''
-let g:ale_echo_msg_format = '%severity%: %s [%linter%]'
-let g:ale_statusline_format = ['E:%s', 'W:%s', 'Ok']
-highlight ALEErrorSign ctermbg=NONE ctermfg=red
-highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
-highlight ALEError cterm=undercurl ctermfg=none
-highlight ALEWarning cterm=undercurl ctermfg=none
-let g:ale_fixers = { 'javascript': 'eslint', 'typescript': 'tslint' }
-map <leader>f :ALEFix<cr>
-map <leader>l :ALELint<cr>
-
-" NERD Tree
-map <leader>n :NERDTreeToggle<CR>
-map <leader>r :NERDTreeFind<cr>
-let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\.git$[[dir]]']
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-autocmd StdinReadPre * let s:std_in=1
-
+let NERDTreeShowHidden=1
+let NERDTreeIgnore=['\.git$[[dir]]']
 
 " Fugetive
 noremap <leader>g :Git<space>
@@ -191,4 +125,49 @@ highlight ALEWarning cterm=undercurl ctermfg=none
 let g:ale_fixers = { 'javascript': 'eslint', 'typescript': 'tslint' }
 map <leader>f :ALEFix<cr>
 map <leader>l :ALELint<cr>
+
+" FZF
+" FZF
+let $FZF_DEFAULT_COMMAND = 'ag --hidden -l --ignore .git'
+nnoremap <c-p> :Files<CR>
+
+" Tmux
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+
+" Ale
+let g:ale_lint_on_text_changed = 0 "dont lint on text change
+let g:ale_lint_on_save = 1 "lint on save
+let g:ale_sign_warning = ''
+let g:ale_sign_error = ''
+let g:ale_echo_msg_format = '%severity%: %s [%linter%]'
+let g:ale_statusline_format = ['E:%s', 'W:%s', 'OK']
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
+highlight ALEError cterm=undercurl ctermfg=none
+highlight ALEWarning cterm=undercurl ctermfg=none
+let g:ale_fixers = { 'javascript': 'eslint', 'php': 'phpcbf' }
+map <leader>f :ALEFix<cr>
+map <leader>l :ALELint<cr>
+
+" Typescript
+au FileType typescript nmap gd <Plug>(TsuquyomiDefinition)
+au FileType typescript nmap gs <Plug>(TsuquyomiSplitDefinition)
+au FileType typescript nmap gx <Plug>(TsuquyomiRenameSymbol)
+
+" Clojure
+au FileType clojure nmap gd <Plug>FireplaceDjump
+au FileType clojure nmap gs <Plug>FireplaceDsplit
+au FileType clojure nmap gx <Plug>FireplaceSource
+au FileType clojure nmap <leader>gd <Plug>FireplaceK
+
+" Functions
+
+function! StartUp()
+endfunction
+
+autocmd VimEnter * call StartUp()
 
