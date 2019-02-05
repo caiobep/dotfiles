@@ -24,7 +24,7 @@ set-option -g status-justify left
 
 # Right side of status bar
 set-option -g status-right-length 40
-set-option -g status-right ' #[fg=white,bg=black] %Y-%m-%d %R #[fg=white,bg=brightblack] #(whoami)@#h '
+set-option -g status-right '#[fg=colour233, bg=color19,bold] %m/%d %R #[fg=colour233,bg=colour8,bold] #(whoami)@#h '
 
 # Pane border
 set-option -g pane-border-bg default
@@ -37,7 +37,7 @@ set-option -g display-panes-colour brightblack
 set-option -g display-panes-active-colour brightwhite
 
 # Clock mode
-set-option -g clock-mode-colour white
+set-option -g clock-mode-colour colour233
 set-option -g clock-mode-style 24
 
 # Message
