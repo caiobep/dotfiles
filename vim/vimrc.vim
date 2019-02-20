@@ -118,6 +118,8 @@ map <leader>r :NERDTreeFind<cr>
 autocmd StdinReadPre * let s:std_in=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeShowHidden=1
+let NERDTreeMinimalUI=1
+let NERDTreeQuitOnOpen=1
 let NERDTreeIgnore=['\.git$[[dir]]']
 
 " Fugetive
@@ -194,13 +196,13 @@ let g:jedi#auto_initialization = 1
 let g:jedi#auto_vim_configuration = 1
 let g:jedi#use_tabs_not_buffers = 1
 let g:jedi#use_splits_not_buffers = "left"
-let g:jedi#goto_command = "<leader>d"
-let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_command = "gd"
+let g:jedi#goto_assignments_command = "<leader>gd"
 let g:jedi#goto_definitions_command = "gd"
 let g:jedi#documentation_command = "K"
-let g:jedi#usages_command = "<leader>n"
+let g:jedi#usages_command = "gu"
 let g:jedi#completions_command = "<C-Space>"
-let g:jedi#rename_command = "<leader>r"
+let g:jedi#rename_command = "gx"
 
 " Typescript
 au FileType typescript nmap gd <Plug>(TsuquyomiDefinition)
@@ -217,9 +219,9 @@ au FileType clojure nmap gs <Plug>FireplaceDsplit
 au FileType clojure nmap gx <Plug>FireplaceSource
 au FileType clojure nmap <leader>gd <Plug>FireplaceK
 
+
 " Functions
 function! StartUp()
 endfunction
 
 autocmd VimEnter * call StartUp()
-

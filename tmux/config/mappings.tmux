@@ -4,7 +4,7 @@ unbind-key C-b
 # Bind 'C-a C-a' to send 'C-a'
 bind-key C-a send-prefix
 set-option -g prefix C-a
-set-option -g prefix2 `
+#set-option -g prefix2 `
 
 # Reload configuration
 bind-key r \
