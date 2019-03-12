@@ -1,4 +1,4 @@
-# LS on change pwd 
+# LS on change pwd
 chpwd() {
   ls
 }
@@ -12,4 +12,20 @@ function mkd() {
 # kill all processes of a certain type
 function nuke {
     kill `ps aux | grep $1 | awk '{print $2}'`
+}
+
+function copy() {
+    cat "$@" | pbcopy
+}
+
+function trash() {
+    mv "$@" ~/.Trash
+}
+
+function ql() {
+    qlmanage -p "$*" > /dev/null
+}
+
+function chrome() {
+    open -a Google\ Chrome
 }
