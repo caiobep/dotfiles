@@ -13,6 +13,8 @@ call plug#begin('~/.dotfiles/vim/plugged')
     Plug 'vim-syntastic/syntastic'
     Plug 'tpope/vim-surround'
     Plug 'christoomey/vim-tmux-navigator'
+    Plug 'tmsvg/pear-tree'
+    Plug 'takac/vim-hardtime'
 
     " Themes
     Plug 'widatama/vim-phoenix'
@@ -20,19 +22,21 @@ call plug#begin('~/.dotfiles/vim/plugged')
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
 
-
     " Git Conflict - merge tool
     Plug 'tpope/vim-fugitive'
 
     " Better Autocomplete
     Plug 'Shougo/neocomplcache.vim'
+    Plug 'Valloric/YouCompleteMe'
 
     " JavaScript
     Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+    Plug 'mxw/vim-jsx'
 
     " Typescript
     Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
-    Plug 'mxw/vim-jsx'
+    Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+    Plug 'peitalin/vim-jsx-typescript', { 'for': 'typescript' }
 
     " Python
     Plug 'vim-python/python-syntax', { 'for': 'python' }
@@ -59,17 +63,24 @@ call plug#begin('~/.dotfiles/vim/plugged')
     " Editorconfig
     Plug 'sgur/vim-editorconfig'
 
-    " VIM Snazzy Theme
-    Plug 'connorholyday/vim-snazzy'
+    Plug 'joshdick/onedark.vim'
 call plug#end()
 
 filetype plugin indent on
+let g:onedark_termcolors = 1
+let g:onedark_terminal_italics = 1
 
-" Theme Related Settings
-let g:SnazzyTransparent = 1
-colorscheme snazzy
-set hidden
+if (has("autocmd") && !has("gui_running"))
+  augroup colorset
+    autocmd!
+    let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
+    autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white }) " `bg` will not be styled since there is no `bg` setting
+  augroup END
+endif
 
+syntax on
+colorscheme onedark
+set background=dark
 
 " General Editor Settings
 set backspace=2
@@ -93,7 +104,8 @@ set softtabstop=2
 set expandtab " Use spaces instead of tabs
 
 set hlsearch
-set listchars=tab:▶-,trail:•,extends:»,precedes:«,eol:¬
+set list
+set listchars=tab:▶-,trail:•,extends:»,precedes:«
 
 set relativenumber
 set termguicolors
@@ -104,12 +116,13 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
-set list
-set listchars=tab:->,trail:·,extends:>,precedes:<
-set ballooneval
-
 set wildmenu
 set wildmode=list:longest
+
+" Use Italic Fonts
+hi htmlArg cterm=italic
+hi Comment cterm=italic
+"hi Type    cterm=italic
 
 
 " NERD Tree
@@ -119,7 +132,7 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeShowHidden=1
 let NERDTreeMinimalUI=1
-let NERDTreeQuitOnOpen=1
+"let NERDTreeQuitOnOpen=1
 let NERDTreeIgnore=['\.git$[[dir]]']
 
 " Fugetive
@@ -190,6 +203,31 @@ map <leader>l :ALELint<cr>
 " JSX
 highlight link xmlEndTag xmlTag
 let g:jsx_ext_required = 0
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+
+"JSX dark red
+hi tsxTagName guifg=#E06C75
+
+ "JSX orange
+hi tsxCloseString guifg=#F99575
+hi tsxCloseTag guifg=#F99575
+hi tsxAttributeBraces guifg=#F99575
+hi tsxEqual guifg=#F99575
+
+" JSX yellow
+hi tsxAttrib guifg=#F8BD7F cterm=italic
+
+" light-grey
+hi tsxTypeBraces guifg=#999999
+" dark-grey
+hi tsxTypes guifg=#666666
+hi ReactState guifg=#C176A7
+hi ReactProps guifg=#D19A66
+hi Events ctermfg=204 guifg=#56B6C2
+hi ReduxKeywords ctermfg=204 guifg=#C678DD
+hi WebBrowser ctermfg=204 guifg=#56B6C2
+hi ReactLifeCycleMethods ctermfg=204 guifg=#D19A66
+
 
 " Python Jedi
 let g:jedi#auto_initialization = 1
@@ -209,16 +247,15 @@ au FileType typescript nmap gd <Plug>(TsuquyomiDefinition)
 au FileType typescript nmap gs <Plug>(TsuquyomiSplitDefinition)
 au FileType typescript nmap gx <Plug>(TsuquyomiRenameSymbol)
 au FileType typescript nmap gr <Plug>(TsuquyomiReferences)
-autocmd FileType typescript nmap <buffer> <Leader>e <Plug>(TsuquyomiRenameSymbol)
-autocmd FileType typescript nmap <buffer> <Leader>E <Plug>(TsuquyomiRenameSymbolC)
-autocmd FileType typescript setlocal balloonexpr=tsuquyomi#balloonexpr()
+au FileType typescript nmap <buffer> <Leader>e <Plug>(TsuquyomiRenameSymbol)
+au FileType typescript nmap <buffer> <Leader>E <Plug>(TsuquyomiRenameSymbolC)
+au FileType typescript nmap <buffer> <Leader>t: <C-u>echo tsuquyomi#hint()<CR>
 
 " Clojure
 au FileType clojure nmap gd <Plug>FireplaceDjump
 au FileType clojure nmap gs <Plug>FireplaceDsplit
 au FileType clojure nmap gx <Plug>FireplaceSource
 au FileType clojure nmap <leader>gd <Plug>FireplaceK
-
 
 " Functions
 function! StartUp()
