@@ -7,27 +7,30 @@ call plug#begin('~/.dotfiles/vim/plugged')
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'ryanoasis/vim-devicons'
     Plug 'w0rp/ale'
-    Plug '/opt/fzf' | Plug 'junegunn/fzf'
-    Plug 'junegunn/fzf.vim'
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'vim-syntastic/syntastic'
     Plug 'tpope/vim-surround'
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'tmsvg/pear-tree'
+    Plug 'justinmk/vim-sneak'
     Plug 'takac/vim-hardtime'
+    Plug 'sgur/vim-editorconfig'
+
+    " Fzf
+    Plug '/usr/local/opt/fzf'
+    Plug 'junegunn/fzf.vim'
 
     " Themes
-    Plug 'widatama/vim-phoenix'
     Plug 'ryanoasis/vim-devicons'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
+    Plug 'joshdick/onedark.vim'
 
     " Git Conflict - merge tool
     Plug 'tpope/vim-fugitive'
 
     " Better Autocomplete
     Plug 'Shougo/neocomplcache.vim'
-    Plug 'Valloric/YouCompleteMe'
+    "Plug 'Valloric/YouCompleteMe'
 
     " JavaScript
     Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
@@ -60,10 +63,6 @@ call plug#begin('~/.dotfiles/vim/plugged')
     " Golang
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
-    " Editorconfig
-    Plug 'sgur/vim-editorconfig'
-
-    Plug 'joshdick/onedark.vim'
 call plug#end()
 
 filetype plugin indent on
@@ -100,21 +99,17 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
-
 set expandtab " Use spaces instead of tabs
 
 set hlsearch
 set list
-set listchars=tab:▶-,trail:•,extends:»,precedes:«
+set listchars=tab:▶-,trail:•,extends:»,precedes:«,eol:¬
+
+set spelllang=pt_br,en
 
 set relativenumber
 set termguicolors
 set clipboard=unnamed "shared clipboard with macOS
-
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
 
 set wildmenu
 set wildmode=list:longest
@@ -138,8 +133,13 @@ let NERDTreeIgnore=['\.git$[[dir]]','\.DS_Store$']
 noremap <leader>g :Git<space>
 
 " FZF
-let $FZF_DEFAULT_COMMAND = 'ag --hidden -l --ignore .git'
-nnoremap <c-p> :Files<CR>
+let g:fzf_layout = { 'window': 'enew' }
+let g:fzf_layout = { 'window': '-tabnew' }
+let g:fzf_layout = { 'window': '10split' }
+let g:fzf_action = {
+  \ 't': 'tab split',
+  \ 's': 'split',
+  \ 'v': 'vsplit' }
 
 " Tmux
 let g:tmux_navigator_no_mappings = 1
@@ -196,6 +196,7 @@ highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 highlight ALEError cterm=undercurl ctermfg=none
 highlight ALEWarning cterm=undercurl ctermfg=none
 let g:ale_fixers = { 'javascript': 'eslint', 'php': 'phpcbf' }
+let g:ale_completion_enabled = 1
 map <leader>f :ALEFix<cr>
 map <leader>l :ALELint<cr>
 
@@ -227,6 +228,11 @@ hi ReduxKeywords ctermfg=204 guifg=#C678DD
 hi WebBrowser ctermfg=204 guifg=#56B6C2
 hi ReactLifeCycleMethods ctermfg=204 guifg=#D19A66
 
+" Vim Sneak
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
 
 " Python Jedi
 let g:jedi#auto_initialization = 1
