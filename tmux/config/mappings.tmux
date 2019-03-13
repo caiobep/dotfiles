@@ -11,12 +11,6 @@ bind-key r \
           source-file ~/.dotfiles/tmux/tmux.conf \; \
           display-message '(! ~/.dotfiles/tmux/tmux.conf reloaded.'
 
-# Switch panes
-bind-key -n M-h select-pane -L
-bind-key -n M-j select-pane -D
-bind-key -n M-k select-pane -U
-bind-key -n M-l select-pane -R
-
 # Switch windows
 bind-key -n M-p select-window -t :- # Previous Window
 bind-key -n M-n select-window -t :+ # Next Window
@@ -31,10 +25,16 @@ bind-key _ split-window -fv -c '#{pane_current_path}' # Full Width
 bind-key | split-window -fh -c '#{pane_current_path}'  # Full Height
 
 # Resize Panes
-bind-key -n M-H resize-pane -L 2
-bind-key -n M-J resize-pane -D 1
-bind-key -n M-K resize-pane -U 1
-bind-key -n M-L resize-pane -R 2
+#bind-key -n M-H resize-pane -L 7
+#bind-key -n M-J resize-pane -D 1
+#bind-key -n M-K resize-pane -U 1
+#bind-key -n M-L resize-pane -R 2
+
+# vim-like pane resizing
+bind -r C-k resize-pane -U
+bind -r C-j resize-pane -D
+bind -r C-h resize-pane -L
+bind -r C-l resize-pane -R
 
 # Move panes
 unbind-key {
@@ -51,7 +51,7 @@ bind > swap-pane -D       # swap current pane with the next one
 bind < swap-pane -U       # swap current pane with the previous one
 
 # Kill panes without prompt
-bind-key X kill-pane
+bind-key -n C-x kill-pane
 
 # Swap windows across themselves
 bind-key -r '<' swap-window -t -1
@@ -101,3 +101,6 @@ bind-key -T copy-mode-vi J \
 	send-keys -X cursor-down \; \
 	send-keys -X cursor-down \; \
 	send-keys -X cursor-down \;
+
+
+
