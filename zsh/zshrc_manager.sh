@@ -8,10 +8,10 @@ fi
 #(cd ~/.dotfiles && git pull && git submodule update --init --recursive)
 
 foreach piece (
-    aliases.zsh
     exports.zsh
     functions.zsh
     plugins.zsh
     mappings.zsh
+    aliases.zsh
 ) { source ~/.dotfiles/zsh/config/$piece }
 
