@@ -14,17 +14,18 @@ set-option -g status-fg white
 
 # Left side of status bar
 set-option -g status-left-length 40
-set-option -g status-left '#[fg=brightwhite,bg=brightblack] #S #[fg=default,bg=default] '
+#set-option -g status-left '#[fg=white] #S '
+set-option -g status-left ' 喝 '
 
 # Window status
-set-option -g window-status-format '#[fg=white,bg=brightblack] #I #[fg=white,bg=black] #W '
-set-option -g window-status-current-format '#[fg=brightblack,bg=blue] #I #[fg=black,bg=magenta] #W '
+set-option -g window-status-format '#[fg=color252] #W '
+set-option -g window-status-current-format '#[fg=brightwhite] #W '
 set-option -g window-status-separator " "
 set-option -g status-justify left
 
 # Right side of status bar
 set-option -g status-right-length 40
-set-option -g status-right '#[fg=colour233, bg=color19,bold] %m/%d %R #[fg=colour233,bg=colour8,bold] #(whoami)@#h '
+set-option -g status-right '#[fg=white]  %R #[fg=white,italics] #(whoami)@#h '
 
 # Pane border
 set-option -g pane-border-bg default
