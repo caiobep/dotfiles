@@ -15,6 +15,10 @@ call plug#begin('~/.dotfiles/vim/plugged')
     Plug 'takac/vim-hardtime'
     Plug 'sgur/vim-editorconfig'
 
+    Plug 'HerringtonDarkholme/yats.vim'
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'Shougo/denite.nvim'
+
     " Fzf
     Plug '/usr/local/opt/fzf'
     Plug 'junegunn/fzf.vim'
@@ -30,7 +34,7 @@ call plug#begin('~/.dotfiles/vim/plugged')
 
     " Better Autocomplete
     Plug 'Shougo/neocomplcache.vim'
-    "Plug 'Valloric/YouCompleteMe'
+    Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
     " JavaScript
     Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
@@ -40,6 +44,7 @@ call plug#begin('~/.dotfiles/vim/plugged')
     Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
     Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
     Plug 'peitalin/vim-jsx-typescript', { 'for': 'typescript' }
+    Plug 'mhartington/nvim-typescript', { 'do': './install.sh', 'for': 'typescript' }
 
     " Python
     Plug 'vim-python/python-syntax', { 'for': 'python' }
@@ -228,11 +233,15 @@ hi ReduxKeywords ctermfg=204 guifg=#C678DD
 hi WebBrowser ctermfg=204 guifg=#56B6C2
 hi ReactLifeCycleMethods ctermfg=204 guifg=#D19A66
 
-" Vim Sneak
-map f <Plug>Sneak_f
-map F <Plug>Sneak_F
-map t <Plug>Sneak_t
-map T <Plug>Sneak_T
+
+let g:deoplete#enable_at_startup = 1
+
+" You Complete Me
+if !exists("g:ycm_semantic_triggers")
+  let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers['typescript'] = ['.']
+let g:ycm_server_ptyhon_interpreter='/usr/local/bin/python3'
 
 " Python Jedi
 let g:jedi#auto_initialization = 1
