@@ -45,7 +45,7 @@ call plug#begin('~/.dotfiles/vim/plugged')
     Plug 'ianks/vim-tsx'
     Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
     Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
-    "Plug 'mhartington/nvim-typescript', { 'do': './install.sh', 'for': 'typescript' }
+    Plug 'mhartington/nvim-typescript', { 'do': './install.sh', 'for': 'typescript' }
     "Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
     "Plug 'peitalin/vim-jsx-typescript', { 'for': 'typescript' }
     "Plug 'mhartington/nvim-typescript', {'do': ':!install.sh \| UpdateRemotePlugins', 'for': ['typescript', 'tsx'] }

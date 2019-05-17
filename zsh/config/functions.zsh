@@ -1,6 +1,6 @@
 # LS on change pwd
 chpwd() {
-  ls
+  exa
 }
 
 # Create a new directory and enter it

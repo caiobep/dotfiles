@@ -31,6 +31,7 @@ alias myip='curl http://checkip.amazonaws.com'
 # Wow such git
 alias such=git
 alias very=git
+alias much=git
 alias wow='git status'
 alias gl='git log \
 	--graph \

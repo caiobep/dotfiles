@@ -13,8 +13,3 @@ function edit_and_run() {
 zle -N edit_and_run
 bindkey "^v" edit_and_run
 
-function code_pwd() {
-   eval "/usr/local/bin/code $PWD"
-}
-zle -N code_pwd
-bindkey "^/" code_pwd

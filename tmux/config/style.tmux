@@ -15,17 +15,20 @@ set-option -g status-fg white
 # Left side of status bar
 set-option -g status-left-length 40
 #set-option -g status-left '#[fg=white] #S '
-set-option -g status-left ' 喝 '
+set-option -g status-left ' 卑 '
 
 # Window status
-set-option -g window-status-format '#[fg=color252] #W '
+set-option -g window-status-format '#[fg=colour249] #W '
 set-option -g window-status-current-format '#[fg=brightwhite] #W '
 set-option -g window-status-separator " "
 set-option -g status-justify left
 
 # Right side of status bar
 set-option -g status-right-length 40
-set-option -g status-right '#[fg=white]  %R #[fg=white,italics] #(whoami)@#h '
+#set-option -g status-right '#[fg=colour248]  %R #[fg=colour248,italics] #(whoami)@#h '
+set-option -g status-right '#[fg=colour248]  %R #[fg=colour248,italics] #S '
+#set-option -g status-right '#[fg=colour248]#(/usr/local/bin/brew services ls | grep tor | awk "{ print $2 }" | grep -q started && echo " ﴣ ")#(/usr/local/bin/SwitchAudioSource -c | grep -q Lyra\|JBL && echo "  ") %R #[italics] #S '
+
 
 # Pane border
 set-option -g pane-border-bg default
