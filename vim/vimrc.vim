@@ -10,65 +10,75 @@ call plug#begin('~/.dotfiles/vim/plugged')
     Plug 'vim-syntastic/syntastic'
     Plug 'tpope/vim-surround'
     Plug 'christoomey/vim-tmux-navigator'
-    "Plug 'tmsvg/pear-tree'
+    Plug 'tmsvg/pear-tree'
     Plug 'justinmk/vim-sneak'
     Plug 'sgur/vim-editorconfig'
+    Plug 'easymotion/vim-easymotion'
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-commentary'
+    Plug 'michaeljsmith/vim-indent-object'
+    Plug 'justinmk/vim-sneak'
+
+    Plug 'takac/vim-hardtime'
 
     " Smat Async autocomplete
-    Plug 'Shougo/deoplete.nvim'
+    if has('nvim')
+      Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    else
+      Plug 'Shougo/deoplete.nvim'
+      Plug 'roxma/nvim-yarp'
+      Plug 'roxma/vim-hug-neovim-rpc'
+    endif
+    let g:deoplete#enable_at_startup = 1
+    let g:deoplete#keyword_patterns = {}
+    let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
+
     Plug 'Shougo/denite.nvim'
 
     " Fzf
-    "Plug '/usr/local/opt/fzf'
-    "Plug 'junegunn/fzf.vim'
+    Plug '/usr/local/opt/fzf'
+    Plug 'junegunn/fzf.vim'
 
     " Themes
     Plug 'ryanoasis/vim-devicons'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'joshdick/onedark.vim'
+    Plug 'morhetz/gruvbox'
 
     " Git Conflict - merge tool
     Plug 'tpope/vim-fugitive'
 
-    " Better Autocomplete
-    "Plug 'Shougo/neocomplcache.vim'
-    "Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
-
     " JavaScript
-    "Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-    "Plug 'mxw/vim-jsx'
+    Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+    Plug 'mxw/vim-jsx'
 
     " Typescript
     "Plug 'HerringtonDarkholme/yats.vim'
     " Syntax Highlithing
-    Plug 'ianks/vim-tsx'
+    Plug 'ianks/vim-tsx', { 'for': 'typescript.tsx' }
     Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
     Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
-    "Plug 'mhartington/nvim-typescript', { 'do': './install.sh', 'for': 'typescript' }
-    "Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
-    "Plug 'peitalin/vim-jsx-typescript', { 'for': 'typescript' }
-    "Plug 'mhartington/nvim-typescript', {'do': ':!install.sh \| UpdateRemotePlugins', 'for': ['typescript', 'tsx'] }
+    Plug 'peitalin/vim-jsx-typescript', { 'for': 'typescript' }
+    Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
+
+    " Rust
+    Plug 'racer-rust/vim-racer'
+    Plug 'rust-lang/rust.vim'
 
     " Elm
-    "Plug 'elmcast/elm-vim', { 'for': 'elm' }
-    Plug 'elmcast/elm-vim'
-
-    " Python
-    "Plug 'vim-python/python-syntax', { 'for': 'python' }
-    "Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-    "Plug 'fisadev/vim-isort', { 'for': 'python' }
+    Plug 'elmcast/elm-vim', { 'for': 'elm' }
 
     "" Multi-language highligting
-    "Plug 'sheerun/vim-polyglot'
+    Plug 'sheerun/vim-polyglot'
 
     "" Clojure
-    "Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-    "Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
-    "Plug 'venantius/vim-eastwood', { 'for': 'clojure' }
-    "Plug 'venantius/vim-cljfmt', { 'for': 'clojure' }
-    "Plug 'kien/rainbow_parentheses.vim', { 'for': 'clojure' }
-    "Plug 'bhurlow/vim-parinfer', { 'for': 'clojure' }
+    Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+    Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
+    Plug 'venantius/vim-eastwood', { 'for': 'clojure' }
+    Plug 'venantius/vim-cljfmt', { 'for': 'clojure' }
+    Plug 'kien/rainbow_parentheses.vim', { 'for': 'clojure' }
+    Plug 'bhurlow/vim-parinfer', { 'for': 'clojure' }
 
     "" Csharp
     "Plug 'OmniSharp/omnisharp-vim', { 'for': 'csharp' }
@@ -87,13 +97,14 @@ if (has("autocmd") && !has("gui_running"))
   augroup colorset
     autocmd!
     let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
-    autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white }) " `bg` will not be styled since there is no `bg` setting
   augroup END
 endif
 
 syntax on
-colorscheme onedark
-set background=dark
+colorscheme gruvbox
+let g:gruvbox_contrast_dark = 'soft'
+
+let g:hardtime_default_on = 1
 
 " General Editor Settings
 set backspace=2
@@ -143,7 +154,6 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeShowHidden=1
 let NERDTreeMinimalUI=1
-"let NERDTreeQuitOnOpen=1
 let NERDTreeIgnore=['\.git$[[dir]]','\.DS_Store$']
 
 " Fugetive
@@ -244,35 +254,20 @@ hi ReduxKeywords ctermfg=204 guifg=#C678DD
 hi WebBrowser ctermfg=204 guifg=#56B6C2
 hi ReactLifeCycleMethods ctermfg=204 guifg=#D19A66
 
-let g:deoplete#enable_at_startup = 1
-
-" You Complete Me
-"if !exists("g:ycm_semantic_triggers")
-  "let g:ycm_semantic_triggers = {}
-"endif
-""let g:ycm_semantic_triggers['typescript'] = ['.']
-"let g:ycm_server_ptyhon_interpreter='/usr/local/bin/python3'
-
-" Python Jedi
-let g:jedi#auto_initialization = 1
-let g:jedi#auto_vim_configuration = 1
-let g:jedi#use_tabs_not_buffers = 1
-let g:jedi#use_splits_not_buffers = "left"
-let g:jedi#goto_command = "gd"
-let g:jedi#goto_assignments_command = "<leader>gd"
-let g:jedi#goto_definitions_command = "gd"
-let g:jedi#documentation_command = "K"
-let g:jedi#usages_command = "gu"
-let g:jedi#completions_command = "<C-Space>"
-
 " Typescript
-"au FileType typescript nmap gd <Plug>(TsuquyomiDefinition)
-"au FileType typescript nmap gs <Plug>(TsuquyomiSplitDefinition)
-"au FileType typescript nmap gx <Plug>(TsuquyomiRenameSymbol)
-"au FileType typescript nmap gr <Plug>(TsuquyomiReferences)
-"au FileType typescript nmap <buffer> <Leader>e <Plug>(TsuquyomiRenameSymbol)
-"au FileType typescript nmap <buffer> <Leader>E <Plug>(TsuquyomiRenameSymbolC)
-"au FileType typescript nmap <buffer> <Leader>t: <C-u>echo tsuquyomi#hint()<CR>
+au FileType typescript nmap gd <Plug>(TsuquyomiDefinition)
+au FileType typescript nmap gs <Plug>(TsuquyomiSplitDefinition)
+au FileType typescript nmap gx <Plug>(TsuquyomiRenameSymbol)
+au FileType typescript nmap gr <Plug>(TsuquyomiReferences)
+au FileType typescript nmap <buffer> <Leader>e <Plug>(TsuquyomiRenameSymbol)
+au FileType typescript nmap <buffer> <Leader>E <Plug>(TsuquyomiRenameSymbolC)
+au FileType typescript nmap <buffer> <Leader>t: <C-u>echo tsuquyomi#hint()<CR>
+
+" Rust
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
 " Clojure
 au FileType clojure nmap gd <Plug>FireplaceDjump
@@ -280,5 +275,7 @@ au FileType clojure nmap gs <Plug>FireplaceDsplit
 au FileType clojure nmap gx <Plug>FireplaceSource
 au FileType clojure nmap <leader>gd <Plug>FireplaceK
 
-"autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
+let g:deoplete#enable_at_startup = 1
+let g:sneak#label = 1
