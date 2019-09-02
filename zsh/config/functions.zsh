@@ -58,3 +58,14 @@ gll(){
 re(){
   mv "$1" ~/.Trash
 }
+
+function npm_install {
+    if [ -f yarn.lock ]; then
+        yarn install $@
+    else
+        npm install $@
+    fi
+    touch ./node_modules/.metadata_never_index # Prevent Spotlight from indexing node modules folder
+}
+
+alias npmi=npm_install
