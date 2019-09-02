@@ -17,7 +17,7 @@ call plug#begin('~/.dotfiles/vim/plugged')
     Plug 'justinmk/vim-sneak'
     Plug 'segeljakt/vim-silicon'
     Plug 'takac/vim-hardtime'
-    Plug 'jremmen/vim-rip-grep' " Use RipGrep in Vim and display results in a quickfix list
+    Plug 'jremmen/vim-ripgrep' " Use RipGrep in Vim and display results in a quickfix list
     Plug 'rizzatti/dash.vim' " Dash App Integration
     Plug 'jiangmiao/auto-pairs' " Insert or delete brackets, parens, quotes in pair.
     Plug 'romainl/vim-cool' " Stop matching after search is done
@@ -29,7 +29,6 @@ call plug#begin('~/.dotfiles/vim/plugged')
     Plug 'junegunn/vim-easy-align' " Simple, easy-to-use alignment.
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Fzf search.
     Plug 'junegunn/fzf.vim' " Fzf search.
-    Plug 'wakatime/vim-wakatime' " Automatic time tracking.
     Plug 'haya14busa/incsearch.vim' " Improved incremental searching.
     Plug 'easymotion/vim-easymotion' " Vim motions on speed.
     Plug 'thinca/vim-quickrun' " Run commands quickly.
