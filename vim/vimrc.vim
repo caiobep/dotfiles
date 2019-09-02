@@ -8,18 +8,31 @@ call plug#begin('~/.dotfiles/vim/plugged')
     Plug 'ryanoasis/vim-devicons'
     Plug 'w0rp/ale'
     Plug 'vim-syntastic/syntastic'
-    Plug 'tpope/vim-surround'
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'tmsvg/pear-tree'
     Plug 'justinmk/vim-sneak'
     Plug 'sgur/vim-editorconfig'
-    Plug 'easymotion/vim-easymotion'
-    Plug 'tpope/vim-surround'
     Plug 'tpope/vim-commentary'
     Plug 'michaeljsmith/vim-indent-object'
     Plug 'justinmk/vim-sneak'
     Plug 'segeljakt/vim-silicon'
     Plug 'takac/vim-hardtime'
+    Plug 'jremmen/vim-rip-grep' " Use RipGrep in Vim and display results in a quickfix list
+    Plug 'rizzatti/dash.vim' " Dash App Integration
+    Plug 'jiangmiao/auto-pairs' " Insert or delete brackets, parens, quotes in pair.
+    Plug 'romainl/vim-cool' " Stop matching after search is done
+    Plug 'scrooloose/nerdcommenter' " Quick comments.
+    Plug 'unblevable/quick-scope' " Highlight f, F jumps.
+    Plug 'Shougo/vimproc.vim', {'do' : 'make'} " Interactive command execution.
+    Plug 'tpope/vim-repeat' " Enable repeating supported plugin maps.
+    Plug 'tpope/vim-surround' " Quoting/parenthesizing made simple.
+    Plug 'junegunn/vim-easy-align' " Simple, easy-to-use alignment.
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Fzf search.
+    Plug 'junegunn/fzf.vim' " Fzf search.
+    Plug 'wakatime/vim-wakatime' " Automatic time tracking.
+    Plug 'haya14busa/incsearch.vim' " Improved incremental searching.
+    Plug 'easymotion/vim-easymotion' " Vim motions on speed.
+    Plug 'thinca/vim-quickrun' " Run commands quickly.
 
     " Smat Async autocomplete
     if has('nvim')
@@ -36,10 +49,6 @@ call plug#begin('~/.dotfiles/vim/plugged')
 
     Plug 'Shougo/denite.nvim'
 
-    " Fzf
-    Plug '/usr/local/opt/fzf'
-    Plug 'junegunn/fzf.vim'
-
     " Themes
     Plug 'ryanoasis/vim-devicons'
     Plug 'vim-airline/vim-airline'
@@ -48,20 +57,26 @@ call plug#begin('~/.dotfiles/vim/plugged')
     Plug 'morhetz/gruvbox'
 
     " Git Conflict - merge tool
-    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-fugitive' " Git Wrapper
+    Plug 'mhinz/vim-signify' " Show a diff using Vim its sign column.
 
     " JavaScript
     Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
     Plug 'mxw/vim-jsx'
 
     " Typescript
-    "Plug 'HerringtonDarkholme/yats.vim'
     " Syntax Highlithing
     Plug 'ianks/vim-tsx', { 'for': 'typescript.tsx' }
     Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
     Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
     Plug 'peitalin/vim-jsx-typescript', { 'for': 'typescript' }
     Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
+
+    " Prettier Support
+    Plug 'prettier/vim-prettier', {
+      \ 'do': 'npm install',
+      \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
+
 
     " Rust
     Plug 'racer-rust/vim-racer'
@@ -89,6 +104,9 @@ call plug#begin('~/.dotfiles/vim/plugged')
     "Plug 'mhartington/nvim-typescript', { 'build': './install.sh' }
 
 call plug#end()
+
+set undofile
+set visualbell
 
 filetype plugin indent on
 let g:onedark_termcolors = 1
@@ -279,3 +297,17 @@ autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
 let g:deoplete#enable_at_startup = 1
 let g:sneak#label = 1
+
+" Key Mappings
+
+" Command Mappings
+cabbrev rp Rp
+
+" CTRL Mappings
+nnoremap <C-L> :Files<CR>
+
+" Space Mappings
+nnoremap <SPACE> <Nop>
+let mapleader="\<Space>"
+let maplocalleader = "\<Space>"
+nnoremap <leader>= yypVr=
