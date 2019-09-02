@@ -1,6 +1,5 @@
 # Mode
-set-option -g mode-bg brightblack
-set-option -g mode-fg default
+set-option -g mode-style bg=brightblack,fg=default
 
 # Use top tabbar
 set-option -g status-position top
@@ -9,8 +8,7 @@ set-option -g status-position top
 set-option -g status-interval 5
 
 # Basic status bar colors
-set-option -g status-bg default
-set-option -g status-fg white
+set-option -g status-style bg=default,fg=white
 
 # Left side of status bar
 set-option -g status-left-length 40
@@ -31,10 +29,8 @@ set-option -g status-right '#[fg=colour248]  %R #[fg=colour248,italics] #S '
 
 
 # Pane border
-set-option -g pane-border-bg default
-set-option -g pane-border-fg black
-set-option -g pane-active-border-bg default
-set-option -g pane-active-border-fg white
+set-option -g pane-border-style  bg=default,fg=black
+set-option -g pane-active-border-style bg=default,fg=white
 
 # Pane number indicator
 set-option -g display-panes-colour brightblack
@@ -45,8 +41,7 @@ set-option -g clock-mode-colour colour233
 set-option -g clock-mode-style 24
 
 # Message
-set-option -g message-bg default
-set-option -g message-fg default
+set-option -g message-style bg=default,fg=default
 
 # enable true color support and italics
 set -g default-terminal "xterm-256color-italic"

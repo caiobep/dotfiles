@@ -18,7 +18,7 @@ call plug#begin('~/.dotfiles/vim/plugged')
     Plug 'tpope/vim-commentary'
     Plug 'michaeljsmith/vim-indent-object'
     Plug 'justinmk/vim-sneak'
-
+    Plug 'segeljakt/vim-silicon'
     Plug 'takac/vim-hardtime'
 
     " Smat Async autocomplete
@@ -26,6 +26,7 @@ call plug#begin('~/.dotfiles/vim/plugged')
       Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     else
       Plug 'Shougo/deoplete.nvim'
+      Plug 'Shougo/deoplete-rust'
       Plug 'roxma/nvim-yarp'
       Plug 'roxma/vim-hug-neovim-rpc'
     endif
@@ -104,7 +105,6 @@ syntax on
 colorscheme gruvbox
 let g:gruvbox_contrast_dark = 'soft'
 
-let g:hardtime_default_on = 1
 
 " General Editor Settings
 set backspace=2

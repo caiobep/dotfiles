@@ -64,3 +64,4 @@ alias search="rg \
 	--glob '!.git/' \
 	--glob '!node_modules/' \
 	--regexp"
+

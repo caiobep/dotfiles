@@ -29,3 +29,32 @@ function ql() {
 function chrome() {
     open -a Google\ Chrome
 }
+
+ggi() {
+  git init
+  mit
+  git add .
+  git commit -m "Init"
+  git remote add origin $(osascript -e 'tell application "Safari" to return URL of front document')
+  git push -u origin master
+}
+
+
+mit() {
+  license-up mit Caio Amaral Corrêa https://github.com/caiobep
+  git add LICENSE
+}
+
+ggs() {
+  git add .
+  git commit . -m 'update'
+  git push
+}
+
+gll(){
+   git clone "$(pbpaste)"
+}
+
+re(){
+  mv "$1" ~/.Trash
+}
