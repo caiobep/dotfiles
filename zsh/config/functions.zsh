@@ -47,7 +47,7 @@ mit() {
 
 ggs() {
   git add .
-  git commit . -m 'update'
+  git commit . -nv
   git push
 }
 
