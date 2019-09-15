@@ -3,7 +3,7 @@ call plug#begin('~/.dotfiles/vim/plugged')
     Plug 'terryma/vim-multiple-cursors'
     Plug 'honza/vim-snippets'
     Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-    Plug 'scrooloose/nerdcommenter'
+    Plug 'scrooloose/nerdcommenter' " Quick comments.
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'ryanoasis/vim-devicons'
     Plug 'w0rp/ale'
@@ -21,14 +21,13 @@ call plug#begin('~/.dotfiles/vim/plugged')
     Plug 'rizzatti/dash.vim' " Dash App Integration
     Plug 'jiangmiao/auto-pairs' " Insert or delete brackets, parens, quotes in pair.
     Plug 'romainl/vim-cool' " Stop matching after search is done
-    Plug 'scrooloose/nerdcommenter' " Quick comments.
     Plug 'unblevable/quick-scope' " Highlight f, F jumps.
     Plug 'Shougo/vimproc.vim', {'do' : 'make'} " Interactive command execution.
     Plug 'tpope/vim-repeat' " Enable repeating supported plugin maps.
     Plug 'tpope/vim-surround' " Quoting/parenthesizing made simple.
     Plug 'junegunn/vim-easy-align' " Simple, easy-to-use alignment.
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Fzf search.
-    Plug 'junegunn/fzf.vim' " Fzf search.
+"   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Fzf search.
+"   Plug 'junegunn/fzf.vim' " Fzf search.
     Plug 'haya14busa/incsearch.vim' " Improved incremental searching.
     Plug 'easymotion/vim-easymotion' " Vim motions on speed.
     Plug 'thinca/vim-quickrun' " Run commands quickly.
@@ -177,10 +176,11 @@ let NERDTreeIgnore=['\.git$[[dir]]','\.DS_Store$']
 noremap <leader>g :Git<space>
 
 " FZF
-let g:fzf_layout = { 'window': 'enew' }
-let g:fzf_layout = { 'window': '-tabnew' }
-let g:fzf_layout = { 'window': '10split' }
-let g:fzf_action = {
+"let g:fzf_layout = { 'down': '~30%' }
+"let g:fzf_layout = { 'window': 'enew' }
+"let g:fzf_layout = { 'window': '-tabnew' }
+"let g:fzf_layout = { 'window': '10split' }
+"let g:fzf_action = {
   \ 't': 'tab split',
   \ 's': 'split',
   \ 'v': 'vsplit' }

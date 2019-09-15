@@ -67,5 +67,4 @@ function npm_install {
     fi
     touch ./node_modules/.metadata_never_index # Prevent Spotlight from indexing node modules folder
 }
-
 alias npmi=npm_install

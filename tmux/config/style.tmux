@@ -44,5 +44,5 @@ set-option -g clock-mode-style 24
 set-option -g message-style bg=default,fg=default
 
 # enable true color support and italics
-set -g default-terminal "xterm-256color-italic"
-set -ga terminal-overrides "xterm-256color-italic:Tc"
+set -g default-terminal "xterm-256color"
+set -ga terminal-overrides "xterm-256color:Tc"
