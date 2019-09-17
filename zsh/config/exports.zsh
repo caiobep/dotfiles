@@ -62,7 +62,7 @@ if [[ $(uname) == 'Darwin' ]] {
 path=($path $HOME/.bin{,/external})
 
 # Term
-export TERM='xterm-256color-italic'
+export TERM='xterm-256color'
 
 # Default Editors
 export EDITOR=$(find_alternative vim vi)

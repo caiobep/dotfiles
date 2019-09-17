@@ -6,6 +6,9 @@ bind-key C-a send-prefix
 set-option -g prefix C-a
 #set-option -g prefix2 `
 
+
+bind-key -n C-b send-prefix
+
 # Reload configuration
 bind-key r \
           source-file ~/.dotfiles/tmux/tmux.conf \; \
