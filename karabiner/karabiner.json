@@ -13,7 +13,7 @@
         "basic.to_if_held_down_threshold_milliseconds" : 500
       },
       "rules" : [ {
-        "description" : "capskey",
+        "description" : "Caps Lock Mode",
         "manipulators" : [ {
           "from" : {
             "key_code" : "open_bracket"

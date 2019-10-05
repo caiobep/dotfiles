@@ -8,6 +8,7 @@ alias mv='mv -i -v' # Move nodes with interactive
 alias cp='cp -i -v' # Copy nodes with interactive mode
 alias ln='ln -i -v'
 alias ls='exa'
+alias cat='bat'
 alias mkdir='mkdir -p'
 alias du='du --max-depth=1 --si'
 alias df='df --all --si --print-type'
