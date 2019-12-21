@@ -76,7 +76,7 @@ install_vim_plug() {
 }
 
 change_default_configuration_source() {
-    printf "export MACHINE_NAME $MACHINE_NAME \n source '$HOME/.dotfiles/zsh/zshrc_manager.sh'" > ~/.zshrc
+    printf "export MACHINE_NAME="$MACHINE_NAME" \n source '$HOME/.dotfiles/zsh/zshrc_manager.sh'" > ~/.zshrc
     printf "so $HOME/.dotfiles/vim/vimrc.vim" > ~/.vimrc
     printf "source-file $HOME/.dotfiles/tmux/tmux.conf" > ~/.tmux.conf
 }
