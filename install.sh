@@ -81,6 +81,19 @@ change_default_configuration_source() {
     printf "source-file $HOME/.dotfiles/tmux/tmux.conf" > ~/.tmux.conf
 }
 
+install_homebrew_when_host_is_macos() {
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+      if ! [ -x "$(command -v $1)" ]; then
+        echo "[!] No installation of Homebrew was found"
+        echo "[+] Installing Homebrew"
+
+        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+      else
+        echo "[!] Found Homebrew Installation at $(which brew)"
+      fi
+    fi
+}
+
 main() {
     echo "=====Welcome to my .terminal======="
     echo "This script will do the following:"
@@ -106,6 +119,9 @@ main() {
 
     echo "[+] What's your machine name? "
     read MACHINE_NAME
+
+    install_homebrew_when_host_is_macos
+
 
     check_installation zsh
     check_installation vim
