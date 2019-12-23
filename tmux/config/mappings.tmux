@@ -23,7 +23,7 @@ bind-key -n M-z resize-pane -Z
 
 # Split pane with same directory
 bind-key - split-window -v -c '#{pane_current_path}'
-bind-key \ split-window -h -c '#{pane_current_path}'
+bind-key \\ split-window -h -c '#{pane_current_path}'
 bind-key _ split-window -fv -c '#{pane_current_path}' # Full Width
 bind-key | split-window -fh -c '#{pane_current_path}'  # Full Height
 
@@ -40,8 +40,8 @@ bind -r C-h resize-pane -L
 bind -r C-l resize-pane -R
 
 # Move panes
-unbind-key {
-unbind-key }
+#unbind-key {
+#unbind-key }
 bind-key -r H swap-pane -U
 bind-key -r L swap-pane -D
 
