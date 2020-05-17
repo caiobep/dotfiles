@@ -70,9 +70,8 @@ backup_dotfiles() {
     fi
 }
 
-install_vim_plug() {
-  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+install_thinkvim() {
+  git clone --depth=1 https://github.com/hardcoreplayers/ThinkVim.git ~/.config/nvim
 }
 
 change_default_configuration_source() {
@@ -126,8 +125,9 @@ main() {
     check_installation zsh
     check_installation vim
     check_installation tmux
+    check_installation git
 
-    install_vim_plug
+    install_thinkvim
 
     check_default_shell
 

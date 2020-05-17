@@ -15,7 +15,7 @@ bind-key r \
           display-message '(! ~/.dotfiles/tmux/tmux.conf reloaded.'
 
 # Switch windows
-bind-key -n M-p select-window -t :- # Previous Window
+bind-key -n M-N select-window -t :- # Previous Window
 bind-key -n M-n select-window -t :+ # Next Window
 
 # Toggle Zoom
