@@ -26,6 +26,10 @@ antigen bundle dircycle
 antigen bundle colorize
 antigen bundle encode64
 
+# Security Tools Plugins
+antigen bundle nmap
+
+
 # Git Plugins
 antigen bundle git
 antigen bundle git-extras
@@ -34,8 +38,8 @@ antigen bundle github
 antigen bundle gitignore
 
 # Node Plugins
-antigen bundle nmap
 antigen bundle node
+antigen bundle yarn
 
 # Python Plugins
 antigen bundle pyenv
@@ -44,7 +48,7 @@ antigen bundle python
 antigen bundle pylint
 
 # GO
-antigen bundle go
+antigen bundle golang
 
 # Clojure's Leinigen
 antigen bundle lein
