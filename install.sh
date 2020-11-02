@@ -71,7 +71,9 @@ backup_dotfiles() {
 }
 
 install_thinkvim() {
-  git clone --depth=1 https://github.com/hardcoreplayers/ThinkVim.git ~/.config/nvim
+    git clone --depth=1 https://github.com/hardcoreplayers/ThinkVim.git ~/.config/nvim
+
+    sh ~/.config/nvim/scripts/install.sh
 }
 
 change_default_configuration_source() {
@@ -79,6 +81,11 @@ change_default_configuration_source() {
     printf "so $HOME/.dotfiles/vim/vimrc.vim" > ~/.vimrc
     printf "source-file $HOME/.dotfiles/tmux/tmux.conf" > ~/.tmux.conf
 }
+
+link_ideavimrc() {
+    ln -s ~/.dotfiles/idea/ideavimrc.vim ~/.ideavimrc
+}
+
 
 install_homebrew_when_host_is_macos() {
     if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -128,6 +135,7 @@ main() {
     check_installation git
 
     install_thinkvim
+    link_ideavimrc
 
     check_default_shell
 

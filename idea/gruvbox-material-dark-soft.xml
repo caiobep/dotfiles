@@ -1,0 +1,25 @@
+<mtTheme>
+  <id>1</id>
+  <editorColorsScheme>gruvbox-material-dark-soft</editorColorsScheme>
+  <dark>true</dark>
+  <name>gruvbox-material-dark-soft</name>
+  <colors>
+    <color id="background" value="32302fff"/>
+    <color id="foreground" value="ebdbb2ff"/>
+    <color id="text" value="9e8e7aff"/>
+    <color id="highlight" value="504945ff"/>
+    <color id="selectionBackground" value="4f4945ff"/>
+    <color id="selectionForeground" value="fbf1c7ff"/>
+    <color id="button" value="32302fff"/>
+    <color id="secondaryBackground" value="32302fff"/>
+    <color id="disabled" value="808080ff"/>
+    <color id="contrast" value="292827ff"/>
+    <color id="tableSelected" value="3c3836ff"/>
+    <color id="secondBorder" value="47413eff"/>
+    <color id="treeSelection" value="4f49453f"/>
+    <color id="notifications" value="32302fec"/>
+    <color id="accent" value="f9b53cff"/>
+    <color id="excluded" value="3d3a39ff"/>
+  </colors>
+  <themeId>1</themeId>
+</mtTheme>
