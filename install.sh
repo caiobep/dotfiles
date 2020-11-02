@@ -86,6 +86,9 @@ link_ideavimrc() {
     ln -s ~/.dotfiles/idea/ideavimrc.vim ~/.ideavimrc
 }
 
+add_global_gitignore() {
+    git config --global core.excludesfile ~/.dotfiles/gitconfig/gitignore
+}
 
 install_homebrew_when_host_is_macos() {
     if [[ "$OSTYPE" == "darwin"* ]]; then
