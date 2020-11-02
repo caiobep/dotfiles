@@ -15,6 +15,8 @@ bind-key r \
           display-message '(! ~/.dotfiles/tmux/tmux.conf reloaded.'
 
 # Switch windows
+bind-key -n S-n select-window -t :- # Previous Window
+bind-key -n S-N select-window -t :+ # Previous Window
 bind-key -n M-N select-window -t :- # Previous Window
 bind-key -n M-n select-window -t :+ # Next Window
 

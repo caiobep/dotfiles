@@ -47,9 +47,6 @@ antigen bundle pip
 antigen bundle python
 antigen bundle pylint
 
-# GO
-antigen bundle golang
-
 # Clojure's Leinigen
 antigen bundle lein
 

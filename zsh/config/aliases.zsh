@@ -66,6 +66,4 @@ alias search="rg \
 	--glob '!node_modules/' \
 	--regexp"
 
-alias flip-vertical="fb-rotate -d $(fb-rotate -l | grep x | awk '{ print $1}') -r 90"
-alias flip-horizontal="fb-rotate -d $(fb-rotate -l | grep x | awk '{ print $1}') -r 0"
 
