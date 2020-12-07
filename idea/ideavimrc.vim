@@ -85,7 +85,7 @@ noremap [b :action GotoPreviousBookmark<CR>
 noremap <C-f> :action EditorMoveDownAndScroll<CR>
 noremap <C-b> :action EditorMoveDownAndScroll<CR>
 noremap <C-u> :action EditorMoveUpAndScroll<CR>
-noremap <C-d> :action EditorMoveUpAndScroll<CR>
+noremap <C-d> :action EditorMoveDownAndScroll<CR>
 
 noremap <leader>fa :action FindInPath<CR>
 noremap <leader>ff :action GotoFile<CR>
@@ -100,7 +100,9 @@ noremap <leader>cf :action ReformatCode<CR>
 noremap <leader>ct :action TodoViewGroupByFlattenPackage<CR>
 
 
-" Extract
+" ================================================================
+"                         Extract
+" ================================================================
 noremap <leader>ee :action ExtractMethodToolWindow.TreePopup<CR>
 noremap <leader>ec :action ExtractClass<CR>
 noremap <leader>ei :action ExtractInterface<CR>
@@ -111,10 +113,67 @@ noremap <leader>em :action ExtractMethod<CR>
 noremap <leader>esc :action ExtractSuperClass<CR>
 
 
-" Refactor This
-noremap <leader>re :action RenameElement<CR>
-noremap <leader>rf :action RenameFile<CR>
+" ================================================================
+"                         Refactor
+" ================================================================
+  noremap <leader>R :action Refactorings.QuickListPopupAction<CR>
+  noremap <leader>re :action RenameElement<CR>
+  noremap <leader>rf :action RenameFile<CR>
 
+
+" ================================================================
+"                         Debugger
+" ================================================================
+  noremap <leader>dd :action Debugger<CR>
+  noremap <leader>da :action ToggleLineBreakpoint<CR>
+  noremap <leader>dc :action Debugger.RemoveAllBreakpoints<CR>
+  noremap <leader>rf :action RenameFile<CR>
+
+
+" ================================================================
+"                           Insert
+" ================================================================
+noremap <leader>I :action randomness.ShowGroup<CR>
+
+" Insert - UUID
+  noremap <leader>iU :action randomness.InsertUuid<CR>
+  noremap <leader>iuu :action randomness.InsertUuid<CR>
+  noremap <leader>iua :action randomness.InsertUuidArray<CR>
+  noremap <leader>iur :action randomness.InsertUuidRepeat<CR>
+  noremap <leader>ius :action randomness.UuidSettings<CR>
+  noremap <leader>iuS :action randomness.UuidQuickSwitchScheme<CR>
+
+" Insert - Word
+  noremap <leader>iW :action randomness.InsertWord<CR>
+  noremap <leader>iww :action randomness.InsertWord<CR>
+  noremap <leader>iwa :action randomness.InsertWordArray<CR>
+  noremap <leader>iwr :action randomness.InsertWordRepeat<CR>
+  noremap <leader>iws :action randomness.WordSettings<CR>
+  noremap <leader>iwS :action randomness.WordQuickSwitchScheme<CR>
+
+" Insert - Decimal
+  noremap <leader>iD :action randomness.InsertDecimal<CR>
+  noremap <leader>idd :action randomness.InsertDecimal<CR>
+  noremap <leader>ida :action randomness.InsertDecimalArray<CR>
+  noremap <leader>idr :action randomness.InsertDecimalRepeat<CR>
+  noremap <leader>ids :action randomness.DecimalSettings<CR>
+  noremap <leader>idS :action randomness.DecimalQuickSwitchScheme<CR>
+
+" Insert - Integer
+  noremap <leader>iI :action randomness.InsertInteger<CR>
+  noremap <leader>iid :action randomness.InsertInteger<CR>
+  noremap <leader>iia :action randomness.InsertIntegerArray<CR>
+  noremap <leader>iir :action randomness.InsertIntegerRepeat<CR>
+  noremap <leader>iis :action randomness.IntegerSettings<CR>
+  noremap <leader>iiS :action randomness.IntegerQuickSwitchScheme<CR>
+
+" Insert - String
+noremap <leader>iS :action randomness.InsertString<CR>
+noremap <leader>isd :action randomness.InsertString<CR>
+noremap <leader>isa :action randomness.InsertStringArray<CR>
+noremap <leader>isr :action randomness.InsertStringRepeat<CR>
+noremap <leader>iss :action randomness.StringSettings<CR>
+noremap <leader>isS :action randomness.StringQuickSwitchScheme<CR>
 
 " Misc
 noremap <leader>uml :action ShowUmlDiagram<CR>
