@@ -28,6 +28,8 @@ alias news='newsboat --quiet'
 alias def='sdcv --color'
 alias note="$EDITOR +'cd ~/.notes/' ~/.notes/index.md"
 alias myip='curl http://checkip.amazonaws.com'
+alias g=lazygit
+alias d=lazydocker
 
 # Wow such git
 alias such=git
