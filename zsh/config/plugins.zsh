@@ -14,8 +14,8 @@ antigen use oh-my-zsh
 
 # Load a Theme
 # As recommended by pure
-antigen bundle mafredri/zsh-async
-antigen bundle sindresorhus/pure
+# antigen bundle mafredri/zsh-async
+# antigen bundle sindresorhus/pure
 
 # Core Plugins
 antigen bundle gnu-utils
@@ -28,7 +28,6 @@ antigen bundle encode64
 
 # Security Tools Plugins
 antigen bundle nmap
-
 
 # Git Plugins
 antigen bundle git

@@ -31,6 +31,7 @@ call plug#begin('~/.dotfiles/vim/plugged')
     Plug 'haya14busa/incsearch.vim' " Improved incremental searching.
     Plug 'easymotion/vim-easymotion' " Vim motions on speed.
     Plug 'thinca/vim-quickrun' " Run commands quickly.
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
     " Smat Async autocomplete
     if has('nvim')

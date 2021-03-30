@@ -48,7 +48,7 @@ if [[ $(uname) == 'Darwin' ]] {
 	path=($path $ANDROID_HOME/{tools,platform-tools})
 
 	# Java Development Kit
-	export JAVA_HOME=$(/usr/libexec/java_home)
+#	export JAVA_HOME=$(/usr/libexec/java_home)
 
 } elif [[ $(uname -o) == 'Android' ]] 2>/dev/null {
 	# Shell variable

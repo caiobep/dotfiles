@@ -86,6 +86,10 @@ link_ideavimrc() {
     ln -s ~/.dotfiles/idea/ideavimrc.vim ~/.ideavimrc
 }
 
+link_thinkvim_config() {
+    ln -s ~/.dotfiles/vim/thinkvim.d ~/.thinkvim.d
+}
+
 add_global_gitignore() {
     git config --global core.excludesfile ~/.dotfiles/gitconfig/gitignore
 }

@@ -1,201 +1,198 @@
-tap "ether-cli/tap"
-tap "github/gh"
-tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/cask-drivers"
-tap "homebrew/cask-fonts"
-tap "homebrew/cask-versions"
-tap "homebrew/core"
-tap "mongodb/brew"
-tap "sachaos/todoist"
-tap "universal-ctags/universal-ctags"
-tap "vapor/tap"
-tap "yannick-cw/tap"
-brew "ack"
-brew "aircrack-ng"
-brew "antigen"
-brew "arp-scan"
-brew "asciinema"
-brew "asciiquarium"
-brew "python"
-brew "awscli"
-brew "azure-cli"
-brew "cmake"
-brew "cmatrix"
-brew "cowsay"
-brew "deno"
-brew "ettercap"
-brew "tesseract"
-brew "ffmpeg"
-brew "fortune"
-brew "fzf"
-brew "gcc"
-brew "gdb"
-brew "ghc"
-brew "go"
-brew "gource"
-brew "helm"
-brew "howdoi"
-brew "htop"
-brew "httpie"
-brew "hub"
-brew "hydra"
-brew "ical-buddy"
-brew "ifstat"
-brew "ipcalc"
-brew "ipv6calc"
-brew "john"
-brew "jq"
-brew "kubernetes-cli"
-brew "libuv"
-brew "libvterm"
-brew "luarocks"
-brew "lynx"
-brew "m-cli"
-brew "mas"
-brew "md5deep"
-brew "mono"
-brew "moreutils"
-brew "mysql"
-brew "nasm"
-brew "neofetch"
-brew "neovim"
-brew "nikto"
-brew "nmap"
-brew "nnn"
-brew "node", link: false
-brew "nyancat"
-brew "p7zip"
-brew "pandoc"
-brew "perl"
-brew "qt"
-brew "reattach-to-user-namespace"
-brew "redis"
-brew "ripgrep"
-brew "ruby"
-brew "screenfetch"
-brew "socat"
-brew "speedtest-cli"
-brew "tcpflow"
-brew "tig"
-brew "tmux"
-brew "tor"
-brew "torsocks"
-brew "tree"
-brew "unrar"
-brew "vim"
-brew "watchman"
-brew "wget"
-brew "youtube-dl"
-brew "zsh"
-brew "ether-cli/tap/ether"
-brew "github/gh/gh"
-brew "mongodb/brew/mongodb-community", link: false
-brew "mongodb/brew/mongodb-community-shell"
-brew "mongodb/brew/mongodb-community@3.2"
-brew "sachaos/todoist/todoist"
-brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
-brew "vapor/tap/vapor"
-cask "1password"
-cask "adoptopenjdk"
-cask "alfred"
-cask "amethyst"
-cask "audio-hijack"
-cask "dash"
-cask "discord"
-cask "docker"
-cask "dotnet-sdk"
-cask "fantastical"
-cask "firefox-developer-edition"
-cask "font-dashicons"
-cask "font-devicons"
-cask "font-droidsansmono-nerd-font-mono"
-cask "font-firacode-nerd-font"
-cask "font-firacode-nerd-font-mono"
-cask "font-hack-nerd-font"
-cask "font-material-icons"
-cask "font-materialdesignicons-webfont"
-cask "font-roboto-condensed"
-cask "font-roboto-slab"
-cask "font-space-mono"
-cask "google-chrome"
-cask "grammarly"
-cask "gzdoom"
-cask "hyper"
-cask "icons8"
-cask "insomnia"
-cask "intellij-idea"
-cask "iterm2"
-cask "java"
-cask "joplin"
-cask "kextviewr"
-cask "keyboard-cleaner"
-cask "keyboard-maestro"
-cask "keycastr"
-cask "kindle"
-cask "knockknock"
-cask "lastpass"
-cask "linkliar"
-cask "little-snitch"
-cask "logitech-options"
-cask "metasploit"
-cask "micro-snitch"
-cask "microsoft-teams"
-cask "minecraft-server"
-cask "mongodb-compass-community"
-cask "notion"
-cask "now"
-cask "obinslab-starter"
-cask "omnifocus"
-cask "pdf-expert"
-cask "pocket-casts"
-cask "postman"
-cask "qlcolorcode"
-cask "qlmarkdown"
-cask "qlstephen"
-cask "qlvideo"
-cask "quicklook-json"
-cask "quicklookase"
-cask "quitter"
-cask "react-native-debugger"
-cask "rider"
-cask "setapp"
-cask "sketch"
-cask "slack"
-cask "sloth"
-cask "spectacle"
-cask "spotify"
-cask "telegram"
-cask "termius"
-cask "transmission"
-cask "turbo-boost-switcher"
-cask "ubersicht"
-cask "visual-studio-code"
-cask "vlc"
-cask "webpquicklook"
-cask "webstorm"
-cask "whatsapp"
-cask "xquartz"
-cask "zoomus"
-mas "Backtrack", id: 1477089520
-mas "Compressor", id: 424390742
-mas "Dashlane", id: 552383089
-mas "Final Cut Pro", id: 424389933
-mas "GarageBand", id: 682658836
-mas "Grammarly for Safari", id: 1462114288
-mas "Keynote", id: 409183694
-mas "Logic Pro X", id: 634148309
-mas "MainStage 3", id: 634159523
-mas "Motion", id: 434290957
-mas "Notability", id: 736189492
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
-mas "Pixelmator Pro", id: 1289583905
-mas "Playgrounds", id: 1496833156
-mas "Reeder", id: 1449412482
-mas "Spark", id: 1176895641
-mas "Streaks", id: 1493327990
-mas "Todoist", id: 585829637
-mas "Tweetbot", id: 1384080005
-mas "Twitter", id: 1482454543
-mas "Xcode", id: 497799835
+aom
+apr
+apr-util
+autoconf
+automake
+bat
+bdw-gc
+berkeley-db
+c-ares
+cairo
+dav1d
+docbook
+docbook-xsl
+docutils
+dust
+emacs
+exa
+ffmpeg
+flac
+fontconfig
+freetype
+frei0r
+fribidi
+fzf
+gdbm
+gdk-pixbuf
+gettext
+gh
+ghostscript
+giflib
+glib
+gmp
+gnu-getopt
+gnutls
+gobject-introspection
+gping
+graphite2
+guile
+harfbuzz
+httpie
+hub
+icu4c
+ilmbase
+imagemagick
+jansson
+jemalloc
+jpeg
+lame
+leptonica
+libass
+libbluray
+libde265
+libev
+libevent
+libffi
+libheif
+libidn2
+liblqr
+libogg
+libomp
+libpng
+libpthread-stubs
+librsvg
+libsamplerate
+libscrypt
+libsndfile
+libsodium
+libsoxr
+libtasn1
+libtermkey
+libtiff
+libtool
+libunistring
+libuv
+libvidstab
+libvorbis
+libvpx
+libvterm
+libx11
+libxau
+libxcb
+libxdmcp
+libxext
+libxrender
+libyaml
+little-cms2
+lua
+luajit-openresty
+lz4
+lzo
+m-cli
+mpdecimal
+msgpack
+ncurses
+neofetch
+neovim
+nettle
+nghttp2
+nikto
+nmap
+node
+opencore-amr
+openexr
+openjpeg
+openssl@1.1
+openvpn
+opus
+p11-kit
+pango
+pcre
+pcre2
+perl
+pixman
+pkcs11-helper
+pkg-config
+pyenv
+python@3.9
+rav1e
+readline
+ripgrep
+rtmpdump
+rubberband
+ruby
+screenresolution
+sdl2
+shared-mime-info
+snappy
+speedtest-cli
+speex
+sqlite
+srt
+subversion
+tcl-tk
+tesseract
+theora
+tmux
+tor
+torsocks
+unbound
+unibilium
+universal-ctags
+utf8proc
+vim
+webp
+wget
+x264
+x265
+xmlto
+xorgproto
+xvid
+xz
+youtube-dl
+zeromq
+zimg
+zsh
+1password
+airbuddy
+alacritty
+alfred
+amethyst
+audio-hijack
+cleanshot
+discord
+drawio
+fantastical
+font-amatic-sc
+font-fira-code
+font-fira-code-nerd-font
+font-fira-mono
+font-hack-nerd-font
+font-open-sans
+font-recursive
+font-roboto
+font-roboto-slab
+font-space-mono-nerd-font
+google-chrome
+istat-menus
+iterm2
+jetbrains-toolbox
+keyboard-cleaner
+keyboard-maestro
+little-snitch
+microsoft-auto-update
+microsoft-teams
+miniconda
+notion
+obs
+pixelsnap
+pocket-casts
+qlcolorcode
+qlstephen
+rectangle
+setapp
+sketch
+spotify
+telegram
+whatsapp
+zoom
