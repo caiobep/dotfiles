@@ -57,7 +57,10 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle hlissner/zsh-autopair
 antigen bundle kutsan/zsh-system-clipboard
 
-antigen theme iam4x/zsh-iterm-touchbar
-
 antigen apply
+
+# .zshrc
+fpath+=$HOME/.zsh/pure
+autoload -U promptinit; promptinit
+prompt pure
 

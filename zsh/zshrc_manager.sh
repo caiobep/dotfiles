@@ -1,8 +1,3 @@
-if command -v tmux > /dev/null; then
-    [ -z $TMUX ] && exec tmux new -A -s $MACHINE_NAME
-else
-    echo "Tmux not installed."
-fi
 
 # Update Settings
 #(cd ~/.dotfiles && git pull && git submodule update --init --recursive)
@@ -14,4 +9,9 @@ foreach piece (
     mappings.zsh
     aliases.zsh
 ) { source ~/.dotfiles/zsh/config/$piece }
+
+
+if command -v tmux &> /dev/null&& [ -z "$TMUX" ]; then
+    exec tmux new -A -s $MACHINE_NAME
+fi
 

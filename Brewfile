@@ -8,6 +8,7 @@ bdw-gc
 berkeley-db
 c-ares
 cairo
+colordiff
 dav1d
 docbook
 docbook-xsl
@@ -35,10 +36,12 @@ gnutls
 gobject-introspection
 gping
 graphite2
+grex
 guile
 harfbuzz
 httpie
 hub
+hyperfine
 icu4c
 ilmbase
 imagemagick
@@ -113,6 +116,7 @@ perl
 pixman
 pkcs11-helper
 pkg-config
+procs
 pyenv
 python@3.9
 rav1e
@@ -121,7 +125,9 @@ ripgrep
 rtmpdump
 rubberband
 ruby
+screenfetch
 screenresolution
+sd
 sdl2
 shared-mime-info
 snappy

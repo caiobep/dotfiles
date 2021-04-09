@@ -140,6 +140,11 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_COLORS \
 	--bind='ctrl-f:jump-accept'"
 export FZF_COMPLETION_OPTS='--preview="highlight --out-format=xterm256 --style=pablo {} 2>/dev/null || cat {}"'
 
+## FZF Keybindings
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
+
+
 # highlight
 # export HIGHLIGHT_OPTIONS='--out-format="xterm256" --style="pablo"'
 
@@ -148,3 +153,14 @@ export SDCV_PAGER='fold -s -w 100 | less'
 
 # Clear utility function.
 unset -f find_alternative
+
+## Homebrew
+eval $(/opt/homebrew/bin/brew shellenv)
+
+
+## NVM
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+

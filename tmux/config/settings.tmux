@@ -8,8 +8,6 @@ set-option -g default-terminal "screen-256color"
 set-option -g mode-keys vi
 set-option -g status-keys vi
 
-# Mouse Support
-set-option -g mouse on
 
 # Time in milliseconds for which tmux waits after an escape.
 set-option -g escape-time 0
