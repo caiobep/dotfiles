@@ -65,7 +65,7 @@ path=($path $HOME/.bin{,/external})
 export TERM='xterm-256color'
 
 # Default Editors
-export EDITOR=$(find_alternative vim vi)
+export EDITOR=$(find_alternative nvim lvim vim vi) 
 export GUI_EDITOR=$(find_alternative code atom)
 
 # Default Pager
