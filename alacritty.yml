@@ -1,53 +1,171 @@
+env:
+  TERM: tmux-256color
 
-colors:
-  # Default colors
-  primary:
-    background: '#32302f'
-    foreground: '#ebdbb2'
+background_opacity: 0.97
+live_config_reload: true
 
-  # Normal colors
-  normal:
-    black:   '#282828'
-    red:     '#cc241d'
-    green:   '#98971a'
-    yellow:  '#d79921'
-    blue:    '#458588'
-    magenta: '#b16286'
-    cyan:    '#689d6a'
-    white:   '#a89984'
+window:
+  title: Jane
+  dynamic_title: true
+  decorations: transparent
 
-  # Bright colors
-  bright:
-    black:   '#928374'
-    red:     '#fb4934'
-    green:   '#b8bb26'
-    yellow:  '#fabd2f'
-    blue:    '#83a598'
-    magenta: '#d3869b'
-    cyan:    '#8ec07c'
-    white:   '#ebdbb2'
+  dimensions:
+    columns: 100
+    lines: 28
+
+  dynamic_padding: true
+  padding:
+    x: 23
+    y: 34
+
+  scrolling:
+    history: 10000
+    multiplier: 3
+
+scale_with_dpi: true
 
 font:
-  # The size to use.
-  size: 16
-  # The normal (roman) font face to use.
+  size: 15.0
+  use_thin_strokes: true
+
   normal:
-    family: OperatorMono Nerd Font
-    # Style can be specified to pick a specific face.
-    style: Regular
+    family: LigaOperatorMono Nerd Font
+    style: Book
 
-  # The bold font face
   bold:
-    family: Operator Mono Book Nerd Font Complete
-    # Style can be specified to pick a specific face.
-    style: Bold
+    family: LigaOperatorMono Nerd Font
+    style: Medium
 
-  # The italic font face
   italic:
-    family: Operator Mono Book Nerd Font Complete
-    # Style can be specified to pick a specific face.
-    style: Italic
+    family: LigaOperatorMono Nerd Font
+    style: Medium Italic
 
+  bold_italic:
+    family: LigaOperatorMono Nerd Font
+    style: Bold Italic
 
+draw_bold_text_with_bright_colors: true
 
+cursor:
+  style: Block
+  unfocused_hollow: true
 
+mouse:
+  hide_when_typing: true
+  hints:
+    launcher: open
+    modifiers: Command
+
+bell:
+  animation: EaseOutExpo
+  duration: 1
+  color: "0xffffff"
+
+schemes:
+  gruvbox_dark: &gruvbox_dark
+    primary:
+      # hard contrast background - '#1d2021'
+      background: &gruvbox_dark_bg "#32302f"
+      # soft contrast background - '#32302f'
+      foreground: "#ebdbb2"
+      bright_foreground: "#fbf1c7"
+      dim_foreground: "#a89984"
+    cursor:
+      text: CellBackground
+      cursor: CellForeground
+    vi_mode_cursor:
+      text: CellBackground
+      cursor: CellForeground
+    # search:
+    #   matches:
+    #     foreground: '#000000'
+    #     background: '#ffffff'
+    #   focused_match:
+    #    foreground: CellBackground
+    #    background: CellForeground
+    #   bar:
+    #     background: ''
+    #     foreground: ''
+    # line_indicator:
+    #   foreground: None
+    #   background: None
+    selection:
+      text: CellBackground
+      background: CellForeground
+    bright:
+      black: "#928374"
+      red: "#fb4934"
+      green: "#b8bb26"
+      yellow: "#fabd2f"
+      blue: "#83a598"
+      magenta: "#d3869b"
+      cyan: "#8ec07c"
+      white: "#ebdbb2"
+  normal:
+    black: *gruvbox_dark_bg
+    red: "#cc241d"
+    green: "#98971a"
+    yellow: "#d79921"
+    blue: "#458588"
+    magenta: "#b16286"
+    cyan: "#689d6a"
+    white: "#a89984"
+  dim:
+    black: "#32302f"
+    red: "#9d0006"
+    green: "#79740e"
+    yellow: "#b57614"
+    blue: "#076678"
+    magenta: "#8f3f71"
+    cyan: "#427b58"
+    white: "#928374"
+  # indexed_colors: []
+
+  iterm_gruvbox_material_soft_dark: &iterm_gruvbox_material_soft_dark
+    primary:
+      background: &gruvbox_dark_bg "#32302f"
+      foreground: "#d4be98"
+      bright_foreground: "#c5b18d"
+      dim_foreground: "#655b53"
+    cursor:
+      text: CellBackground
+      cursor: CellForeground
+    vi_mode_cursor:
+      text: CellBackground
+      cursor: CellForeground
+    line_indicator:
+      foreground: None
+      background: None
+    selection:
+      text: CellBackground
+      background: CellForeground
+    bright:
+      black: "#5a524c"
+      red: "#b85651"
+      green: "#a9b665"
+      yellow: "#d8a657"
+      blue: "#7daea3"
+      magenta: "#d3869b"
+      cyan: "#89b482"
+      white: "#ddc7a1"
+    normal:
+      black: *gruvbox_dark_bg
+      red: "#b85651"
+      green: "#8f9a52"
+      yellow: "#c18f41"
+      blue: "#68948a"
+      magenta: "#ab6c7d"
+      cyan: "#72966c"
+      white: "#a89983"
+    dim:
+      black: "#32302f"
+      red: "#9d0006"
+      green: "#79740e"
+      yellow: "#b57614"
+      blue: "#076678"
+      magenta: "#8f3f71"
+      cyan: "#427b58"
+      white: "#928374"
+  # indexed_colors: []
+
+colors: *iterm_gruvbox_material_soft_dark
