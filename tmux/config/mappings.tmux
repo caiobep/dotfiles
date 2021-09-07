@@ -64,6 +64,7 @@ bind-key -n C-x kill-pane
 bind-key -r '<' swap-window -t -1
 bind-key -r '>' swap-window -t +1
 bind -r J select-window -t :-
+bind -r N select-window -t :-
 bind -r K select-window -t :+
 
 # Kill windows without prompt.
