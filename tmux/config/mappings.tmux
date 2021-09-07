@@ -16,7 +16,8 @@ bind-key r \
 
 # Switch windows
 bind-key -n S-n select-window -t :- # Previous Window
-bind-key -n S-N select-window -t :+ # Previous Window
+# bind-key -n S-N select-window -t :+ # Previous Window
+# bind-key -n S-N select-window -t :+ # Previous Window
 bind-key -n M-N select-window -t :- # Previous Window
 bind-key -n M-n select-window -t :+ # Next Window
 
@@ -55,12 +56,15 @@ bind -r l select-pane -R  # move right
 bind > swap-pane -D       # swap current pane with the next one
 bind < swap-pane -U       # swap current pane with the previous one
 
+
 # Kill panes without prompt
 bind-key -n C-x kill-pane
 
 # Swap windows across themselves
 bind-key -r '<' swap-window -t -1
 bind-key -r '>' swap-window -t +1
+bind -r J select-window -t :-
+bind -r K select-window -t :+
 
 # Kill windows without prompt.
 unbind-key &
@@ -106,6 +110,4 @@ bind-key -T copy-mode-vi J \
 	send-keys -X cursor-down \; \
 	send-keys -X cursor-down \; \
 	send-keys -X cursor-down \;
-
-
 
