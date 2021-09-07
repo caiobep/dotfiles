@@ -35,7 +35,7 @@ check_installation() {
   fi
 }
 
-check_default_shell() {
+change_default_shell_to_zsh() {
     echo
     if [ -z "${SHELL##*zsh*}" ] ;then
         echo "Your default shell is ZSH."
@@ -70,14 +70,8 @@ backup_dotfiles() {
     fi
 }
 
-install_thinkvim() {
-    git clone --depth=1 https://github.com/hardcoreplayers/ThinkVim.git ~/.config/nvim
-
-    sh ~/.config/nvim/scripts/install.sh
-}
-
 change_default_configuration_source() {
-    printf "export MACHINE_NAME="$MACHINE_NAME" \n source '$HOME/.dotfiles/zsh/zshrc_manager.sh'" > ~/.zshrc
+    printf "export MACHINE_NAME=\"$($MACHINE_NAME)\" \n source '$HOME/.dotfiles/zsh/zshrc_manager.sh'" > ~/.zshrc
     printf "so $HOME/.dotfiles/vim/vimrc.vim" > ~/.vimrc
     printf "source-file $HOME/.dotfiles/tmux/tmux.conf" > ~/.tmux.conf
 }
@@ -90,8 +84,8 @@ link_thinkvim_config() {
     ln -s ~/.dotfiles/vim/thinkvim.d ~/.thinkvim.d
 }
 
-add_global_gitignore() {
-    git config --global core.excludesfile ~/.dotfiles/gitconfig/gitignore
+setup_git() {
+  sh ~/.dotfiles/gitconfig/setup.sh
 }
 
 install_homebrew_when_host_is_macos() {
@@ -105,6 +99,10 @@ install_homebrew_when_host_is_macos() {
         echo "[!] Found Homebrew Installation at $(which brew)"
       fi
     fi
+}
+
+function install_lunar_vim() {
+  bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
 }
 
 main() {
@@ -129,22 +127,26 @@ main() {
         exit 0
     fi
 
-
     echo "[+] What's your machine name? "
     read MACHINE_NAME
 
     install_homebrew_when_host_is_macos
 
-
     check_installation zsh
+    check_installation neovim
     check_installation vim
     check_installation tmux
     check_installation git
+    check_installation exa
+    check_installation bat
 
-    install_thinkvim
+    install_lunar_vim
+
     link_ideavimrc
 
-    check_default_shell
+    setup_git
+
+    change_default_shell_to_zsh
 
     backup_dotfiles
 
