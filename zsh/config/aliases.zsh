@@ -16,6 +16,8 @@ alias df='df --all --si --print-type'
 alias tmp='command mkdir --parents --verbose $TMPDIR/$(whoami) && cd $TMPDIR/$(whoami)'
 alias jq='jq --tab --indent 4'
 alias td='todoist'
+alias lg='lazygit'
+alias ld='lazydocker'
 
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
