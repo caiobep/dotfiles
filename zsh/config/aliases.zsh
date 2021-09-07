@@ -16,13 +16,10 @@ alias df='df --all --si --print-type'
 alias tmp='command mkdir --parents --verbose $TMPDIR/$(whoami) && cd $TMPDIR/$(whoami)'
 alias jq='jq --tab --indent 4'
 alias td='todoist'
-alias lg='lazygit'
-alias ld='lazydocker'
 
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-
 
 # Custom Shortcuts
 alias sayl="say -v luciana "
@@ -36,8 +33,10 @@ alias news='newsboat --quiet'
 alias def='sdcv --color'
 alias note="$EDITOR +'cd ~/.notes/' ~/.notes/index.md"
 alias myip='curl http://checkip.amazonaws.com'
-alias g=lazygit
-alias d=lazydocker
+alias g='lazygit'
+alias d='lazydocker'
+alias lg='lazygit'
+alias ld='lazydocker'
 
 # Wow such git
 alias such=git

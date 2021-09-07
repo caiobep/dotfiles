@@ -12,11 +12,6 @@ ANTIGEN=$HOME/.antigen/
 # Load Oh-My-Zsh Library
 antigen use oh-my-zsh
 
-# Load a Theme
-# As recommended by pure
-# antigen bundle mafredri/zsh-async
-# antigen bundle sindresorhus/pure
-
 # Core Plugins
 antigen bundle gnu-utils
 antigen bundle tmux
@@ -59,7 +54,7 @@ antigen bundle kutsan/zsh-system-clipboard
 
 antigen apply
 
-# .zshrc
+# Use Pure Theme
 fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
 prompt pure

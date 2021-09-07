@@ -48,7 +48,12 @@ if [[ $(uname) == 'Darwin' ]] {
 	path=($path $ANDROID_HOME/{tools,platform-tools})
 
 	# Java Development Kit
-#	export JAVA_HOME=$(/usr/libexec/java_home)
+  #	export JAVA_HOME=$(/usr/libexec/java_home)
+
+  ## Homebrew
+  if [[ `uname -m` == 'arm64' ]]; then
+    eval $(/opt/homebrew/bin/brew shellenv)
+  fi
 
 } elif [[ $(uname -o) == 'Android' ]] 2>/dev/null {
 	# Shell variable
@@ -66,13 +71,13 @@ export TERM='xterm-256color'
 
 # Default Editors
 export EDITOR=$(find_alternative nvim lvim vim vi) 
-export GUI_EDITOR=$(find_alternative code atom)
+export GUI_EDITOR=$(find_alternative webstorm code atom)
 
 # Default Pager
 export PAGER='less'
 
 # Browser
-export BROWSER=$(find_alternative google-chrome xdg-open open)
+export BROWSER=$(find_alternative open google-chrome xdg-open)
 
 # Default Config and Cache Home
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -89,11 +94,6 @@ export MANWIDTH='100' # Fixed line width for man pages
 	if ([[ $(uname -o) == 'Android' ]] 2>/dev/null) { MANWIDTH='50' }
 export MANPAGER="nvim +'set filetype=man' -"
 	if ([[ $(uname -o) == 'Android' ]] 2>/dev/null) { unset MANPAGER }
-
-# nvim
-export NVIM_RPLUGIN_MANIFEST="$HOME/.vim/cache/share/rplugin.vim"
-# export NVIM_NODE_LOG_FILE="$HOME/.vim/cache/log/node.log"
-# export NVIM_NODE_LOG_LEVEL='4'
 
 # GO
 export GOPATH=$HOME/.go
@@ -116,10 +116,19 @@ export NPM_CONFIG_SIGN_GIT_TAG='true'
 # GnuPG
 export GPG_TTY=$(tty)
 
+# sdcv
+export SDCV_PAGER='fold -s -w 100 | less'
 
-# ranger
-export RANGER_LOAD_DEFAULT_RC='false'
-export RANGER_LAST_DIRECTORY_BUFFER="$XDG_DATA_HOME/ranger/last_directory"
+# Clear utility function.
+unset -f find_alternative
+
+
+## NVM
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
 
 # fzf
 export FZF_DEFAULT_COMMAND="rg \
@@ -143,24 +152,3 @@ export FZF_COMPLETION_OPTS='--preview="highlight --out-format=xterm256 --style=p
 ## FZF Keybindings
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
-
-
-# highlight
-# export HIGHLIGHT_OPTIONS='--out-format="xterm256" --style="pablo"'
-
-# sdcv
-export SDCV_PAGER='fold -s -w 100 | less'
-
-# Clear utility function.
-unset -f find_alternative
-
-## Homebrew
-eval $(/opt/homebrew/bin/brew shellenv)
-
-
-## NVM
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-
