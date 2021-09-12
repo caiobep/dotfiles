@@ -40,6 +40,7 @@ cask "little-snitch"
 cask "keyboard-maestro"
 cask "keyboard-cleaner"
 cask "istat-menus"
+cask "monitorcontrol"
 
 # Quick Look Plugins
 cask "qlcolorcode"
