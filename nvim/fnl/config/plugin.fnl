@@ -29,11 +29,10 @@
   :wbthomason/packer.nvim {}
   ;nvim config and plugins in Fennel
   :Olical/aniseed {:branch :develop}
+
   ;file exploration
-  :preservim/nerdtree {:mod :nerdtree}
-  :Xuyuanp/nerdtree-git-plugin {}
-  ;commeting code
-  :preservim/nerdcommenter {}
+  :kyazdani42/nvim-tree.lua {:requires [:kyazdani42/nvim-web-devicons]}
+
   ;clojure
   :Olical/conjure {:branch :master :mod :conjure}
   ; multicursor selector
@@ -72,6 +71,9 @@
                      :mod :cmp}
   ;status line
   :hoob3rt/lualine.nvim {:mod :lualine}
+
+
   ;theme
-  :projekt0n/github-nvim-theme {:mod :theme}
+  :eddyekofo94/gruvbox-flat.nvim {:mod :theme}
+
   :ryanoasis/vim-devicons {})
