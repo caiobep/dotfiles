@@ -31,7 +31,8 @@
   :Olical/aniseed {:branch :develop}
 
   ;file exploration
-  :kyazdani42/nvim-tree.lua {:requires [:kyazdani42/nvim-web-devicons]}
+  :kyazdani42/nvim-tree.lua {:requires [:kyazdani42/nvim-web-devicons]
+                             :mod :filetree}
 
   ;clojure
   :Olical/conjure {:branch :master :mod :conjure}
