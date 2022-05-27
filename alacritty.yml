@@ -57,9 +57,8 @@ hints:
   alphabet: "jfkdls;ahgurieowpq"
 
   enabled:
-    - regex:
-        "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)\
-        [^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+    - regex: "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|g\
+        it:|ssh:|ftp:)[^\0-\x1f-<>\"\\s{-}\\^⟨⟩`]+"
       command: open
       post_processing: true
       mouse:
@@ -72,10 +71,41 @@ bell:
   color: "0xffffff"
 
 schemes:
-  gruvbox_dark: &gruvbox_dark
+  gruvbox_light:
+    &gruvbox_light
+    primary:
+      # hard contrast: background = '#f9f5d7'
+      background: '#fbf1c7'
+      # soft contrast: background = '#f2e5bc'
+      foreground: '#3c3836'
+
+    # Normal colors
+    normal:
+      black: '#fbf1c7'
+      red: '#cc241d'
+      green: '#98971a'
+      yellow: '#d79921'
+      blue: '#458588'
+      magenta: '#b16286'
+      cyan: '#689d6a'
+      white: '#7c6f64'
+
+    # Bright colors
+    bright:
+      black: '#928374'
+      red: '#9d0006'
+      green: '#79740e'
+      yellow: '#b57614'
+      blue: '#076678'
+      magenta: '#8f3f71'
+      cyan: '#427b58'
+      white: '#3c3836'
+
+  gruvbox_dark:
+    &gruvbox_dark
     primary:
       # hard contrast background - '#1d2021'
-      background: &gruvbox_dark_bg "#32302f"
+      background: &gruvbox_dark_bg1 "#32302f"
       # soft contrast background - '#32302f'
       foreground: "#ebdbb2"
       bright_foreground: "#fbf1c7"
@@ -112,7 +142,7 @@ schemes:
       cyan: "#8ec07c"
       white: "#ebdbb2"
   normal:
-    black: *gruvbox_dark_bg
+    black: *gruvbox_dark_bg1
     red: "#cc241d"
     green: "#98971a"
     yellow: "#d79921"
@@ -130,8 +160,8 @@ schemes:
     cyan: "#427b58"
     white: "#928374"
   # indexed_colors: []
-
-  iterm_gruvbox_material_soft_dark: &iterm_gruvbox_material_soft_dark
+  iterm_gruvbox_material_soft_dark:
+    &iterm_gruvbox_material_soft_dark
     primary:
       background: &gruvbox_dark_bg "#32302f"
       foreground: "#d4be98"
@@ -177,5 +207,35 @@ schemes:
       cyan: "#427b58"
       white: "#928374"
   # indexed_colors: []
+colors:
+  # Default colors
+  primary:
+    background: '0xffffff'
+    foreground: '0x586069'
 
-colors: *iterm_gruvbox_material_soft_dark
+  # Normal colors
+  normal:
+    black: '0x697179'
+    red: '0xd03d3d'
+    green: '0x14ce14'
+    yellow: '0x949800'
+    blue: '0x0451a5'
+    magenta: '0xbc05bc'
+    cyan: '0x0598bc'
+    white: '0x586069'
+
+  # Bright colors
+  bright:
+    black: '0x666666'
+    red: '0xcd3131'
+    green: '0x14ce14'
+    yellow: '0xb5ba00'
+    blue: '0x0451a5'
+    magenta: '0xbc05bc'
+    cyan: '0x0598bc'
+    white: '0x586069'
+
+  indexed_colors:
+    - { index: 16, color: '0xd18616' }
+    - { index: 17, color: '0xcd3131' }
+theme: github_light
