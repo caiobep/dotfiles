@@ -1,5 +1,7 @@
 set clipboard+=unnamed
 
+vnoremap <leader>p "_dP
+
 set rnu
 set undofile
 set visualbell
