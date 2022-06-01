@@ -1,0 +1,59 @@
+{:profiles
+  {:Default {:default true
+            :alone 80
+            :held 50
+            :delay 0
+            :sim 30}}
+  :applications {:IDEA ["^com\\.jetbrains\\.*"]}
+  :modifiers {:super [:left_command :left_shift :left_option]}
+  :simlayers {:caps-mode {:key :caps_lock}}
+  :main [
+          {:des "Use right option as tmux prefix"}
+
+          {:des "Open help command pallet"
+           :rules [[:right_option :!CSOslash]]}
+
+          {:des "Use ESC instead of caps-lock"
+           :rules [[:caps_lock :caps_lock nil  {:alone :escape}]]}
+
+          {:des "left cmd -> cmd+tab"
+           :rules [[:right_command :right_command nil {:alone :!Ctab}]]}
+ 
+         {:des "Caps Mode"
+          :rules [:caps-mode
+                           [:k :page_up]
+                           [:l :right_arrow]
+                           [:j :page_down]
+                           [:h :left_arrow]
+                           [:s [:semicolon :w :q :return_or_enter]]]}
+ 
+         {:des "Use function keys as function keys on IDEA"
+          :rules [:IDEA
+                  [:f1 :f1]
+                  [:f2 :f2]
+                  [:f3 :f3]
+                  [:f4 :f4]
+                  [:f5 :f5]
+                  [:f6 :f6]
+                  [:f7 :f7]
+                  [:f8 :f8]
+                  [:f9 :f9]
+                  [:f10 :f10]
+                  [:f12 :f12]
+                  [:f11 :f11]]}
+ 
+         {:des "Use Function Keys as regular media keys"
+          :rules [[:f1 :display_brightness_decrement]
+                  [:f2 :display_brightness_increment]
+                  [:f4 :f19] ; spotlight
+                  [:f5 :dictation]
+                  [:f6 :f13] ; Do not disturb
+                  [:f3 :mission_control]
+                  [:f7 :rewind]
+                  [:f8 :play_or_pause]
+                  [:f9 :fastforward]
+                  [:f10 :mute]
+                  [:f11 :volume_decrement]
+                  [:f12 :volume_increment]]}]}
+ 
+
