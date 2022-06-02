@@ -89,11 +89,11 @@ export LANG='en_US.UTF-8'
 export LC_ALL='en_US.UTF-8'
 export LANGUAGE='en_US.UTF-8'
 
-# man
-export MANWIDTH='100' # Fixed line width for man pages
-	if ([[ $(uname -o) == 'Android' ]] 2>/dev/null) { MANWIDTH='50' }
-export MANPAGER="nvim +'set filetype=man' -"
-	if ([[ $(uname -o) == 'Android' ]] 2>/dev/null) { unset MANPAGER }
+# # man
+# export MANWIDTH='100' # Fixed line width for man pages
+# 	if ([[ $(uname -o) == 'Android' ]] 2>/dev/null) { MANWIDTH='50' }
+# export MANPAGER="nvim +'set filetype=man' -"
+# 	if ([[ $(uname -o) == 'Android' ]] 2>/dev/null) { unset MANPAGER }
 
 # GO
 export GOPATH=$HOME/.go
