@@ -1,59 +1,76 @@
 {:profiles
-  {:Default {:default true
-            :alone 80
-            :held 50
+ {:Default {:default true
+            :alone 200
+            :held 300
             :delay 0
             :sim 30}}
-  :applications {:IDEA ["^com\\.jetbrains\\.*"]}
-  :modifiers {:super [:left_command :left_shift :left_option]}
-  :simlayers {:caps-mode {:key :caps_lock}}
-  :main [
-          {:des "Use right option as tmux prefix"}
+ :templates {:alfred "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"%s\" in workflow \"%s\" with argument \"%s\"'"
+             :launch "osascript -e 'tell application \"Alfred 3\" to run trigger \"launch%s\" in workflow \"yqrashawn.workflow.launcher\" with argument \"%s\"'"
+             :open "open -jga \"%s\""
+             :togg " /opt/homebrew/bin/hs -A -n -q -t 0.1 -c '\nlocal appName = \"%s\";\nlocal x = hs.application.find(appName);\nif x and x:isFrontmost() then\n  x:hide();\nelse\n  hs.application.launchOrFocus(appName);\nend'"
+             :toggle "osascript -e 'set appName to \"%s\"\nset startIt to false\ntell application \"System Events\"\n  if not (exists process appName) then\n    set startIt to true\n  else if frontmost of process appName then\n    set visible of process appName to false\n  else\n    set frontmost of process appName to true\n  end if\nend tell\nif startIt then\n  tell application appName to activate\nend if'"
+             :toggle-tiling-wm "pgrep -f Amethyst HazeOver && pkill -9 Amethyst && pkill -9 HazeOver || open -a Amethyst && open -a HazeOver"
+             :restart-amethyst "killall Amethyst && open -a Amethyst"
+             :say "say \"%s\""}
+ :applications {:IDEA ["^com\\.jetbrains\\.*"]
+                :tweetbot ["^com\\.tapbots\\.Tweetbot3Mac.*"]}
 
-          {:des "Open help command pallet"
-           :rules [[:right_option :!CSOslash]]}
+ :simlayers {:caps-mode {:key :caps_lock}}
+ :main [{:des "Use right option as tmux prefix"}
 
-          {:des "Use ESC instead of caps-lock"
-           :rules [[:caps_lock :caps_lock nil  {:alone :escape}]]}
+        {:des "Open help command pallet"
+         :rules [[:right_option :!CSOslash]]}
 
-          {:des "left cmd -> cmd+tab"
-           :rules [[:right_command :right_command nil {:alone :!Ctab}]]}
- 
-         {:des "Caps Mode"
-          :rules [:caps-mode
-                           [:k :page_up]
-                           [:l :right_arrow]
-                           [:j :page_down]
-                           [:h :left_arrow]
-                           [:s [:semicolon :w :q :return_or_enter]]]}
- 
-         {:des "Use function keys as function keys on IDEA"
-          :rules [:IDEA
-                  [:f1 :f1]
-                  [:f2 :f2]
-                  [:f3 :f3]
-                  [:f4 :f4]
-                  [:f5 :f5]
-                  [:f6 :f6]
-                  [:f7 :f7]
-                  [:f8 :f8]
-                  [:f9 :f9]
-                  [:f10 :f10]
-                  [:f12 :f12]
-                  [:f11 :f11]]}
- 
-         {:des "Use Function Keys as regular media keys"
-          :rules [[:f1 :display_brightness_decrement]
-                  [:f2 :display_brightness_increment]
-                  [:f4 :f19] ; spotlight
-                  [:f5 :dictation]
-                  [:f6 :f13] ; Do not disturb
-                  [:f3 :mission_control]
-                  [:f7 :rewind]
-                  [:f8 :play_or_pause]
-                  [:f9 :fastforward]
-                  [:f10 :mute]
-                  [:f11 :volume_decrement]
-                  [:f12 :volume_increment]]}]}
- 
+        {:des "left cmd -> cmd+tab"
+         :rules [[:left_option :left_option nil {:alone :!Ctab}]]}
+
+        {:des "Caps Mode"
+         :rules [:caps-mode
+                 [:k :up_arrow]
+                 [:j :down_arrow]
+                 [:l :right_arrow]
+                 [:h :left_arrow]
+                 [:u [:say "Stupid bitch"]]
+                 [:period [:toggle-tiling-wm]]
+                 [:s [:semicolon :w :q :return_or_enter]]]}
+
+        {:des "Custom Application Launcher"
+         :rules [[:!CTk [:togg "Tweetbot"]]
+                 [:!CTperiod [:toggle-tiling-wm]]
+                 [:!CTl [:togg "Safari"]]
+                 [:!CTw [:togg "Whatsapp"]]
+                 [:!CSTe [:togg "Fantastical"]]
+                 [:!CTs [:togg "Slack"]]
+                 [:!CTsemicolon [:togg "Notion"]]
+                 [:!CTh [:togg "Alacritty"]]]}
+
+        {:des "Use function keys as function keys on IDEA"
+         :rules [:IDEA
+                 [:f1 :f1]
+                 [:f2 :f2]
+                 [:f3 :f3]
+                 [:f4 :f4]
+                 [:f5 :f5]
+                 [:f6 :f6]
+                 [:f7 :f7]
+                 [:f8 :f8]
+                 [:f9 :f9]
+                 [:f10 :f10]
+                 [:f12 :f12]
+                 [:f11 :f11]]}
+
+        {:des "Use Function Keys as regular media keys"
+         :rules [[:f1 :display_brightness_decrement]
+                 [:f2 :display_brightness_increment]
+                 [:f4 :f19] ; spotlight
+                 [:f5 :dictation]
+                 [:f6 :f13] ; Do not disturb
+                 [:f3 :mission_control]
+                 [:f7 :rewind]
+                 [:f8 :play_or_pause]
+                 [:f9 :fastforward]
+                 [:f10 :mute]
+                 [:f11 :volume_decrement]
+                 [:f12 :volume_increment]]}]}
+
 
