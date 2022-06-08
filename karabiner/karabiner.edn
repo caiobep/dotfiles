@@ -9,20 +9,18 @@
              :open "open -jga \"%s\""
              :togg " /opt/homebrew/bin/hs -A -n -q -t 0.1 -c '\nlocal appName = \"%s\";\nlocal x = hs.application.find(appName);\nif x and x:isFrontmost() then\n  x:hide();\nelse\n  hs.application.launchOrFocus(appName);\nend'"
              :toggle "osascript -e 'set appName to \"%s\"\nset startIt to false\ntell application \"System Events\"\n  if not (exists process appName) then\n    set startIt to true\n  else if frontmost of process appName then\n    set visible of process appName to false\n  else\n    set frontmost of process appName to true\n  end if\nend tell\nif startIt then\n  tell application appName to activate\nend if'"
-             :toggle-tiling-wm "pgrep -f Amethyst HazeOver && pkill -9 Amethyst && pkill -9 HazeOver || open -a Amethyst && open -a HazeOver"
-             :restart-amethyst "killall Amethyst && open -a Amethyst"
+             :toggle-tiling-wm "pgrep -f Amethyst HazeOver && pkill HazeOver Amethyst || (open -a Amethyst && open -a HazeOver)"
              :say "say \"%s\""}
  :applications {:IDEA ["^com\\.jetbrains\\.*"]
-                :tweetbot ["^com\\.tapbots\\.Tweetbot3Mac.*"]}
+                :tweetbot ["^com\\.tapbots\\.Tweetbot3Mac.*"]
+                :alacritty ["*alacritty*"]}
 
  :simlayers {:caps-mode {:key :caps_lock}}
- :main [{:des "Use right option as tmux prefix"}
-
-        {:des "Open help command pallet"
+ :main [{:des "Open help command pallet"
          :rules [[:right_option :!CSOslash]]}
 
-        {:des "left cmd -> cmd+tab"
-         :rules [[:left_option :left_option nil {:alone :!Ctab}]]}
+        ; {:des "left cmd -> cmd+tab"
+        ;  :rules [[:left_option :left_option nil {:alone :!Ctab}]]}
 
         {:des "Caps Mode"
          :rules [:caps-mode
@@ -38,6 +36,7 @@
          :rules [[:!CTk [:togg "Tweetbot"]]
                  [:!CTperiod [:toggle-tiling-wm]]
                  [:!CTl [:togg "Safari"]]
+                 [:!CTquote [:togg "Music"]]
                  [:!CTw [:togg "Whatsapp"]]
                  [:!CSTe [:togg "Fantastical"]]
                  [:!CTs [:togg "Slack"]]
