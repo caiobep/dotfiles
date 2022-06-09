@@ -36,6 +36,7 @@
          :rules [[:!CTk [:togg "Tweetbot"]]
                  [:!CTperiod [:toggle-tiling-wm]]
                  [:!CTl [:togg "Safari"]]
+                 [:!CTOl [:togg "Google Chrome"]]
                  [:!CTquote [:togg "Music"]]
                  [:!CTw [:togg "Whatsapp"]]
                  [:!CSTe [:togg "Fantastical"]]
