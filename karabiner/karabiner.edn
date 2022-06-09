@@ -53,11 +53,11 @@
                  [:f5 :f5]
                  [:f6 :f6]
                  [:f7 :f7]
-                 [:f8 :f8]
+                 [:f8 :play_or_pause]
                  [:f9 :f9]
-                 [:f10 :f10]
-                 [:f12 :f12]
-                 [:f11 :f11]]}
+                 [:f10 :mute]
+                 [:f11 :volume_decrement]
+                 [:f12 :volume_increment]]}
 
         {:des "Use Function Keys as regular media keys"
          :rules [[:f1 :display_brightness_decrement]
