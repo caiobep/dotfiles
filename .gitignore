@@ -2,3 +2,4 @@ autoload
 
 nvim/lua/
 nvim/plugin/
+*.zwc
