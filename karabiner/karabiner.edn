@@ -60,8 +60,8 @@
                  [:f12 :volume_increment]]}
 
         {:des "Use Function Keys as regular media keys"
-         :rules [[:f1 :display_brightness_decrement]
-                 [:f2 :display_brightness_increment]
+         :rules [[:f1 :apple_display_brightness_decrement]
+                 [:f2 :apple_display_brightness_increment]
                  [:f4 :f19] ; spotlight
                  [:f5 :dictation]
                  [:f6 :f13] ; Do not disturb
