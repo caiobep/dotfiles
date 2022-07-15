@@ -18,8 +18,8 @@ bind-key r \
 bind-key -n S-n select-window -t :- # Previous Window
 # bind-key -n S-N select-window -t :+ # Previous Window
 # bind-key -n S-N select-window -t :+ # Previous Window
-bind-key -n M-N select-window -t :- # Previous Window
-bind-key -n M-n select-window -t :+ # Next Window
+# bind-key -n M-N select-window -t :- # Previous Window
+# bind-key -n M-n select-window -t :+ # Next Window
 
 # Toggle Zoom
 bind-key -n M-z resize-pane -Z

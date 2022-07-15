@@ -1,6 +1,10 @@
 # Set default prefix
 set-option -g prefix C-a
 
+set -g set-titles on
+set -g set-titles-string '#{pane_current_path}'
+set-option -g automatic-rename on
+
 # Default Terminal
 set-option -g default-terminal "screen-256color"
 
