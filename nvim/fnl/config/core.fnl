@@ -5,9 +5,7 @@
 
 ;refresh changed content
 (nvim.ex.autocmd "FocusGained,BufEnter" "*" ":checktime")
-
-;don't wrap lines
-(nvim.ex.set :nowrap)
+(nvim.ex.autocmd "ColorScheme * highlight Normal ctermbg=NONE guibg=NONE")
 
 (let [options
       {:encoding "utf-8"
@@ -19,7 +17,7 @@
        :swapfile false
        :showmode false
        ;show line numbers
-       :number true
+       :relativenumber true
        ;show line and column number
        :ruler true
        ;settings needed for compe autocompletion
