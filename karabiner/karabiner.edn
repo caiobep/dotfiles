@@ -44,6 +44,7 @@
                  [:j :page_down]
                  [:l :right_arrow]
                  [:h :left_arrow]
+                 [:o :!COS0]     ; Search window in contexts
                  [:f :!CSOTf]    ; Invoke macVIM
                  [:f12 :!CO0]    ; Show sound outputs 
                  [:s :!CTOp]     ; Invoke Sip Colour Picker
