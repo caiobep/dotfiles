@@ -1,59 +1,29 @@
-set clipboard+=unnamed
-
-vnoremap <leader>p "_dP
 
 set rnu
-set undofile
 set visualbell
-
-
-set spelllang=pt_br,en
-set expandtab
-let mapleader = "\<Space>"
-set wrap linebreak nolist
-
-
-" General Editor Settings
-set backspace=2
-set colorcolumn=80
-set autoindent
-
 set number
-set ruler
-set encoding=utf-8
-set backspace=2
-set colorcolumn=80
-
 set ignorecase
 set smartcase
-
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set expandtab " Use spaces instead of tabs
-
 set hlsearch
-set list
-
-set spelllang=pt_br,en
-
 set relativenumber
-set termguicolors
+set showmode
 set clipboard=unnamed "shared clipboard with macOS
 
-set wildmenu
-set wildmode=list:longest
-
-set nobackup             " no backup
-set noswapfile           " no backup
+let mapleader = "\<Space>"
+vnoremap <leader>p "_dP
 
 
 "IDEA VIM Specific Settings
 
 set ideajoin
 set ideamarks
+set idearefactormode=keep
+set lookupkeys
+set ideastatusicon
+set ideawrite
+set incsearch
+set NERDTree
 
-set easymotion
 set surround
 set multiple-cursors
 set commentary
@@ -71,6 +41,8 @@ noremap \r :action ReformatCode<CR>
 noremap <leader>d :action Debug<CR>
 noremap \b :action ToggleLineBreakpoint<CR>
 noremap Y v$y<CR>
+noremap <leader>h  :noh<CR>
+vnoremap <leader>p "_dP
 
 noremap gh :action ShowErrorDescription<CR>
 noremap gH :action QuickJavaDoc<CR>
@@ -89,10 +61,14 @@ noremap <C-b> :action EditorMoveDownAndScroll<CR>
 noremap <C-u> :action EditorMoveUpAndScroll<CR>
 noremap <C-d> :action EditorMoveDownAndScroll<CR>
 
-noremap <leader>fa :action FindInPath<CR>
-noremap <leader>ff :action GotoFile<CR>
+" noremap <leader>Fa :action FindInPath<CR>
+noremap <leader>f :action GotoFile<CR>
+noremap <leader>e  :NERDTreeToggle<CR>
+noremap <leader>/ :action CommentByLineComment<CR>
 
 noremap <leader><TAB> :action JumpToLastChange<CR>
+
+noremap <leader>si :source ~/.ideavimrc<CR>
 
 " Code Actions
 noremap <leader>ca :action ShowIntentionActions<CR>
@@ -100,6 +76,7 @@ noremap <leader>cr :action Refactorings.QuickListPopupAction<CR>
 noremap <leader>cR :action RunMenu<CR>
 noremap <leader>cf :action ReformatCode<CR>
 noremap <leader>ct :action TodoViewGroupByFlattenPackage<CR>
+
 
 
 " ================================================================
