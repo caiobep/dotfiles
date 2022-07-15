@@ -59,6 +59,16 @@ re(){
   mv "$1" ~/.Trash
 }
 
+
+function is_uk_office_hours {
+  UKTIME=$(TZ=Europe/London date +"%H")
+  if [ $UKTIME -ge 9 ] && [ $UKTIME -le 18 ]; then
+    echo "true"
+  else
+    echo "false"
+  fi
+}
+
 function npm_install {
     if [ -f yarn.lock ]; then
         yarn install $@
