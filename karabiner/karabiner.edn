@@ -40,10 +40,13 @@
 
         {:des "Caps Mode"
          :rules [:caps-mode
-                 [:k :page_up]
-                 [:j :page_down]
+                 [:k :up_arrow]
+                 [:j :down_arrow]
                  [:l :right_arrow]
                  [:h :left_arrow]
+                 [:1 :!CTOS1]    ; Activate space 1
+                 [:2 :!CTOS2]    ; Activate space 2
+                 [:3 :!CTOS3]    ; Activate space 3
                  [:o :!COS0]     ; Search window in contexts
                  [:f :!CSOTf]    ; Invoke macVIM
                  [:f12 :!CO0]    ; Show sound outputs 
