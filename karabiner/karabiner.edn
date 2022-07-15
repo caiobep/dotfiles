@@ -22,13 +22,33 @@
         ; {:des "left cmd -> cmd+tab"
         ;  :rules [[:left_option :left_option nil {:alone :!Ctab}]]}
 
+        ;; List of special characters
+        ;; !  | means mandatory
+        ;; #  | means optional
+        ;; C  | left_command
+        ;; T  | left_control
+        ;; O  | left_option
+        ;; S  | left_shift
+        ;; F  | fn
+        ;; Q  | right_command
+        ;; W  | right_control
+        ;; E  | right_option
+        ;; R  | right_shift
+        ;; P  | caps_lock
+        ;; !! | mandatory command + control + optional + shift (hyper)
+        ;; ## | optional any
+
         {:des "Caps Mode"
          :rules [:caps-mode
-                 [:k :up_arrow]
-                 [:j :down_arrow]
+                 [:k :page_up]
+                 [:j :page_down]
                  [:l :right_arrow]
                  [:h :left_arrow]
-                 [:u [:say "Stupid bitch"]]
+                 [:f :!CSOTf]    ; Invoke macVIM
+                 [:f12 :!CO0]    ; Show sound outputs 
+                 [:s :!CTOp]     ; Invoke Sip Colour Picker
+                 [:p :!CTSO0]    ; Invoke Paletro
+                 [:tab :!COS0]   ; Invoke Contexts Window Search
                  [:period [:toggle-tiling-wm]]
                  [:s [:semicolon :w :q :return_or_enter]]]}
 
@@ -46,18 +66,18 @@
 
         {:des "Use function keys as function keys on IDEA"
          :rules [:IDEA
-                 [:f1 :f1]
-                 [:f2 :f2]
-                 [:f3 :f3]
-                 [:f4 :f4]
-                 [:f5 :f5]
-                 [:f6 :f6]
-                 [:f7 :f7]
-                 [:f8 :play_or_pause]
-                 [:f9 :f9]
-                 [:f10 :mute]
-                 [:f11 :volume_decrement]
-                 [:f12 :volume_increment]]}
+                 [:##f1 :f1]
+                 [:##f2 :f2]
+                 [:##f3 :f3]
+                 [:##f4 :f4]
+                 [:##f5 :f5]
+                 [:##f6 :f6]
+                 [:##f7 :f7]
+                 [:##f8 :f8]
+                 [:##f9 :f9]
+                 [:##f10 :f10]
+                 [:##f11 :f11]
+                 [:##f12 :f12]]}
 
         {:des "Use Function Keys as regular media keys"
          :rules [[:f1 :apple_display_brightness_decrement]
