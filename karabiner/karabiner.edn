@@ -15,7 +15,8 @@
                 :tweetbot ["^com\\.tapbots\\.Tweetbot3Mac.*"]
                 :alacritty ["*alacritty*"]}
 
- :simlayers {:caps-mode {:key :caps_lock}}
+ :simlayers {:caps-mode {:key :caps_lock}
+             :shift-mode {:key :right_shift}}
  :main [{:des "Open help command pallet"
          :rules [[:right_option :!CSOslash]]}
 
@@ -38,23 +39,29 @@
         ;; !! | mandatory command + control + optional + shift (hyper)
         ;; ## | optional any
 
+        {:des "Shift mode"
+         :rules [:shift-mode
+                 [:j :!CSOTj]                ; Invoke macVIM scroll mode
+                 ]}
+
         {:des "Caps Mode"
          :rules [:caps-mode
                  [:k :up_arrow]
                  [:j :down_arrow]
                  [:l :right_arrow]
                  [:h :left_arrow]
-                 [:e :!CTOe]     ; Show Reminders in Raycast
-                 [:1 :!CTOS1]    ; Activate space 1
-                 [:2 :!CTOS2]    ; Activate space 2
-                 [:3 :!CTOS3]    ; Activate space 3
-                 [:o :!COS0]     ; Search window in contexts
-                 [:f :!CSOTf]    ; Invoke macVIM
-                 [:j :!CSOTj]    ; Invoke macVIM scroll mode
-                 [:f12 :!CO0]    ; Show sound outputs 
-                 [:s :!CTOp]     ; Invoke Sip Colour Picker
-                 [:p :!CTSO0]    ; Invoke Paletro
-                 [:tab :!COS0]   ; Invoke Contexts Window Search
+                 [:spacebar :!CTOSspacebar]  ; Invoke Alfred
+                 [:e :!CTOe]                 ; Show Reminders in Raycast
+                 [:1 :!CTOS1]                ; Activate space 1
+                 [:2 :!CTOS2]                ; Activate space 2
+                 [:3 :!CTOS3]                ; Activate space 3
+                 [:o :!COS0]                 ; Search window in contexts
+                 [:f :!CSOTf]                ; Invoke macVIM
+                 [:j :!CSOTj]                ; Invoke macVIM scroll mode
+                 [:f12 :!CO0]                ; Show sound outputs 
+                 [:s :!CTOp]                 ; Invoke Sip Colour Picker
+                 [:p :!CTSO0]                ; Invoke Paletro
+                 [:tab :!COS0]               ; Invoke Contexts Window Search
                  [:period [:toggle-tiling-wm]]
                  [:s [:semicolon :w :q :return_or_enter]]]}
 
