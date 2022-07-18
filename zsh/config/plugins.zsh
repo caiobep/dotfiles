@@ -34,15 +34,7 @@ antigen bundle gitignore
 # Node Plugins
 antigen bundle node
 antigen bundle yarn
-
-# Python Plugins
-antigen bundle pyenv
-antigen bundle pip
-antigen bundle python
-antigen bundle pylint
-
-# Clojure's Leinigen
-antigen bundle lein
+antigen bundle nvm
 
 # ZSH Experience plugins
 antigen bundle zsh-navigation-tools

@@ -8,7 +8,10 @@ foreach piece (
     plugins.zsh
     mappings.zsh
     aliases.zsh
-    fzf/setup.zsh
+    hooks.zsh
+
+    # /plugins
+    plugins/fzf.zsh
 ) { source ~/.dotfiles/zsh/config/$piece }
 
 

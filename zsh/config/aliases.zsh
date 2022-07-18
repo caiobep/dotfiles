@@ -24,8 +24,6 @@ alias egrep='egrep --color=auto'
 # Custom Shortcuts
 alias sayl="say -v luciana "
 alias sayf="say -v felipe "
-alias t='task'om
-alias dfc='dfc -dmT' # -d: Show used size. -m: Base 10 output. -T: Show file system types.
 alias cdu='cdu --intelligent --log --reverse --sort --du h'
 alias syncthing='syncthing -home=$HOME/.config/syncthing' # Decentralized Syncing
 alias la='exa --color=always --all --classify --group-directories-first --long --git --group' # Like LS but better
@@ -33,8 +31,6 @@ alias news='newsboat --quiet'
 alias def='sdcv --color'
 alias note="$EDITOR +'cd ~/.notes/' ~/.notes/index.md"
 alias myip='curl http://checkip.amazonaws.com'
-alias g='lazygit'
-alias d='lazydocker'
 alias lg='lazygit'
 alias ld='lazydocker'
 
@@ -111,7 +107,7 @@ command -v sha1sum > /dev/null || alias sha1sum="shasum"
 # JavaScriptCore REPL
 jscbin="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc";
 [ -e "${jscbin}" ] && alias jsc="${jscbin}";
-unset jscbin;
+# unset jscbin;
 
 # Trim new lines and copy to clipboard
 alias c="tr -d '\n' | pbcopy"
