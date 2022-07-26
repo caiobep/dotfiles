@@ -27,7 +27,7 @@ path=(
 path=($path $HOME/.bin{,/external})
 
 # Term
-export TERM='xterm-256color'
+export TERM='screen-256color'
 
 # Default Editors
 export EDITOR=$(find_alternative nvim lvim vim vi) 

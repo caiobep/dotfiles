@@ -23,8 +23,7 @@ set-option -g status-justify left
 
 # Right side of status bar
 set-option -g status-right-length 40
-#set-option -g status-right '#[fg=colour248]#(/usr/local/bin/brew services ls | grep tor | awk "{ print $2 }" | grep -q started && echo " ﴣ ")#(/usr/local/bin/SwitchAudioSource -c | grep -q Lyra\|JBL && echo "  ") %R #[italics] #S '
-set-option -g status-right '#[fg=colour240]#(pgrep -f Docker.app > /dev/null && echo " ") #[fg=colour240]#(false && echo "  ")  #(launchctl list | grep --invert-match "apple" | wc -l | xargs -I _ echo " _")#[fg=colour248]#(pgrep Amethyst HazeOver > /dev/null && echo "  ") %R#[italics] #S '
+set-option -g status-right '#[fg=colour240]#(pgrep -f Docker.app > /dev/null && echo " ") #[fg=colour240]#(false && echo "  ")  #(launchctl list | grep --invert-match "apple" | wc -l | xargs -I _ echo " _")#[fg=colour240]#(pgrep Amethyst HazeOver > /dev/null && echo "  ") %R  #[italics]#S '
 
 
 # Pane border
@@ -43,5 +42,6 @@ set-option -g clock-mode-style 24
 set-option -g message-style bg=default,fg=default
 
 # enable true color support and italics
-set -g default-terminal "xterm-256color"
-set -ga terminal-overrides "xterm-256color:Tc"
+set -g default-terminal "tmux-256color"
+set -ga terminal-overrides "tmux-256color:Tc"
+

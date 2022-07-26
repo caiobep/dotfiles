@@ -36,7 +36,7 @@ set-option -g focus-events on
 set-option -g automatic-rename off
 
 # Terminal overrides
-set-option -g -a terminal-overrides ',xterm-256color:Tc' # True color support
+set-option -g -a terminal-overrides 'tmux-256color:Tc' # True color support
 
 # Smart pane switching with awareness of Vim splits.
 # See: https://github.com/christoomey/vim-tmux-navigator
