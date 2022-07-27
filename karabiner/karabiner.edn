@@ -7,6 +7,7 @@
  :templates {:alfred "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"%s\" in workflow \"%s\" with argument \"%s\"'"
              :launch "osascript -e 'tell application \"Alfred 3\" to run trigger \"launch%s\" in workflow \"yqrashawn.workflow.launcher\" with argument \"%s\"'"
              :open "open -jga \"%s\""
+             :run-shortcut "shortcuts run \"%s\""
              :set-active-space "/opt/homebrew/bin/hs -A -n -q -t 0.1 -c 'hs.spaces.setDefaultMCwaitTime(0.1);local function activate_space(space); local spaces = hs.spaces.allSpaces(); local existing_spaces = {}; for k, v in pairs(hs.spaces.allSpaces()) do; existing_spaces = v; end hs.spaces.gotoSpace(existing_spaces[space]); end activate_space(tonumber(\"%s\"))'"
              :togg "/opt/homebrew/bin/hs -A -n -q -t 0.1 -c '\nlocal appName = \"%s\";\nlocal x = hs.application.find(appName);\nif x and x:isFrontmost() then\n  x:hide();\nelse\n  hs.application.launchOrFocus(appName);\nend'"
              :toggle "osascript -e 'set appName to \"%s\"\nset startIt to false\ntell application \"System Events\"\n  if not (exists process appName) then\n    set startIt to true\n  else if frontmost of process appName then\n    set visible of process appName to false\n  else\n    set frontmost of process appName to true\n  end if\nend tell\nif startIt then\n  tell application appName to activate\nend if'"
@@ -43,7 +44,7 @@
         {:des "Shift mode"
          :rules [:shift-mode
                  [:j :!CSOTj]                ; Invoke macVIM scroll mode
-                 ]}
+                 [:m [:run-shortcut "Meeting Mode"]]]}
 
         {:des "Caps Mode"
          :rules [:caps-mode
