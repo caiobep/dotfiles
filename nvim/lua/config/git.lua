@@ -1,16 +1,22 @@
 local wk = require("which-key")
 
-function _lazygit_toggle()
+local function _lazygit_toggle()
 	local Terminal = require("toggleterm.terminal").Terminal
 	Terminal:new({
 		cmd = "lazygit",
+		dir = "git_dir",
 		hidden = true,
-		size = 90,
+		direction = "float",
+		shade_terminals = true,
+		shading_factor = 1,
+		float_opts = {
+			border = "curved",
+			windblend = 3,
+		},
 	}):toggle()
 end
 
 wk.register({
-
 	g = {
 		name = "Git",
 		j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
