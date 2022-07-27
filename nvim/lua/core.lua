@@ -11,9 +11,8 @@ vim.incsearch = true
 
 vim.opt.smartindent = true
 vim.opt.wrap = false
-vim.opt.clipboard = "unnamedplus" 
+vim.opt.clipboard = "unnamedplus"
 vim.o.termguicolors = true
 vim.g.nvcode_termcolors = 256
 
 vim.g.mapleader = " "
-

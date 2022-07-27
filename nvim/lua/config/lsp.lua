@@ -6,7 +6,6 @@ local lsp = require('lsp-zero')
 lsp.preset('recommended')
 lsp.setup()
 
-local telescopeFunctions = require("telescope.builtin")
 local wk = require("which-key")
 
 wk.register({
@@ -17,7 +16,10 @@ wk.register({
 	gI = { vim.lsp.buf.implementation, "Goto Implementation" },
 	gs = { vim.lsp.buf.signature_help, "show signature help" },
 	gp = { function() require("lvim.lsp.peek").Peek "definition" end, "Peek definition" },
-	gl = { function() local config = lvim.lsp.diagnostics.float config.scope = "line" vim.diagnostic.open_float(0, config) end, "Show line diagnostics" },
+	gl = { function() local config = lvim.lsp.diagnostics.float
+		config.scope = "line"
+		vim.diagnostic.open_float(0, config)
+	end, "Show line diagnostics" },
 }, { mode = "n" })
 
 wk.register({
