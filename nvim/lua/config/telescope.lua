@@ -45,8 +45,6 @@ defaults = {
 		pickers = {
       find_files = {
         hidden = true,
-				no_ignore_parent = true,
-				no_ignore = true,
      },
       live_grep = {
         only_sort_text = true,
