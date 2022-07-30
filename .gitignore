@@ -1,4 +1,5 @@
 autoload
 *.zwc
 
-*packer_compiled.lua
+packer_compiled.lua
+
