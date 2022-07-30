@@ -57,6 +57,8 @@
                  [:j :down_arrow]
                  [:l :right_arrow]
                  [:h :left_arrow]
+                 [:0 :!CO0]                  ; Switch Audio Output
+                 [:hyphen :!CSOhyphen]       ; Switch Audio Input
                  [:spacebar :!CTOSspacebar]  ; Invoke Alfred
                  [:e :!CTOe]                 ; Show Reminders in Raycast
                  [:o :!COS0]                 ; Search window in contexts
