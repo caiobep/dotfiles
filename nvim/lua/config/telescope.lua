@@ -71,9 +71,7 @@ require("telescope").load_extension = "fzf"
 local telescopeFunctions = require("telescope.builtin")
 local wk = require("which-key")
 wk.register({
-	f = {
-		f = { telescopeFunctions.find_files, "Find Files" }
-	},
+	f = { telescopeFunctions.find_files, "Find Files" },
 	s = {
 		t = { telescopeFunctions.live_grep, "Search Text" }
 	}
