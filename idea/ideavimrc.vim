@@ -44,6 +44,9 @@ noremap Y v$y<CR>
 noremap <leader>h  :noh<CR>
 vnoremap <leader>p "_dP
 
+xnoremap <expr> K :action MoveStatementUp<CR>
+xnoremap <expr> J :action MoveStatementDown<CR>
+
 noremap gh :action ShowErrorDescription<CR>
 noremap gH :action QuickJavaDoc<CR>
 noremap gy :action ExpressionTypeInfo<CR>
