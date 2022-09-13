@@ -18,6 +18,8 @@
                 :alacritty ["*alacritty*"]}
 
  :simlayers {:caps-mode {:key :caps_lock}
+             :space-mode {:key :spacebar}
+             :rcommand-mode {:key :right_command}
              :shift-mode {:key :right_shift}}
  :main [{:des "Open help command pallet"
          :rules [[:right_option :!CSOslash]]}
@@ -44,7 +46,8 @@
         {:des "Shift mode"
          :rules [:shift-mode
                  [:j :!CSOTj]                ; Invoke macVIM scroll mode
-                 [:m [:run-shortcut "Meeting Mode"]]]}
+                 [:m [:run-shortcut "Meeting Mode"]]
+                 [:s [:run-shortcut "Screen Sharing Mode"]]]}
 
         {:des "Caps Mode"
          :rules [:caps-mode
@@ -57,14 +60,17 @@
                  [:j :down_arrow]
                  [:l :right_arrow]
                  [:h :left_arrow]
-                 [:0 :!CO0]                  ; Switch Audio Output
-                 [:hyphen :!CSOhyphen]       ; Switch Audio Input
-                 [:spacebar :!CTOSspacebar]  ; Invoke Alfred
+                 [:9 :!COST9]                ; Toggle airpods listening mode
+                 [:right_command :!COTS4]    ; Search query in Notion
+                 [:spacebar :!COS0]          ; Search window in contexts
+                 [:q :!CO0]                  ; Switch Audio Output
+                 [:w :!CSOhyphen]            ; Switch Audio Input
                  [:e :!CTOe]                 ; Show Reminders in Raycast
                  [:o :!COS0]                 ; Search window in contexts
+                 [:left_command :!CTSO0]     ; Invoke Paletro
                  [:f :!CSOTf]                ; Invoke macVIM
                  [:j :!CSOTj]                ; Invoke macVIM scroll mode
-                 [:f12 :!CO0]                ; Show sound outputs 
+                 [:f12 :!CO0]                ; Show sound outputs
                  [:s :!CTOp]                 ; Invoke Sip Colour Picker
                  [:p :!CTSO0]                ; Invoke Paletro
                  [:tab :!COS0]               ; Invoke Contexts Window Search
@@ -74,8 +80,8 @@
         {:des "Custom Application Launcher"
          :rules [[:!CTk [:togg "Tweetbot"]]
                  [:!CTperiod [:toggle-tiling-wm]]
-                 [:!CTl [:togg "Safari"]]
-                 [:!CTOl [:togg "Google Chrome"]]
+                 [:!CTl [:togg "Arc"]]
+                 [:!CTOl [:togg "Safari"]]
                  [:!CTquote [:togg "Music"]]
                  [:!CTw [:togg "Whatsapp"]]
                  [:!CSTe [:togg "Fantastical"]]
