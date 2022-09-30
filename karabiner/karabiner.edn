@@ -80,8 +80,8 @@
         {:des "Custom Application Launcher"
          :rules [[:!CTk [:togg "Tweetbot"]]
                  [:!CTperiod [:toggle-tiling-wm]]
-                 [:!CTl [:togg "Arc"]]
-                 [:!CTOl [:togg "Safari"]]
+                 [:!CTl [:togg "Safari"]]
+                 [:!CTOl [:togg "Arc"]]
                  [:!CTquote [:togg "Music"]]
                  [:!CTw [:togg "Whatsapp"]]
                  [:!CSTe [:togg "Fantastical"]]
