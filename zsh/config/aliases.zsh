@@ -169,4 +169,7 @@ alias reload="exec ${SHELL} -l"
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
 
+# Sem tempo irmão
+alias npx="bunx"
+
 
