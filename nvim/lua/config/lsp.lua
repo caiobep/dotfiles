@@ -1,5 +1,6 @@
-require("mason").setup()
-require("mason-lspconfig").setup()
+-- require("mason").setup()
+-- require("mason-lspconfig").setup()
+require("dressing").setup()
 
 local lsp = require('lsp-zero')
 lsp.preset('recommended')
@@ -50,3 +51,4 @@ wk.register({
 		e = { "<cmd>Telescope quickfix<cr>", "Telescope Quickfix" },
 	},
 }, { prefix = "<leader>" })
+

@@ -2,15 +2,17 @@ vim.cmd [[packadd packer.nvim]]
 
 return require("packer").startup(function()
   use { "wbthomason/packer.nvim" }
-  use { 'lewis6991/impatient.nvim' }
+  use { "folke/which-key.nvim" }
+  use { "karb94/neoscroll.nvim" }
+  use { "github/copilot.vim" }
 
+  -- VIM utilities
   use {
     { "tpope/vim-repeat" },
     { "tpope/vim-surround" },
     { "tpope/vim-fugitive" },
     { "tpope/vim-unimpaired" },
-    {
-      "tpope/vim-sleuth",
+    { "tpope/vim-sleuth",
       setup = function()
         vim.g.sleuth_automatic = 0
       end,
@@ -20,7 +22,6 @@ return require("packer").startup(function()
       requires = { "radenling/vim-dispatch-neovim" },
     },
   }
-
   -- Test and Debugging
   use {
     {
@@ -41,9 +42,7 @@ return require("packer").startup(function()
       end,
       ft = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
     },
-    {
-      "janko/vim-test",
-    },
+    { "janko/vim-test" },
   }
 
   -- Better Defaults
@@ -55,6 +54,8 @@ return require("packer").startup(function()
     { "airblade/vim-rooter" },
     { "mizlan/iswap.nvim" },
     { "linty-org/readline.nvim" },
+    { "windwp/nvim-autopairs" },
+    { "nvim-lualine/lualine.nvim" },
     {
       "andymass/vim-matchup",
       setup = function()
@@ -72,38 +73,8 @@ return require("packer").startup(function()
       end,
     },
     {
-      "windwp/nvim-autopairs",
-    },
-    {
       "s1n7ax/nvim-window-picker",
       tag = "v1.*",
-    },
-    {
-      -- "hrsh7th/nvim-cmp",
-      "williamboman/nvim-cmp",
-      branch = "feat/docs-preview-window",
-      requires = {
-        { "hrsh7th/cmp-nvim-lsp" },
-        { "hrsh7th/cmp-buffer" },
-        { "hrsh7th/cmp-calc" },
-        { "hrsh7th/cmp-path" },
-        { "andersevenrud/cmp-tmux" },
-        { "saadparwaiz1/cmp_luasnip" },
-        { "petertriho/cmp-git" },
-        {
-          "L3MON4D3/LuaSnip",
-          requires = { "rafamadriz/friendly-snippets" },
-          config = function()
-            require("luasnip.loaders.from_vscode").lazy_load()
-          end,
-        },
-        {
-          "onsails/lspkind-nvim",
-          config = function()
-            require("lspkind").init()
-          end,
-        },
-      },
     },
     {
       "junegunn/vim-peekaboo",
@@ -121,35 +92,11 @@ return require("packer").startup(function()
       },
     },
     {
-      "nvim-lualine/lualine.nvim",
-    },
-    {
       "szw/vim-maximizer",
       config = function()
         vim.api.nvim_set_keymap("n", "<C-w>z", "<cmd>MaximizerToggle!<CR>", { silent = true, noremap = false })
       end,
     },
-    --  	{
-    --  		"akinsho/toggleterm.nvim",
-    --  		config = function()
-    --  			require("toggleterm").setup {
-    --  				insert_mappings = false,
-    --  				env = {
-    --  					MANPAGER = "less -X",
-    --  				},
-    --  				terminal_mappings = false,
-    --  				start_in_insert = false,
-    --  				open_mapping = [[<space>t]],
-    --  				highlights = {
-    --  					CursorLineSign = { link = "DarkenedPanel" },
-    --  					Normal = { guibg = "#14141A" },
-    --  				},
-    --  			}
-    --
-    --  			-- Remove WinEnter to allow moving a toggleterm to new tab
-    --  			vim.cmd [[autocmd! ToggleTermCommands WinEnter]]
-    --  		end,
-    --  	},
     {
       "editorconfig/editorconfig-vim",
       setup = function()
@@ -189,9 +136,7 @@ return require("packer").startup(function()
         }
       end,
     },
-    {
-      "norcalli/nvim-colorizer.lua",
-    },
+    { "norcalli/nvim-colorizer.lua" },
   }
 
   -- Treesitter
@@ -200,6 +145,7 @@ return require("packer").startup(function()
     run = ":TSUpdate",
     requires = {
       { "nvim-treesitter/playground" },
+      { "nvim-treesitter/nvim-treesitter-context" },
       { "nvim-treesitter/nvim-treesitter-textobjects" },
       { "p00f/nvim-ts-rainbow" },
       { "JoosepAlviste/nvim-ts-context-commentstring" },
@@ -207,8 +153,70 @@ return require("packer").startup(function()
     },
   }
 
+  -- Telescope
+  use {
+    "nvim-telescope/telescope.nvim",
+    requires = {
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-telescope/telescope-project.nvim" },
+      { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+    },
+  }
+
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons',
+    },
+    tag = 'nightly'
+  }
+
+  use {
+    'alexghergh/nvim-tmux-navigation',
+    config = function()
+      require 'nvim-tmux-navigation'.setup {
+        disable_when_zoomed = true,
+        keybindings = {
+          left = "<C-h>",
+          down = "<C-j>",
+          up = "<C-k>",
+          right = "<C-l>",
+          last_active = "<C-\\>",
+          next = "<C-Space>",
+        }
+      }
+    end
+  }
+
+
+
+  use {
+    "akinsho/toggleterm.nvim",
+    tag = 'v2.*',
+  }
 
   -- LSP
+  use {
+    'VonHeikemen/lsp-zero.nvim',
+    requires = {
+      -- LSP Support
+      { 'neovim/nvim-lspconfig' },
+      { 'williamboman/nvim-lsp-installer' },
+
+      -- Autocompletion
+      { 'hrsh7th/nvim-cmp' },
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-path' },
+      { 'saadparwaiz1/cmp_luasnip' },
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/cmp-nvim-lua' },
+
+      -- Snippets
+      { 'L3MON4D3/LuaSnip' },
+      { 'rafamadriz/friendly-snippets' },
+    }
+  }
+
   use {
     { "williamboman/mason.nvim" },
     { "williamboman/mason-lspconfig.nvim" },
@@ -257,69 +265,5 @@ return require("packer").startup(function()
     }
   }
 
-
-  -- Telescope
-  use {
-    "nvim-telescope/telescope.nvim",
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope-project.nvim",
-      { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-    },
-  }
-
-  use {
-    'kyazdani42/nvim-tree.lua',
-    requires = {
-      'kyazdani42/nvim-web-devicons',
-    },
-    tag = 'nightly'
-  }
-  use {
-    'alexghergh/nvim-tmux-navigation',
-    config = function()
-      require 'nvim-tmux-navigation'.setup {
-        disable_when_zoomed = true,
-        keybindings = {
-          left = "<C-h>",
-          down = "<C-j>",
-          up = "<C-k>",
-          right = "<C-l>",
-          last_active = "<C-\\>",
-          next = "<C-Space>",
-        }
-      }
-    end
-  }
-
-
-  use "folke/which-key.nvim"
-  use "karb94/neoscroll.nvim"
-
-  use {
-    "akinsho/toggleterm.nvim",
-    tag = 'v2.*',
-  }
-
-  use {
-    'VonHeikemen/lsp-zero.nvim',
-    requires = {
-      -- LSP Support
-      { 'neovim/nvim-lspconfig' },
-      { 'williamboman/nvim-lsp-installer' },
-
-      -- Autocompletion
-      { 'hrsh7th/nvim-cmp' },
-      { 'hrsh7th/cmp-buffer' },
-      { 'hrsh7th/cmp-path' },
-      { 'saadparwaiz1/cmp_luasnip' },
-      { 'hrsh7th/cmp-nvim-lsp' },
-      { 'hrsh7th/cmp-nvim-lua' },
-
-      -- Snippets
-      { 'L3MON4D3/LuaSnip' },
-      { 'rafamadriz/friendly-snippets' },
-    }
-  }
 
 end)

@@ -184,6 +184,7 @@ require("nvim-tree").setup({
 	},
 })
 
+
 local wk = require("which-key")
 wk.register({
 	e = { "<cmd>NvimTreeToggle<CR>", "File Explorer" }

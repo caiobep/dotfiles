@@ -33,7 +33,7 @@ local telescopeSettings = {
 			"--hidden",
 			"-uu",
 		},
-		file_ignore_patterns = { "node_modules" },
+		file_ignore_patterns = { "node_modules", ".git" },
 		path_display = { shorten = 5 },
 		winblend = 0,
 		border = {},
@@ -43,9 +43,9 @@ local telescopeSettings = {
 	},
 
 	pickers = {
-		find_files = {
-			hidden = true,
-		},
+  	find_files = {
+  		hidden = true,
+  	},
 		live_grep = {
 			only_sort_text = true,
 			hidden = true,
@@ -64,12 +64,12 @@ local telescopeSettings = {
 
 
 telescope.setup(telescopeSettings)
-
 require("telescope").load_extension = "fzf"
 
 
 local telescopeFunctions = require("telescope.builtin")
 local wk = require("which-key")
+
 wk.register({
 	f = { telescopeFunctions.find_files, "Find Files" },
 	s = {
