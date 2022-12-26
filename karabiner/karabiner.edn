@@ -20,7 +20,9 @@
  :simlayers {:caps-mode {:key :caps_lock}
              :space-mode {:key :spacebar}
              :rcommand-mode {:key :right_command}
-             :shift-mode {:key :right_shift}}
+             :shift-mode {:key :right_shift}
+             :fn-mode {:apple_vendor_top_case_keyboard true
+                       :key :fn}}
  :main [{:des "Open help command pallet"
          :rules [[:right_option :!CSOslash]]}
 
@@ -43,12 +45,6 @@
         ;; !! | mandatory command + control + optional + shift (hyper)
         ;; ## | optional any
 
-        {:des "Shift mode"
-         :rules [:shift-mode
-                 [:j :!CSOTj]                ; Invoke macVIM scroll mode
-                 [:m [:run-shortcut "Meeting Mode"]]
-                 [:s [:run-shortcut "Screen Sharing Mode"]]]}
-
         {:des "Caps Mode"
          :rules [:caps-mode
                  [:1 :!CTSO1]                ; Activate space 1
@@ -56,11 +52,12 @@
                  [:3 :!CTSO3]                ; Activate space 3
                  [:4 :!CTSO4]                ; Activate space 4
                  [:5 :!CTSO5]                ; Activate space 5
-                 [:k :up_arrow]
                  [:j :down_arrow]
                  [:l :right_arrow]
                  [:h :left_arrow]
+                 [:open_bracket :!CTOSopen_bracket]
                  [:9 :!COST9]                ; Toggle airpods listening mode
+                 [:8 :!COST8]                ; Toggle spatial-audio mode
                  [:right_command :!COTS4]    ; Search query in Notion
                  [:spacebar :!COS0]          ; Search window in contexts
                  [:q :!CO0]                  ; Switch Audio Output
@@ -69,7 +66,7 @@
                  [:o :!COS0]                 ; Search window in contexts
                  [:left_command :!CTSO0]     ; Invoke Paletro
                  [:f :!CSOTf]                ; Invoke macVIM
-                 [:j :!CSOTj]                ; Invoke macVIM scroll mode
+                 [:d :!CSOTj]                ; Invoke macVIM scroll mode
                  [:f12 :!CO0]                ; Show sound outputs
                  [:s :!CTOp]                 ; Invoke Sip Colour Picker
                  [:p :!CTSO0]                ; Invoke Paletro
@@ -77,8 +74,29 @@
                  [:period [:toggle-tiling-wm]]
                  [:s [:semicolon :w :q :return_or_enter]]]}
 
+        {:des "Shift mode"
+         :rules [:shift-mode
+                 [:j :!CSOTj]                ; Invoke macVIM scroll mode
+                 [:m [:run-shortcut "Meeting Mode"]]
+                 [:s [:run-shortcut "Screen Sharing Mode"]]
+                 [:spacebar [:run-shortcut "Review focus"]]]}
+
+        {:des "Fn mode"
+         :rules [:fn-mode
+                 [:i :!TOSi]
+                 [:u :!TOSu]
+                 [:y :!TOSy]
+                 [:k :!TOSk]
+                 [:g :!TOSg]
+                 [:j :!TOSj]
+                 [:h :!TOSh]
+                 [:e :!TOSe]
+                 [:left_arrow :!TOleft_arrow]
+                 [:k :up_arrow]]}
+
         {:des "Custom Application Launcher"
-         :rules [[:!CTk [:togg "Tweetbot"]]
+         :rules [[:!CTj [:togg "Reeder"]]
+                 [:!CTk [:togg "Tweetbot"]]
                  [:!CTperiod [:toggle-tiling-wm]]
                  [:!CTl [:togg "Safari"]]
                  [:!CTOl [:togg "Arc"]]
