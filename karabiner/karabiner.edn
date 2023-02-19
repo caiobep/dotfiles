@@ -12,17 +12,18 @@
              :togg "/opt/homebrew/bin/hs -A -n -q -t 0.1 -c '\nlocal appName = \"%s\";\nlocal x = hs.application.find(appName);\nif x and x:isFrontmost() then\n  x:hide();\nelse\n  hs.application.launchOrFocus(appName);\nend'"
              :toggle "osascript -e 'set appName to \"%s\"\nset startIt to false\ntell application \"System Events\"\n  if not (exists process appName) then\n    set startIt to true\n  else if frontmost of process appName then\n    set visible of process appName to false\n  else\n    set frontmost of process appName to true\n  end if\nend tell\nif startIt then\n  tell application appName to activate\nend if'"
              :toggle-tiling-wm "pgrep -f Amethyst HazeOver && pkill HazeOver Amethyst || (open -a Amethyst && open -a HazeOver)"
+             :toggle-ide-by-preferred-order "/opt/homebrew/bin/hs -A -n -q -t 0.1 /Users/caiobep/.dotfiles/hammerspoon/toggle-ide-by-preferred-order.lua"
              :say "say \"%s\""}
  :applications {:IDEA ["^com\\.jetbrains\\.*"]
-                :tweetbot ["^com\\.tapbots\\.Tweetbot3Mac.*"]
+                :playwright ["*chromium*", "*playwright*"]
                 :alacritty ["*alacritty*"]}
 
  :simlayers {:caps-mode {:key :caps_lock}
              :space-mode {:key :spacebar}
              :rcommand-mode {:key :right_command}
-             :shift-mode {:key :right_shift}
              :fn-mode {:apple_vendor_top_case_keyboard true
                        :key :fn}}
+
  :main [{:des "Open help command pallet"
          :rules [[:right_option :!CSOslash]]}
 
@@ -45,6 +46,11 @@
         ;; !! | mandatory command + control + optional + shift (hyper)
         ;; ## | optional any
 
+        {:des "General mappings"
+         :rules [[:##right_command :f16]
+                 [[:j :l] :f17]
+                 [:##right_shift :right_shift nil {:alone :!Shyphen}]]}
+
         {:des "Caps Mode"
          :rules [:caps-mode
                  [:1 :!CTSO1]                ; Activate space 1
@@ -52,9 +58,10 @@
                  [:3 :!CTSO3]                ; Activate space 3
                  [:4 :!CTSO4]                ; Activate space 4
                  [:5 :!CTSO5]                ; Activate space 5
+                 [:semicolon :!CTSOsemicolon]; Open Project
                  [:j :down_arrow]
                  [:l :right_arrow]
-                 [:h :left_arrow]
+                 [:k :up_arrow]
                  [:open_bracket :!CTOSopen_bracket]
                  [:9 :!COST9]                ; Toggle airpods listening mode
                  [:8 :!COST8]                ; Toggle spatial-audio mode
@@ -74,8 +81,8 @@
                  [:period [:toggle-tiling-wm]]
                  [:s [:semicolon :w :q :return_or_enter]]]}
 
-        {:des "Shift mode"
-         :rules [:shift-mode
+        {:des "Right Shift mode"
+         :rules [:rshift-mode
                  [:j :!CSOTj]                ; Invoke macVIM scroll mode
                  [:m [:run-shortcut "Meeting Mode"]]
                  [:s [:run-shortcut "Screen Sharing Mode"]]
@@ -95,20 +102,36 @@
                  [:k :up_arrow]]}
 
         {:des "Custom Application Launcher"
-         :rules [[:!CTj [:togg "Reeder"]]
-                 [:!CTk [:togg "Tweetbot"]]
+         :rules [[:!CTj [:togg "Ivory"]]
+                 [:!CTk [:toggle-ide-by-preferred-order]]
                  [:!CTperiod [:toggle-tiling-wm]]
                  [:!CTl [:togg "Safari"]]
-                 [:!CTOl [:togg "Arc"]]
+                 [:!CTSl [:togg "Google Chrome"]]
                  [:!CTquote [:togg "Music"]]
                  [:!CTw [:togg "Whatsapp"]]
                  [:!CSTe [:togg "Fantastical"]]
                  [:!CTs [:togg "Slack"]]
                  [:!CTsemicolon [:togg "Notion"]]
+                 [:!CTSsemicolon [:togg "Webstorm"]]
                  [:!CTh [:togg "Alacritty"]]]}
 
         {:des "Use function keys as function keys on IDEA"
          :rules [:IDEA
+                 [:##f1 :f1]
+                 [:##f2 :f2]
+                 [:##f3 :f3]
+                 [:##f4 :f4]
+                 [:##f5 :f5]
+                 [:##f6 :f6]
+                 [:##f7 :f7]
+                 [:##f8 :f8]
+                 [:##f9 :f9]
+                 [:##f10 :f10]
+                 [:##f11 :f11]
+                 [:##f12 :f12]]}
+
+        {:des "Use function keys as function keys on Playwright"
+         :rules [:playwright
                  [:##f1 :f1]
                  [:##f2 :f2]
                  [:##f3 :f3]
@@ -127,8 +150,8 @@
                  [:f2 :apple_display_brightness_increment]
                  [:f4 :f19] ; spotlight
                  [:f5 :dictation]
-                 [:f6 :f13] ; Do not disturb
-                 [:f3 :mission_control]
+                 [:f6 :f13] [:f3 :mission_control]
+                 ; Do not disturb
                  [:f7 :rewind]
                  [:f8 :play_or_pause]
                  [:f9 :fastforward]
