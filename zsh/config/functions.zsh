@@ -30,6 +30,14 @@ function chrome() {
     open -a Google\ Chrome
 }
 
+function sc() {
+  if [ -z "$1" ]; then
+    shortcuts run "$(shortcuts list | fzf)" | tee
+  else 
+    shortcuts run $1 | tee
+  fi
+}
+
 ggi() {
   git init
   mit
