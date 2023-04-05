@@ -172,4 +172,6 @@ alias path='echo -e ${PATH//:/\\n}'
 # Sem tempo irmão
 alias npx="bunx"
 
+alias is-dark-theme-enabled="osascript -e 'tell application \"System Events\" to tell appearance preferences to return dark mode'"
+alias tms="tmux"
 

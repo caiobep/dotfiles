@@ -16,7 +16,7 @@ export FZF_TMUX=1
 
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND --type file --max-depth 8"
-export FZF_ALT_C_COMMAND="find ~ ~/Developer -type d -prune -o -call '[ -e \"$1/.git\" ]' {} -prune -print"
+export FZF_ALT_C_COMMAND="fd --type d --glob '.git' ~/Developer -t d  --hidden --no-ignore  --follow"
 
 
 _fzf_comprun() {
