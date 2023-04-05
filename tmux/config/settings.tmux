@@ -6,7 +6,7 @@ set -g set-titles-string '#{pane_current_path}'
 set-option -g automatic-rename on
 
 # Default Terminal
-set-option -g default-terminal "screen-256color"
+set -g default-terminal "alacritty"
 
 # Enable VIM keybindings in command mode
 set-option -g mode-keys vi

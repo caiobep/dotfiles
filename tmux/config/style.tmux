@@ -42,6 +42,6 @@ set-option -g clock-mode-style 24
 set-option -g message-style bg=default,fg=default
 
 # enable true color support and italics
-set -g default-terminal "tmux-256color"
+set -g default-terminal "alacritty"
 set -ga terminal-overrides "tmux-256color:Tc"
 

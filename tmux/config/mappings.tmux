@@ -112,3 +112,8 @@ bind-key -T copy-mode-vi J \
 	send-keys -X cursor-down \; \
 	send-keys -X cursor-down \;
 
+
+
+# control+e calls tmux-sessionizer in a new temporary window
+bind-key -n C-e new-window -n sessionizer -c /tmp -F '#{window_index}' 'tmux-sessionizer'
+
