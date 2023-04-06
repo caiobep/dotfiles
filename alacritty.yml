@@ -5,7 +5,7 @@ live_config_reload: true
 
 window:
   opacity: 1.0
-  # title: Jane
+  # title: 
   dynamic_title: true
   decorations: transparent
 
@@ -19,14 +19,13 @@ window:
     y: 34
 
   scrolling:
-    history: 10000
+    history: 100000
     multiplier: 3
 
 scale_with_dpi: true
 
 font:
   size: 15.0
-  use_thin_strokes: true
 
   normal:
     family: LigaOperatorMono Nerd Font
@@ -210,30 +209,32 @@ schemes:
 colors:
   # Default colors
   primary:
-    # hard contrast: background = '#1d2021'
-    background: '#282828'
-    # soft contrast: background = '#32302f'
-    foreground: '#ebdbb2'
+    background: '0xffffff'
+    foreground: '0x4d5566'
 
   # Normal colors
   normal:
-    black: '#282828'
-    red: '#cc241d'
-    green: '#98971a'
-    yellow: '#d79921'
-    blue: '#458588'
-    magenta: '#b16286'
-    cyan: '#689d6a'
-    white: '#a89984'
+    black: '0x24292e'
+    red: '0xd73a49'
+    green: '0x22863a'
+    yellow: '0xb08800'
+    blue: '0x0366d6'
+    magenta: '0x6f42c1'
+    cyan: '0x1b7c83'
+    white: '0x4d5566'
 
   # Bright colors
   bright:
-    black: '#928374'
-    red: '#fb4934'
-    green: '#b8bb26'
-    yellow: '#fabd2f'
-    blue: '#83a598'
-    magenta: '#d3869b'
-    cyan: '#8ec07c'
-    white: '#ebdbb2'
-theme: Gruvbox-Dark
+    black: '0x586069'
+    red: '0xcb2431'
+    green: '0x28a745'
+    yellow: '0xdbab09'
+    blue: '0x2188ff'
+    magenta: '0x8a63d2'
+    cyan: '0x1b7c83'
+    white: '0x4d5566'
+
+  indexed_colors:
+    - { index: 16, color: '0xd18616' }
+    - { index: 17, color: '0xcb2431' }
+theme: github_light_default
