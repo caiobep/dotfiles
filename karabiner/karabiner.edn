@@ -17,6 +17,7 @@
              :focus-window-on-right "/opt/homebrew/bin/hs -A -n -q -t 0.1 /Users/caiobep/.dotfiles/hammerspoon/move-focus-to-window-on-right.lua"
              :focus-window-on-left "/opt/homebrew/bin/hs -A -n -q -t 0.1 /Users/caiobep/.dotfiles/hammerspoon/move-focus-to-window-on-left.lua"
              :run-hammerspoon-script "/opt/homebrew/bin/hs -A -n -q -t 0.1 -c '%s'"
+             :send-window-to-space "/opt/homebrew/bin/hs -A -n -q -t 0.1 -c 'hs.spaces.setDefaultMCwaitTime(0.1);local function send_window_to_space(space); local spaces = hs.spaces.allSpaces(); local existing_spaces = {}; for k, v in pairs(hs.spaces.allSpaces()) do; existing_spaces = v; end hs.spaces.moveWindowToSpace(hs.window.focusedWindow():id(), existing_spaces[space]); end send_window_to_space(tonumber(\"%s\"))'"
              :say "say \"%s\""}
  :applications {:IDEA ["^com\\.jetbrains\\.*"]
                 :playwright ["*chromium*", "*playwright*"]
@@ -37,6 +38,10 @@
                  [:##right_option :f19]
                  [:!SOj [:focus-window-on-left]]
                  [:!SOk [:focus-window-on-right]]
+                 [:!OTS1 [:send-window-to-space "1"]]
+                 [:!OTS2 [:send-window-to-space "2"]]
+                 [:!OTS3 [:send-window-to-space "3"]]
+                 [:!OTS4 [:send-window-to-space "4"]]
                  [[:j :l] :f17]]}
 
         ; {:des "left cmd -> cmd+tab"
