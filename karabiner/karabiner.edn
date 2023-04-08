@@ -35,6 +35,7 @@
                  [[:right_command :right_option] :!Of16] ; Raycast AI
                  [[:right_command :left_option] :!Of16]  ; Raycast AI
                  [:!Sright_option :!CTSO0]               ; Invoke Contexts Window Search
+                 [:##right_shift :!CTSO0]
                  [:##right_option :f19]
                  [:!SOj [:focus-window-on-left]]
                  [:!SOk [:focus-window-on-right]]
