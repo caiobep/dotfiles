@@ -13,12 +13,12 @@
              :togg "/opt/homebrew/bin/hs -A -n -q -t 0.1 -c '\nlocal appName = \"%s\";\nlocal x = hs.application.find(appName);\nif x and x:isFrontmost() then\n  x:hide();\nelse\n  hs.application.launchOrFocus(appName);\nend'"
              :toggle "osascript -e 'set appName to \"%s\"\nset startIt to false\ntell application \"System Events\"\n  if not (exists process appName) then\n    set startIt to true\n  else if frontmost of process appName then\n    set visible of process appName to false\n  else\n    set frontmost of process appName to true\n  end if\nend tell\nif startIt then\n  tell application appName to activate\nend if'"
              :toggle-tiling-wm "pgrep -f Amethyst HazeOver && pkill HazeOver Amethyst || (open -a Amethyst && open -a HazeOver)"
-             :toggle-ide-by-preferred-order "/opt/homebrew/bin/hs -A -n -q -t 0.1 /Users/caiobep/.dotfiles/hammerspoon/toggle-ide-by-preferred-order.lua"
-             :focus-window-on-right "/opt/homebrew/bin/hs -A -n -q -t 0.1 /Users/caiobep/.dotfiles/hammerspoon/move-focus-to-window-on-right.lua"
-             :focus-window-on-left "/opt/homebrew/bin/hs -A -n -q -t 0.1 /Users/caiobep/.dotfiles/hammerspoon/move-focus-to-window-on-left.lua"
+             :toggle-ide-by-preferred-order "/opt/homebrew/bin/hs -A -n -q -t 0.1 $HOME/.dotfiles/hammerspoon/keystrokes/toggle-ide-by-preferred-order.lua"
+             :move-window-focus "/opt/homebrew/bin/hs -A -n -q -t 0.1 -c \"dofile(\\\"$HOME/.dotfiles/hammerspoon/keystrokes/move-window-focus.lua\\\"); moveFocusToWindow(\\\"%s\\\")\""
              :run-hammerspoon-script "/opt/homebrew/bin/hs -A -n -q -t 0.1 -c '%s'"
              :send-window-to-space "/opt/homebrew/bin/hs -A -n -q -t 0.1 -c 'hs.spaces.setDefaultMCwaitTime(0.1);local function send_window_to_space(space); local spaces = hs.spaces.allSpaces(); local existing_spaces = {}; for k, v in pairs(hs.spaces.allSpaces()) do; existing_spaces = v; end hs.spaces.moveWindowToSpace(hs.window.focusedWindow():id(), existing_spaces[space]); end send_window_to_space(tonumber(\"%s\"))'"
              :say "say \"%s\""}
+
  :applications {:IDEA ["^com\\.jetbrains\\.*"]
                 :playwright ["*chromium*", "*playwright*"]
                 :alacritty ["*alacritty*"]}
@@ -30,15 +30,13 @@
                        :key :fn}}
 
  :main [{:des "General mappings"
-         :rules [[:right_option :!COS0]                  ; Invoke Paletro
-                 [[:right_command :left_command] :!Cf16] ; Raycast AI
+         :rules [[[:right_command :left_command] :!Cf16] ; Raycast AI
                  [[:right_command :right_option] :!Of16] ; Raycast AI
                  [[:right_command :left_option] :!Of16]  ; Raycast AI
-                 [:!Sright_option :!CTSO0]               ; Invoke Contexts Window Search
-                 [:##right_shift :!CTSO0]
-                 [:##right_option :f19]
-                 [:!SOj [:focus-window-on-left]]
-                 [:!SOk [:focus-window-on-right]]
+                 [[:right_shift :left_shift] :!CTSO0]                ; Invoke Contexts Window Search
+                 [:##right_shift :!COS0]                ; Invoke Contexts Window Search
+                 [:!SOj [:move-window-focus "left"]]
+                 [:!SOk [:move-window-focus "right"]]
                  [:!OTS1 [:send-window-to-space "1"]]
                  [:!OTS2 [:send-window-to-space "2"]]
                  [:!OTS3 [:send-window-to-space "3"]]
