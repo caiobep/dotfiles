@@ -34,6 +34,7 @@
                  [[:right_command :right_option] :!Of16] ; Raycast AI
                  [[:right_command :left_option] :!Of16]  ; Raycast AI
                  [[:right_shift :left_shift] :!CTSO0]                ; Invoke Contexts Window Search
+                 [[:right_shift :right_option] :!CTSO0]                ; Invoke Contexts Window Search
                  [:##right_shift :!COS0]                ; Invoke Contexts Window Search
                  [:!SOj [:move-window-focus "left"]]
                  [:!SOk [:move-window-focus "right"]]
@@ -121,6 +122,7 @@
          :rules [[:!CTj [:togg "Ivory"]]
                  [:!CTk [:toggle-ide-by-preferred-order]]
                  [:!CTl [:togg "Safari"]]
+                 [:!CTSl [:togg "Google Chrome"]]
                  [:!CTperiod [:toggle-tiling-wm]]
                  [:!CTSl [:togg "Arc"]]
                  [:!CTa [:togg "Things3"]]
