@@ -33,9 +33,9 @@
          :rules [[[:right_command :left_command] :!Cf16] ; Raycast AI
                  [[:right_command :right_option] :!Of16] ; Raycast AI
                  [[:right_command :left_option] :!Of16]  ; Raycast AI
-                 [[:right_shift :left_shift] :!CTSO0]                ; Invoke Contexts Window Search
-                 [[:right_shift :right_option] :!CTSO0]                ; Invoke Contexts Window Search
-                 [:##right_shift :!COS0]                ; Invoke Contexts Window Search
+                 [:!COtab :!COS0]                        ; Invoke Contexts  search menu
+                 [[:right_shift :right_option] :!CTSO0]  ; Invoke Palettro Window Search
+                 [:##right_shift :!COf16]                ;Raycast AI menu
                  [:!SOj [:move-window-focus "left"]]
                  [:!SOk [:move-window-focus "right"]]
                  [:!OTS1 [:send-window-to-space "1"]]
@@ -76,10 +76,11 @@
                  [:3 :!CTSO3]                ; Activate space 3
                  [:4 :!CTSO4]                ; Activate space 4
                  [:5 :!CTSO5]                ; Activate space 5
-                 [:k :!CTSOsemicolon]; Open Project
+                 ; [:k :!CTSOsemicolon]; Open Project
                  [:j :down_arrow]
-                 ; [:l :right_arrow]
-                 ; [:k :up_arrow]
+                 [:l :right_arrow]
+                 [:k :up_arrow]
+                 [:h :left_arrow]
                  [:open_bracket :!CTOSopen_bracket]
                  [:9 :!COST9]                ; Toggle airpods listening mode
                  [:8 :!COST8]                ; Toggle spatial-audio mode
