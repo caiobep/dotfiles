@@ -36,7 +36,7 @@
                  [[:right_command :left_option] :!Of16]  ; Raycast AI
                  [:!COtab :!COS0]                        ; Invoke Contexts  search menu
                  [[:right_shift :right_option] :!CTSO0]  ; Invoke Palettro Window Search
-                 [:##right_shift :!COf16]                ;Raycast AI menu
+                 [:!QRcomma :!COf16]                ; Raycast AI menu
                  [:!SOj [:move-window-focus "left"]]
                  [:!SOk [:move-window-focus "right"]]
                  [:!OTS1 [:send-window-to-space "1"]]
@@ -75,8 +75,8 @@
                  [:m :!TOf20]      ; [Zoom] Mute Microphone
                  [:v :!TSf20]      ; [Zoom] Stop Video
                  [:t :!TFf20]      ; [Zoom] Pause Screen Share
-                 [:r :!TOFf20]     ; [Zoom] Remote Control Screen Share
                  [:g :!TOFCf20]    ; [Zoom] Remote Control Screen Share
+                 ; [:y :!TOFCf20]    ; [Zoom] Remote Control Screen Share
                  [:h :!TFCf20]     ; [Zoom] Show/hide controls
                  [:k :!CFf20]      ; [Zoom] Show mini view
                  [:s :!CTSf20]]}   ; [Zoom] Share Screen
@@ -88,7 +88,6 @@
                  [:3 :!CTSO3]                ; Activate space 3
                  [:4 :!CTSO4]                ; Activate space 4
                  [:5 :!CTSO5]                ; Activate space 5
-                 ; [:k :!CTSOsemicolon]; Open Project
                  [:j :down_arrow]
                  [:l :right_arrow]
                  [:k :up_arrow]
@@ -98,6 +97,7 @@
                  [:8 :!COST8]                ; Toggle spatial-audio mode
                  [:right_command :!COTS4]    ; Search query in Notion
                  [:spacebar :!COS0]          ; Search window in contexts
+                 [:a [:togg "Things3"]]
                  [:q :!CO0]                  ; Switch Audio Output
                  [:w :!CSOhyphen]            ; Switch Audio Input
                  [:e :!CTOe]                 ; Show Reminders in Raycast
@@ -127,9 +127,7 @@
                  [:g :!TOSg]
                  [:j :!TOSj]
                  [:h :!TOSh]
-                 [:e :!TOSe]
-                 [:left_arrow :!TOleft_arrow]
-                 [:k :up_arrow]]}
+                 [:e :!TOSe]]}
 
         {:des "Custom Application Launcher"
          :rules [[:!CTj [:togg "Ivory"]]
@@ -138,7 +136,6 @@
                  [:!CTSl [:togg "Google Chrome"]]
                  [:!CTperiod [:toggle-tiling-wm]]
                  [:!CTSl [:togg "Arc"]]
-                 [:!CTSa [:togg "Things3"]]
                  [:!CTquote [:togg "Music"]]
                  [:!CTw [:togg "Whatsapp"]]
                  [:!CSTe [:togg "Fantastical"]]
