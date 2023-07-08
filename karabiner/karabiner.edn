@@ -10,7 +10,7 @@
              :open "open -jga \"%s\""
              :run-shortcut "shortcuts run \"%s\""
              :set-active-space "/opt/homebrew/bin/hs -A -n -q -t 0.1 -c 'hs.spaces.setDefaultMCwaitTime(0.1);local function activate_space(space); local spaces = hs.spaces.allSpaces(); local existing_spaces = {}; for k, v in pairs(hs.spaces.allSpaces()) do; existing_spaces = v; end hs.spaces.gotoSpace(existing_spaces[space]); end activate_space(tonumber(\"%s\"))'"
-             :togg "/opt/homebrew/bin/hs -A -n -q -t 0.1 -c '\nlocal appName = \"%s\";\nlocal x = hs.application.find(appName);\nif x and x:isFrontmost() then\n  x:hide();\nelse\n  hs.application.launchOrFocus(appName);\nend'"
+             :togg "/opt/homebrew/bin/hs -A -n -q -t 0.1 -c '\nlocal appName = \"%s\";\nlocal x = hs.application.find(appName);\nif x and x:isFrontmost() then\n  x:hide();\nelse\n  hs.application.launchOrFocusByBundleID(x:bundleID());\nend'"
              :toggle "osascript -e 'set appName to \"%s\"\nset startIt to false\ntell application \"System Events\"\n  if not (exists process appName) then\n    set startIt to true\n  else if frontmost of process appName then\n    set visible of process appName to false\n  else\n    set frontmost of process appName to true\n  end if\nend tell\nif startIt then\n  tell application appName to activate\nend if'"
              :toggle-tiling-wm "pgrep -f Amethyst HazeOver && pkill HazeOver Amethyst || (open -a Amethyst && open -a HazeOver)"
              :toggle-ide-by-preferred-order "/opt/homebrew/bin/hs -A -n -q -t 0.1 $HOME/.dotfiles/hammerspoon/keystrokes/toggle-ide-by-preferred-order.lua"
@@ -21,7 +21,8 @@
 
  :applications {:IDEA ["^com\\.jetbrains\\.*"]
                 :playwright ["*chromium*", "*playwright*"]
-                :alacritty ["*alacritty*"]}
+                :alacritty ["*alacritty*"]
+                :Things ["*things*"]}
 
  :simlayers {:caps-mode {:key :caps_lock}
              :space-mode {:key :spacebar}
@@ -37,13 +38,13 @@
                  [:!COtab :!COS0]                        ; Invoke Contexts  search menu
                  [[:right_shift :right_option] :!CTSO0]  ; Invoke Palettro Window Search
                  [:!QRcomma :!COf16]                ; Raycast AI menu
+                 [:!QRperiod :!COTf16]                ; Raycast AI menu
                  [:!SOj [:move-window-focus "left"]]
                  [:!SOk [:move-window-focus "right"]]
                  [:!OTS1 [:send-window-to-space "1"]]
                  [:!OTS2 [:send-window-to-space "2"]]
                  [:!OTS3 [:send-window-to-space "3"]]
-                 [:!OTS4 [:send-window-to-space "4"]]
-                 [[:j :l] :f17]]}
+                 [:!OTS4 [:send-window-to-space "4"]]]}
 
         ; {:des "left cmd -> cmd+tab"
         ;  :rules [[:left_option :left_option nil {:alone :!Ctab}]]}
@@ -69,6 +70,10 @@
         ;               [:k :up_arrow]
         ;               [:l :right_arrow]
         ;               [:h :left_arrow]]]}
+
+        {:des "Chord Keyboard"
+         :rules [[[:j :k] [:togg "Alacritty"]]
+                 [[:j :l] [:togg "com.culturedcode.ThingsMac"]]]}
 
         {:des "Video Call Controls"
          :rules [:rcommand-mode
@@ -97,7 +102,6 @@
                  [:8 :!COST8]                ; Toggle spatial-audio mode
                  [:right_command :!COTS4]    ; Search query in Notion
                  [:spacebar :!COS0]          ; Search window in contexts
-                 [:a [:togg "Things3"]]
                  [:q :!CO0]                  ; Switch Audio Output
                  [:w :!CSOhyphen]            ; Switch Audio Input
                  [:e :!CTOe]                 ; Show Reminders in Raycast
@@ -129,6 +133,11 @@
                  [:h :!TOSh]
                  [:e :!TOSe]]}
 
+        {:des "Things3"
+         :rules [:Things
+                 [:!Tn :up_arrow]
+                 [:!Tp :down_arrow]]}
+
         {:des "Custom Application Launcher"
          :rules [[:!CTj [:togg "Ivory"]]
                  [:!CTk [:toggle-ide-by-preferred-order]]
@@ -137,7 +146,6 @@
                  [:!CTperiod [:toggle-tiling-wm]]
                  [:!CTSl [:togg "Arc"]]
                  [:!CTquote [:togg "Music"]]
-                 [:!CTw [:togg "Whatsapp"]]
                  [:!CSTe [:togg "Fantastical"]]
                  [:!CTs [:togg "Slack"]]
                  [:!CTsemicolon [:togg "Notion"]]
