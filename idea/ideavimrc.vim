@@ -10,7 +10,7 @@ set showmode
 set clipboard=unnamed "shared clipboard with macOS
 
 let mapleader = "\<Space>"
-vnoremap <leader>p "_dP
+set scrolloff=5
 
 
 "IDEA VIM Specific Settings
@@ -44,8 +44,8 @@ noremap Y v$y<CR>
 noremap <leader>h  :noh<CR>
 vnoremap <leader>p "_dP
 
-xnoremap <expr> K :action MoveStatementUp<CR>
-xnoremap <expr> J :action MoveStatementDown<CR>
+" xnoremap <expr> K :action MoveStatementUp<CR>
+" xnoremap <expr> J :action MoveStatementDown<CR>
 
 noremap gh :action ShowErrorDescription<CR>
 noremap gH :action QuickJavaDoc<CR>
@@ -59,10 +59,50 @@ noremap [e :action GotoPreviousError<CR>
 noremap ]b :action GotoNextBookmark<CR>
 noremap [b :action GotoPreviousBookmark<CR>
 
-noremap <C-f> :action EditorMoveDownAndScroll<CR>
-noremap <C-b> :action EditorMoveDownAndScroll<CR>
+noremap <leader>m :action ShowBookmarks<CR>
+noremap <leader>M :action OpenBookmarkGroup<CR>
+
+noremap ma :action ToggleBookmarkA<CR>
+noremap <buffer> ,a :action GotoBookmarkA<CR>
+
+noremap ms :action ToggleBookmarkS<CR>
+noremap <buffer> ,s :action GotoBookmarkS<CR>
+
+noremap md :action ToggleBookmarkD<CR>
+noremap <buffer> ,d :action GotoBookmarkD<CR>
+
+noremap mf :action ToggleBookmarkF<CR>
+noremap <buffer> ,f :action GotoBookmarkF<CR>
+
+noremap mq :action ToggleBookmarkQ<CR>
+noremap <buffer> ,q :action GotoBookmarkQ<CR>
+
+noremap mw :action ToggleBookmarkW<CR>
+noremap <buffer> ,w :action GotoBookmarkW<CR>
+
+noremap me :action ToggleBookmarkE<CR>
+noremap <buffer> ,e :action GotoBookmarkE<CR>
+
+noremap mr :action ToggleBookmarkR<CR>
+noremap <buffer> ,r :action GotoBookmarkR<CR>
+
+noremap m1 :action ToggleBookmark1<CR>
+noremap <buffer> ,1 :action GotoBookmark1<CR>
+
+noremap m2 :action ToggleBookmark2<CR>
+noremap <buffer> ,2 :action GotoBookmark2<CR>
+
+noremap m3 :action ToggleBookmark3<CR>
+noremap <buffer> ,3 :action GotoBookmark3<CR>
+
+noremap m4 :action ToggleBookmark4<CR>
+noremap <buffer> ,4 :action GotoBookmark4<CR>
+
+
+" noremap <C-f> :action EditorMoveDownAndScroll<CR>
+" noremap <C-b> :action EditorMoveDownAndScroll<CR>
 noremap <C-u> :action EditorMoveUpAndScroll<CR>
-noremap <C-d> :action EditorMoveDownAndScroll<CR>
+" noremap <C-d> :action EditorMoveDownAndScroll<CR>
 
 " noremap <leader>Fa :action FindInPath<CR>
 noremap <leader>f :action GotoFile<CR>
@@ -74,17 +114,21 @@ noremap <leader><TAB> :action JumpToLastChange<CR>
 noremap <leader>si :source ~/.ideavimrc<CR>
 
 " Code Actions
-noremap <leader>ca :action ShowIntentionActions<CR>
-noremap <leader>cr :action Refactorings.QuickListPopupAction<CR>
-noremap <leader>cR :action RunMenu<CR>
-noremap <leader>cf :action ReformatCode<CR>
-noremap <leader>ct :action TodoViewGroupByFlattenPackage<CR>
+" noremap <leader>ca :action ShowIntentionActions<CR>
+" noremap <leader>cr :action Refactorings.QuickListPopupAction<CR>
+" noremap <leader>cR :action RunMenu<CR>
+" noremap <leader>cf :action ReformatCode<CR>
+" noremap <leader>ct :action TodoViewGroupByFlattenPackage<CR>
+
+
+noremap <leader>c :action CloseContent<CR>
 
 
 
 " ================================================================
 "                         Extract
 " ================================================================
+noremap <leader>E :action ExtractMethodToolWindow.TreePopup<CR>
 noremap <leader>ee :action ExtractMethodToolWindow.TreePopup<CR>
 noremap <leader>ec :action ExtractClass<CR>
 noremap <leader>ei :action ExtractInterface<CR>
