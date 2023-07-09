@@ -1,9 +1,9 @@
 {:profiles
  {:Default {:default true
-            :alone 1000
-            :held 500
-            :delay 500
-            :sim 250}}
+            :alone 80
+            :held 50
+            :delay 0
+            :sim 30}}
  :templates {:alfred "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"%s\" in workflow \"%s\" with argument \"%s\"'"
              :launch "osascript -e 'tell application \"Alfred 3\" to run trigger \"launch%s\" in workflow \"yqrashawn.workflow.launcher\" with argument \"%s\"'"
              :hs "/opt/homebrew/bin/hs -A -n -q -t 0.1 -c '%s'"
@@ -17,39 +17,34 @@
              :move-window-focus "/opt/homebrew/bin/hs -A -n -q -t 0.1 -c \"dofile(\\\"$HOME/.dotfiles/hammerspoon/keystrokes/move-window-focus.lua\\\"); moveFocusToWindow(\\\"%s\\\")\""
              :run-hammerspoon-script "/opt/homebrew/bin/hs -A -n -q -t 0.1 -c '%s'"
              :send-window-to-space "/opt/homebrew/bin/hs -A -n -q -t 0.1 -c 'hs.spaces.setDefaultMCwaitTime(0.1);local function send_window_to_space(space); local spaces = hs.spaces.allSpaces(); local existing_spaces = {}; for k, v in pairs(hs.spaces.allSpaces()) do; existing_spaces = v; end hs.spaces.moveWindowToSpace(hs.window.focusedWindow():id(), existing_spaces[space]); end send_window_to_space(tonumber(\"%s\"))'"
+             :wm "open -g 'rectangle://execute-action?name=%s'"
              :say "say \"%s\""}
 
  :applications {:IDEA ["^com\\.jetbrains\\.*"]
                 :playwright ["*chromium*", "*playwright*"]
                 :alacritty ["*alacritty*"]
-                :Things ["*things*"]}
+                :Things ["com.culturedcode.ThingsMac"]}
 
  :simlayers {:caps-mode {:key :caps_lock}
              :space-mode {:key :spacebar}
              :rcommand-mode {:key :right_command}
              :rshift-mode {:key :right_shift}
+             :lshift-mode {:key :right_shift}
+             :tab-mode {:key :tab}
+             :b-mode {:key :b}
+             :c-mode {:key :c}
+             :a-mode {:key :a}
+             :s-mode {:key :s}
+             :d-mode {:key :d}
+             :f-mode {:key :f}
+             :q-mode {:key :q}
+             :w-mode {:key :w}
+             :e-mode {:key :e}
+             :r-mode {:key :r}
              :fn-mode {:apple_vendor_top_case_keyboard true
                        :key :fn}}
 
- :main [{:des "General mappings"
-         :rules [[[:right_command :left_command] :!Cf16] ; Raycast AI
-                 [[:right_command :right_option] :!Of16] ; Raycast AI
-                 [[:right_command :left_option] :!Of16]  ; Raycast AI
-                 [:!COtab :!COS0]                        ; Invoke Contexts  search menu
-                 [[:right_shift :right_option] :!CTSO0]  ; Invoke Palettro Window Search
-                 [:!QRcomma :!COf16]                ; Raycast AI menu
-                 [:!QRperiod :!COTf16]                ; Raycast AI menu
-                 [:!SOj [:move-window-focus "left"]]
-                 [:!SOk [:move-window-focus "right"]]
-                 [:!OTS1 [:send-window-to-space "1"]]
-                 [:!OTS2 [:send-window-to-space "2"]]
-                 [:!OTS3 [:send-window-to-space "3"]]
-                 [:!OTS4 [:send-window-to-space "4"]]]}
-
-        ; {:des "left cmd -> cmd+tab"
-        ;  :rules [[:left_option :left_option nil {:alone :!Ctab}]]}
-
-        ;; List of special characters
+ :main [;; List of special characters
         ;; !  | means mandatory
         ;; #  | means optional
         ;; C  | left_command
@@ -65,17 +60,50 @@
         ;; !! | mandatory command + control + optional + shift (hyper)
         ;; ## | optional any
 
-        ; {:des "Vim arrow keys"
-        ;  :rules [:fn [[:j :down_arrow]
-        ;               [:k :up_arrow]
-        ;               [:l :right_arrow]
-        ;               [:h :left_arrow]]]}
+        {:des "General mappings"
+         :rules [[[:right_command :left_command] :!Cf16] ; Raycast AI
+                 [[:right_command :right_option] :!Of16] ; Raycast AI
+                 [[:right_command :left_option] :!Of16]  ; Raycast AI
+                 [:!COtab :!COS0]                        ; Invoke Contexts  search menu
+                 [[:right_shift :right_option] :!CTSO0]  ; Invoke Palettro Window Search
+                 [:!QRcomma :!COf16]                ; Raycast AI menu
+                 [:!QRperiod :!COTf16]                ; Raycast AI menu
+                 [:!SOj [:move-window-focus "left"]]
+                 [:!SOk [:move-window-focus "right"]]
+                 [:!OTS1 [:send-window-to-space "1"]]
+                 [:!OTS2 [:send-window-to-space "2"]]
+                 [:!OTS3 [:send-window-to-space "3"]]
+                 [:!OTS4 [:send-window-to-space "4"]]]}
 
         {:des "Chord Keyboard"
          :rules [[[:j :k] [:togg "Alacritty"]]
-                 [[:j :l] [:togg "com.culturedcode.ThingsMac"]]]}
+                 [[:j :l] [:togg "Safari"]]
+                 [[:j :l] [:togg "Google Chrome"]]
+                 [[:j :k] [:togg "com.culturedcode.ThingsMac"]]]}
 
-        {:des "Video Call Controls"
+        {:des "Window manager"
+         :rules [[:open_bracket  [:wm "smaller"] :a-mode]
+                 [:close_bracket  [:wm "larger"] :a-mode]
+                 [:k [:wm "right-half"] :a-mode]
+                 [:j [:wm "left-half"] :a-mode]
+                 [:u [:wm "top-half"] :a-mode]
+                 [:i [:wm "bottom-half"] :a-mode]
+                 [:e [:wm "first-three-fourths"] :a-mode]
+                 [:g [:wm "first-third"] :a-mode]
+                 [:z [:wm "tile-all"] :a-mode]
+                 [:n [:wm "center"] :a-mode]]}
+
+; {:des "Chord Keyboard window manager"
+        ;  :rules [:a-mode
+        ;          [:open_bracket  [:wm "smaller"]]
+        ;          [:close_bracket  [:wm "larger"]]
+        ;          [:k [:wm "right-half"]]
+        ;          [:j [:wm "left-half"]]
+        ;          [:z [:wm "tile-all"]]
+        ;          [:e [:wm "first-three-fourths"]]
+        ;          [:n [:wm "center"]]]}
+
+        {:des "Zoom Call Controls"
          :rules [:rcommand-mode
                  [:m :!TOf20]      ; [Zoom] Mute Microphone
                  [:v :!TSf20]      ; [Zoom] Stop Video
@@ -135,12 +163,13 @@
 
         {:des "Things3"
          :rules [:Things
-                 [:!Tn :up_arrow]
-                 [:!Tp :down_arrow]]}
+                 [:!Tn :down_arrow]
+                 [:!Tp :up_arrow]]}
 
         {:des "Custom Application Launcher"
          :rules [[:!CTj [:togg "Ivory"]]
                  [:!CTk [:toggle-ide-by-preferred-order]]
+                 [:!CTa [:togg "com.culturedcode.ThingsMac"]]
                  [:!CTl [:togg "Safari"]]
                  [:!CTSl [:togg "Google Chrome"]]
                  [:!CTperiod [:toggle-tiling-wm]]
