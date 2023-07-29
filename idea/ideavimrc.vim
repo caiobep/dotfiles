@@ -64,18 +64,23 @@ noremap <leader>M :action OpenBookmarkGroup<CR>
 
 noremap ma :action ToggleBookmarkA<CR>
 noremap <buffer> ,a :action GotoBookmarkA<CR>
+noremap <buffer> <Tab>a :action GotoBookmarkA<CR>
 
 noremap ms :action ToggleBookmarkS<CR>
 noremap <buffer> ,s :action GotoBookmarkS<CR>
+noremap <buffer> <Tab>s :action GotoBookmarkA<CR>
 
 noremap md :action ToggleBookmarkD<CR>
 noremap <buffer> ,d :action GotoBookmarkD<CR>
+noremap <buffer> <Tab>d :action GotoBookmarkA<CR>
 
 noremap mf :action ToggleBookmarkF<CR>
 noremap <buffer> ,f :action GotoBookmarkF<CR>
+noremap <buffer> <Tab>f :action GotoBookmarkA<CR>
 
 noremap mq :action ToggleBookmarkQ<CR>
 noremap <buffer> ,q :action GotoBookmarkQ<CR>
+noremap <buffer> <Tab>q :action GotoBookmarkQ<CR>
 
 noremap mw :action ToggleBookmarkW<CR>
 noremap <buffer> ,w :action GotoBookmarkW<CR>
@@ -98,6 +103,12 @@ noremap <buffer> ,3 :action GotoBookmark3<CR>
 noremap m4 :action ToggleBookmark4<CR>
 noremap <buffer> ,4 :action GotoBookmark4<CR>
 
+
+noremap <C-k> :action GotoNextBookmark<CR>
+noremap <C-l> :action GotoNextBookmarkInEditor<CR>
+noremap <C-j> :action GotoPreviousBookmark<CR>
+noremap <C-h> :action GotoNextBookmarkInEditor<CR>
+noremap <leader>j :action ToggleBookmark<CR>
 
 " noremap <C-f> :action EditorMoveDownAndScroll<CR>
 " noremap <C-b> :action EditorMoveDownAndScroll<CR>
