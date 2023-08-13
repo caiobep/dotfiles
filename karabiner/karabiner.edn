@@ -1,8 +1,8 @@
 {:profiles
  {:Default {:default true
-            :alone 80
-            :held 50
-            :delay 0
+            :alone 50
+            :held 70
+            :delay 8
             :sim 30}}
  :templates {:alfred "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"%s\" in workflow \"%s\" with argument \"%s\"'"
              :launch "osascript -e 'tell application \"Alfred 3\" to run trigger \"launch%s\" in workflow \"yqrashawn.workflow.launcher\" with argument \"%s\"'"
@@ -10,7 +10,8 @@
              :open "open -jga \"%s\""
              :run-shortcut "shortcuts run \"%s\""
              :set-active-space "/opt/homebrew/bin/hs -A -n -q -t 0.1 -c 'hs.spaces.setDefaultMCwaitTime(0.1);local function activate_space(space); local spaces = hs.spaces.allSpaces(); local existing_spaces = {}; for k, v in pairs(hs.spaces.allSpaces()) do; existing_spaces = v; end hs.spaces.gotoSpace(existing_spaces[space]); end activate_space(tonumber(\"%s\"))'"
-             :togg "/opt/homebrew/bin/hs -A -n -q -t 0.1 -c '\nlocal appName = \"%s\";\nlocal x = hs.application.find(appName);\nif x and x:isFrontmost() then\n  x:hide();\nelse\n  hs.application.launchOrFocusByBundleID(x:bundleID());\nend'"
+             :togg "/opt/homebrew/bin/hs -A -n -q -t 0.1 -c '\nlocal appName = \"%s\";\nlocal x = hs.application.find(appName);\nif x and x:isFrontmost() then\n  x:hide();\nelse\n  hs.application.launchOrFocus(appName);\nend'"
+             :togg-by-bundleid "/opt/homebrew/bin/hs -A -n -q -t 0.1 -c '\nlocal appName = \"%s\";\nlocal x = hs.application.find(appName);\nif x and x:isFrontmost() then\n  x:hide();\nelse\n  hs.application.launchOrFocusByBundleID(x:bundleID());\nend'"
              :toggle "osascript -e 'set appName to \"%s\"\nset startIt to false\ntell application \"System Events\"\n  if not (exists process appName) then\n    set startIt to true\n  else if frontmost of process appName then\n    set visible of process appName to false\n  else\n    set frontmost of process appName to true\n  end if\nend tell\nif startIt then\n  tell application appName to activate\nend if'"
              :toggle-tiling-wm "pgrep -f Amethyst HazeOver && pkill HazeOver Amethyst || (open -a Amethyst && open -a HazeOver)"
              :toggle-ide-by-preferred-order "/opt/homebrew/bin/hs -A -n -q -t 0.1 $HOME/.dotfiles/hammerspoon/keystrokes/toggle-ide-by-preferred-order.lua"
@@ -28,19 +29,11 @@
  :simlayers {:caps-mode {:key :caps_lock}
              :space-mode {:key :spacebar}
              :rcommand-mode {:key :right_command}
+             :lcommand-mode {:key :left_command}
+             :roption-mode {:key :right_option}
              :rshift-mode {:key :right_shift}
              :lshift-mode {:key :right_shift}
              :tab-mode {:key :tab}
-             :b-mode {:key :b}
-             :c-mode {:key :c}
-             :a-mode {:key :a}
-             :s-mode {:key :s}
-             :d-mode {:key :d}
-             :f-mode {:key :f}
-             :q-mode {:key :q}
-             :w-mode {:key :w}
-             :e-mode {:key :e}
-             :r-mode {:key :r}
              :fn-mode {:apple_vendor_top_case_keyboard true
                        :key :fn}}
 
@@ -61,13 +54,12 @@
         ;; ## | optional any
 
         {:des "General mappings"
-         :rules [[[:right_command :left_command] :!Cf16] ; Raycast AI
-                 [[:right_command :right_option] :!Of16] ; Raycast AI
-                 [[:right_command :left_option] :!Of16]  ; Raycast AI
+         :rules [[:right_command :!Cf16 :lcommand-mode]  ; Raycast AI
+                 [[:left_option :right_command] :!Of16]  ; Alfred
                  [:!COtab :!COS0]                        ; Invoke Contexts  search menu
                  [[:right_shift :right_option] :!CTSO0]  ; Invoke Palettro Window Search
-                 [:!QRcomma :!COf16]                ; Raycast AI menu
-                 [:!QRperiod :!COTf16]                ; Raycast AI menu
+                 [:!QRcomma :!COf16]                     ; Raycast AI menu
+                 [:!QRperiod :!COTf16]                   ; Raycast AI menu
                  [:!SOj [:move-window-focus "left"]]
                  [:!SOk [:move-window-focus "right"]]
                  [:!OTS1 [:send-window-to-space "1"]]
@@ -77,31 +69,29 @@
 
         {:des "Chord Keyboard"
          :rules [[[:j :k] [:togg "Alacritty"]]
-                 [[:j :l] [:togg "Safari"]]
-                 [[:j :l] [:togg "Google Chrome"]]
-                 [[:j :k] [:togg "com.culturedcode.ThingsMac"]]]}
+                 [[:j :l] [:toggle-ide-by-preferred-order]]]}
+
+        ; {:des "Chord Keyboard with Shift"
+        ;  :rules [:lshift-mode
+        ;          [:j :k [:togg "com.culturedcode.ThingsMac"]]
+        ;          [:j :l [:togg "Google Chrome"]]]}
 
         {:des "Window manager"
-         :rules [[:open_bracket  [:wm "smaller"] :a-mode]
-                 [:close_bracket  [:wm "larger"] :a-mode]
-                 [:k [:wm "right-half"] :a-mode]
-                 [:j [:wm "left-half"] :a-mode]
-                 [:u [:wm "top-half"] :a-mode]
-                 [:i [:wm "bottom-half"] :a-mode]
-                 [:e [:wm "first-three-fourths"] :a-mode]
-                 [:g [:wm "first-third"] :a-mode]
-                 [:z [:wm "tile-all"] :a-mode]
-                 [:n [:wm "center"] :a-mode]]}
-
-; {:des "Chord Keyboard window manager"
-        ;  :rules [:a-mode
-        ;          [:open_bracket  [:wm "smaller"]]
-        ;          [:close_bracket  [:wm "larger"]]
-        ;          [:k [:wm "right-half"]]
-        ;          [:j [:wm "left-half"]]
-        ;          [:z [:wm "tile-all"]]
-        ;          [:e [:wm "first-three-fourths"]]
-        ;          [:n [:wm "center"]]]}
+         :rules [[:open_bracket  [:wm "smaller"] :roption]
+                 [:close_bracket  [:wm "larger"] :roption]
+                 [:k [:wm "right-half"] :roption]
+                 [:j [:wm "left-half"] :roption]
+                 [:h [:wm "first-two-thirds"] :roption]
+                 [:e [:wm "first-two-thirds"] :roption]
+                 [:l [:wm "last-third"] :roption]
+                 [:g [:wm "last-third"] :roption]
+                 [:u [:wm "top-left-sixth"] :roption]
+                 [:i [:wm "top-center-sixth"] :roption]
+                 [:o [:wm "top-right-sixth"] :roption]
+                 [:n [:wm "bottom-left-sixth"] :roption]
+                 [:m [:wm "bottom-center-sixth"] :roption]
+                 [:period [:wm "bottom-right-sixth"] :roption]
+                 [:z [:wm "tile-all"] :roption]]}
 
         {:des "Zoom Call Controls"
          :rules [:rcommand-mode
@@ -169,7 +159,7 @@
         {:des "Custom Application Launcher"
          :rules [[:!CTj [:togg "Ivory"]]
                  [:!CTk [:toggle-ide-by-preferred-order]]
-                 [:!CTa [:togg "com.culturedcode.ThingsMac"]]
+                 [:!CTa [:togg-by-bundleid "com.culturedcode.ThingsMac"]]
                  [:!CTl [:togg "Safari"]]
                  [:!CTSl [:togg "Google Chrome"]]
                  [:!CTperiod [:toggle-tiling-wm]]

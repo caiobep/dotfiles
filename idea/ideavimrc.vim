@@ -112,7 +112,8 @@ noremap <leader>j :action ToggleBookmark<CR>
 
 " noremap <C-f> :action EditorMoveDownAndScroll<CR>
 " noremap <C-b> :action EditorMoveDownAndScroll<CR>
-noremap <C-u> :action EditorMoveUpAndScroll<CR>
+" noremap <C-u> :action EditorMoveUpAndScroll<CR>
+noremap <C-u> 20k<CR>
 " noremap <C-d> :action EditorMoveDownAndScroll<CR>
 
 " noremap <leader>Fa :action FindInPath<CR>

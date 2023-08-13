@@ -1,7 +1,19 @@
 -- local hs = require('hs')
-local prefferedIdes = { 'Webstorm', 'IDEA', 'Code', 'PhpStorm', 'RubyMine', 'PyCharm', 'AppCode', 'CLion', 'GoLand',
+local prefferedIdes = {
+  'Webstorm',
+  'IDEA',
+  'Intelij',
+  'Xcode',
+  'Code',
+  'PhpStorm',
+  'RubyMine',
+  'PyCharm',
+  'AppCode',
+  'CLion',
+  'GoLand',
   'DataGrip',
-  'Rider', 'XCode' };
+  'Rider'
+};
 
 local function activateAppByName(appName)
   local app = hs.application.find(appName);
