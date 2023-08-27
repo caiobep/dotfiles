@@ -62,6 +62,8 @@ noremap [b :action GotoPreviousBookmark<CR>
 noremap <leader>m :action ShowBookmarks<CR>
 noremap <leader>M :action OpenBookmarkGroup<CR>
 
+noremap mm :action ToggleBookmark<CR>
+
 noremap ma :action ToggleBookmarkA<CR>
 noremap <buffer> ,a :action GotoBookmarkA<CR>
 noremap <buffer> <Tab>a :action GotoBookmarkA<CR>
@@ -104,11 +106,17 @@ noremap m4 :action ToggleBookmark4<CR>
 noremap <buffer> ,4 :action GotoBookmark4<CR>
 
 
+"left shift 
+" noremap <S-Left> :action GotoNextBookmark<CR>
+
 noremap <C-k> :action GotoNextBookmark<CR>
 noremap <C-l> :action GotoNextBookmarkInEditor<CR>
 noremap <C-j> :action GotoPreviousBookmark<CR>
 noremap <C-h> :action GotoNextBookmarkInEditor<CR>
 noremap <leader>j :action ToggleBookmark<CR>
+
+noremap ]g :action VcsShowNextChangeMarker<CR>
+noremap [g :action VcsShowPrevChangeMarker<CR>
 
 " noremap <C-f> :action EditorMoveDownAndScroll<CR>
 " noremap <C-b> :action EditorMoveDownAndScroll<CR>
