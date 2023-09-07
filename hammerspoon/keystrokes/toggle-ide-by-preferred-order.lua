@@ -1,5 +1,6 @@
 -- local hs = require('hs')
 local prefferedIdes = {
+  'IntelliJ IDEA',
   'Webstorm',
   'IDEA',
   'Intelij',

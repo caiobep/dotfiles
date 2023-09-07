@@ -7,7 +7,7 @@
  :templates {:alfred "osascript -e 'tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"%s\" in workflow \"%s\" with argument \"%s\"'"
              :launch "osascript -e 'tell application \"Alfred 3\" to run trigger \"launch%s\" in workflow \"yqrashawn.workflow.launcher\" with argument \"%s\"'"
              :hs "/opt/homebrew/bin/hs -A -n -q -t 0.1 -c '%s'"
-             :open "open -jga \"%s\""
+             :open "open \"%s\""
              :run-shortcut "shortcuts run \"%s\""
              :set-active-space "/opt/homebrew/bin/hs -A -n -q -t 0.1 -c 'hs.spaces.setDefaultMCwaitTime(0.1);local function activate_space(space); local spaces = hs.spaces.allSpaces(); local existing_spaces = {}; for k, v in pairs(hs.spaces.allSpaces()) do; existing_spaces = v; end hs.spaces.gotoSpace(existing_spaces[space]); end activate_space(tonumber(\"%s\"))'"
              :togg "/opt/homebrew/bin/hs -A -n -q -t 0.1 -c '\nlocal appName = \"%s\";\nlocal x = hs.application.find(appName);\nif x and x:isFrontmost() then\n  x:hide();\nelse\n  hs.application.launchOrFocus(appName);\nend'"
@@ -37,7 +37,8 @@
              :fn-mode {:apple_vendor_top_case_keyboard true
                        :key :fn}}
 
- :main [;; List of special characters
+ :main [
+        ;; List of special characters
         ;; !  | means mandatory
         ;; #  | means optional
         ;; C  | left_command
@@ -56,6 +57,7 @@
         {:des "General mappings"
          :rules [[:right_command :!Cf16 :lcommand-mode]  ; Raycast AI
                  [[:left_option :right_command] :!Of16]  ; Alfred
+                 [[:right_command :spacebar] :!COS0]
                  [:!COtab :!COS0]                        ; Invoke Contexts  search menu
                  [[:right_shift :right_option] :!CTSO0]  ; Invoke Palettro Window Search
                  [:!QRcomma :!COf16]                     ; Raycast AI menu
@@ -68,13 +70,8 @@
                  [:!OTS4 [:send-window-to-space "4"]]]}
 
         {:des "Chord Keyboard"
-         :rules [[[:j :k] [:togg "Alacritty"]]
-                 [[:j :l] [:toggle-ide-by-preferred-order]]]}
-
-        ; {:des "Chord Keyboard with Shift"
-        ;  :rules [:lshift-mode
-        ;          [:j :k [:togg "com.culturedcode.ThingsMac"]]
-        ;          [:j :l [:togg "Google Chrome"]]]}
+         :rules [[[:j :l] [:togg "Alacritty"]]
+                  [[:j :k] [:togg "Safari"]]]}
 
         {:des "Window manager"
          :rules [[:open_bracket  [:wm "smaller"] :roption]
@@ -99,10 +96,10 @@
                  [:v :!TSf20]      ; [Zoom] Stop Video
                  [:t :!TFf20]      ; [Zoom] Pause Screen Share
                  [:g :!TOFCf20]    ; [Zoom] Remote Control Screen Share
-                 ; [:y :!TOFCf20]    ; [Zoom] Remote Control Screen Share
                  [:h :!TFCf20]     ; [Zoom] Show/hide controls
                  [:k :!CFf20]      ; [Zoom] Show mini view
-                 [:s :!CTSf20]]}   ; [Zoom] Share Screen
+                 [:s :!CTSf20]
+                 [:spacebar [:open "raycast://extensions/raycast/file-search/search-files"]]]}
 
         {:des "Caps Mode"
          :rules [:caps-mode
@@ -116,13 +113,10 @@
                  [:k :up_arrow]
                  [:h :left_arrow]
                  [:open_bracket :!CTOSopen_bracket]
-                 [:9 :!COST9]                ; Toggle airpods listening mode
-                 [:8 :!COST8]                ; Toggle spatial-audio mode
-                 [:right_command :!COTS4]    ; Search query in Notion
                  [:spacebar :!COS0]          ; Search window in contexts
-                 [:q :!CO0]                  ; Switch Audio Output
-                 [:w :!CSOhyphen]            ; Switch Audio Input
-                 [:e :!CTOe]                 ; Show Reminders in Raycast
+                 [:9 [:open "raycast://extensions/chrahe/airpods-noise-control/index"]]                ; Toggle airpods listening mode
+                 [:q [:open "raycast://extensions/benvp/audio-device/set-output-device"]]                  ; Switch Audio Output
+                 [:w [:open "raycast://extensions/benvp/audio-device/set-input-device"]]            ; Switch Audio Input
                  [:o :!COS0]                 ; Search window in contexts
                  [:f :!CSOTf]                ; Invoke macVIM
                  [:d :!CSOTj]                ; Invoke macVIM scroll mode
@@ -131,6 +125,7 @@
                  [:p :!CTSO0]                ; Invoke Paletro
                  [:tab :!COS0]               ; Invoke Contexts Window Search
                  [:period [:toggle-tiling-wm]]
+                 [:semicolon [:open "raycast://extensions/HenriChabrand/notion/search-page"]]
                  [:s [:semicolon :w :q :return_or_enter]]]}
 
         {:des "Right Shift mode"
