@@ -57,7 +57,7 @@
         {:des "General mappings"
          :rules [[:right_command :!Cf16 :lcommand-mode]  ; Raycast AI
                  [[:left_option :right_command] :!Of16]  ; Alfred
-                 [[:right_command :spacebar] :!COS0]
+                 [[:caps_lock :spacebar] :!COS0]
                  [:!COtab :!COS0]                        ; Invoke Contexts  search menu
                  [[:right_shift :right_option] :!CTSO0]  ; Invoke Palettro Window Search
                  [:!QRcomma :!COf16]                     ; Raycast AI menu
@@ -68,10 +68,6 @@
                  [:!OTS2 [:send-window-to-space "2"]]
                  [:!OTS3 [:send-window-to-space "3"]]
                  [:!OTS4 [:send-window-to-space "4"]]]}
-
-        {:des "Chord Keyboard"
-         :rules [[[:j :l] [:togg "Alacritty"]]
-                  [[:j :k] [:togg "Safari"]]]}
 
         {:des "Window manager"
          :rules [[:open_bracket  [:wm "smaller"] :roption]
@@ -90,6 +86,19 @@
                  [:period [:wm "bottom-right-sixth"] :roption]
                  [:z [:wm "tile-all"] :roption]]}
 
+        {:des "Chord Keyboard"
+         :rules [[[:j :k] [:togg "Alacritty"]]
+                  [[:j :l] [:togg "Safari"]]
+                  [[:j :i] [:togg-by-bundleid "com.culturedcode.ThingsMac"]]
+                  [[:l :n] [:togg "Google Chrome"]]
+                  [[:f :a] [:togg "Mail"]]
+                  [[:f :d] [:togg "Notion"]]
+                  [[:k :o] [:toggle-ide-by-preferred-order]]
+                  [[:a :s] [:togg "Slack"]]
+                  [[:f :e] [:togg "Fantastical"]]
+                  [[:f :s] :!CTe] ;open Fantastical mini window
+                  ]}
+
         {:des "Zoom Call Controls"
          :rules [:rcommand-mode
                  [:m :!TOf20]      ; [Zoom] Mute Microphone
@@ -97,9 +106,12 @@
                  [:t :!TFf20]      ; [Zoom] Pause Screen Share
                  [:g :!TOFCf20]    ; [Zoom] Remote Control Screen Share
                  [:h :!TFCf20]     ; [Zoom] Show/hide controls
-                 [:k :!CFf20]      ; [Zoom] Show mini view
-                 [:s :!CTSf20]
-                 [:spacebar [:open "raycast://extensions/raycast/file-search/search-files"]]]}
+                 [:s :!CTSf20]      ; [Zoom] Show mini view
+                 [:j :page_down]
+                 [:k :page_up]      ; [Zoom] Show mini view
+                 [:b [:open "raycast://extensions/thomas/elgato-key-light/toggle"]]
+                 [:backslash [:open "raycast://extensions/raycast/file-search/search-files"]]
+                 [:spacebar [:open "raycast://extensions/raycast/translator/translate"]]]}
 
         {:des "Caps Mode"
          :rules [:caps-mode
@@ -110,8 +122,8 @@
                  [:5 :!CTSO5]                ; Activate space 5
                  [:j :down_arrow]
                  [:l :right_arrow]
-                 [:k :up_arrow]
                  [:h :left_arrow]
+                 [:k :up_arrow]
                  [:open_bracket :!CTOSopen_bracket]
                  [:spacebar :!COS0]          ; Search window in contexts
                  [:9 [:open "raycast://extensions/chrahe/airpods-noise-control/index"]]                ; Toggle airpods listening mode
