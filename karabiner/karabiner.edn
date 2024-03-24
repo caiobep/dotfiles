@@ -18,6 +18,7 @@
              :move-window-focus "/opt/homebrew/bin/hs -A -n -q -t 0.1 -c \"dofile(\\\"$HOME/.dotfiles/hammerspoon/keystrokes/move-window-focus.lua\\\"); moveFocusToWindow(\\\"%s\\\")\""
              :run-hammerspoon-script "/opt/homebrew/bin/hs -A -n -q -t 0.1 -c '%s'"
              :send-window-to-space "/opt/homebrew/bin/hs -A -n -q -t 0.1 -c 'hs.spaces.setDefaultMCwaitTime(0.1);local function send_window_to_space(space); local spaces = hs.spaces.allSpaces(); local existing_spaces = {}; for k, v in pairs(hs.spaces.allSpaces()) do; existing_spaces = v; end hs.spaces.moveWindowToSpace(hs.window.focusedWindow():id(), existing_spaces[space]); end send_window_to_space(tonumber(\"%s\"))'"
+             :toggle-macos-widgets "defaults write com.apple.WindowManager StandardHideWidgets -int $(test $(defaults read com.apple.WindowManager StandardHideWidgets) -eq 1 && echo 0 || echo 1)"
              :wm "open -g 'rectangle://execute-action?name=%s'"
              :say "say \"%s\""}
 
@@ -37,8 +38,7 @@
              :fn-mode {:apple_vendor_top_case_keyboard true
                        :key :fn}}
 
- :main [
-        ;; List of special characters
+ :main [;; List of special characters
         ;; !  | means mandatory
         ;; #  | means optional
         ;; C  | left_command
@@ -57,11 +57,13 @@
         {:des "General mappings"
          :rules [[:right_command :!Cf16 :lcommand-mode]  ; Raycast AI
                  [[:left_option :right_command] :!Of16]  ; Alfred
-                 [[:caps_lock :spacebar] :!COS0]
-                 [:!COtab :!COS0]                        ; Invoke Contexts  search menu
+                 [[:caps_lock :spacebar] :!COS8]
+                 [:!COtab :!COS8]                        ; Invoke Contexts  search menu
                  [[:right_shift :right_option] :!CTSO0]  ; Invoke Palettro Window Search
                  [:!QRcomma :!COf16]                     ; Raycast AI menu
                  [:!QRperiod :!COTf16]                   ; Raycast AI menu
+                 [:!COspacebar [:open "raycast://extensions/raycast/clipboard-history/clipboard-history"]]
+                 [:!CSOspacebar [:open "raycast://extensions/raycast/snippets/search-snippets"]]
                  [:!SOj [:move-window-focus "left"]]
                  [:!SOk [:move-window-focus "right"]]
                  [:!OTS1 [:send-window-to-space "1"]]
@@ -86,18 +88,28 @@
                  [:period [:wm "bottom-right-sixth"] :roption]
                  [:z [:wm "tile-all"] :roption]]}
 
+        ; {:des "Chord Keyboard window manager"
+        ;  :rules [:a-mode
+        ;          [:open_bracket  [:wm "smaller"]]
+        ;          [:close_bracket  [:wm "larger"]]
+        ;          [:k [:wm "right-half"]]
+        ;          [:j [:wm "left-half"]]
+        ;          [:z [:wm "tile-all"]]
+        ;          [:e [:wm "first-three-fourths"]]
+        ;          [:n [:wm "center"]]]}
+
         {:des "Chord Keyboard"
          :rules [[[:j :k] [:togg "Alacritty"]]
-                  [[:j :l] [:togg "Safari"]]
-                  [[:j :i] [:togg-by-bundleid "com.culturedcode.ThingsMac"]]
-                  [[:l :n] [:togg "Google Chrome"]]
-                  [[:f :a] [:togg "Mail"]]
-                  [[:f :d] [:togg "Notion"]]
-                  [[:k :o] [:toggle-ide-by-preferred-order]]
-                  [[:a :s] [:togg "Slack"]]
-                  [[:f :e] [:togg "Fantastical"]]
-                  [[:f :s] :!CTe] ;open Fantastical mini window
-                  ]}
+                 [[:j :l] [:togg "Safari"]]
+                 [[:j :i] [:togg-by-bundleid "com.culturedcode.ThingsMac"]]
+                 [[:l :n] [:togg "Google Chrome"]]
+                 [[:f :a] [:togg "Mail"]]
+                 [[:f :d] [:togg "Notion"]]
+                 [[:k :o] [:toggle-ide-by-preferred-order]]
+                 [[:a :w] [:togg "Slack"]]
+                 [[:f :e] [:togg "Fantastical"]]
+                 [[:f :s] :!CTe] ;open Fantastical mini window
+                 ]}
 
         {:des "Zoom Call Controls"
          :rules [:rcommand-mode
@@ -107,6 +119,7 @@
                  [:g :!TOFCf20]    ; [Zoom] Remote Control Screen Share
                  [:h :!TFCf20]     ; [Zoom] Show/hide controls
                  [:s :!CTSf20]      ; [Zoom] Show mini view
+                 [:w [:toggle-macos-widgets]]
                  [:j :page_down]
                  [:k :page_up]      ; [Zoom] Show mini view
                  [:b [:open "raycast://extensions/thomas/elgato-key-light/toggle"]]
@@ -124,18 +137,18 @@
                  [:l :right_arrow]
                  [:h :left_arrow]
                  [:k :up_arrow]
-                 [:open_bracket :!CTOSopen_bracket]
-                 [:spacebar :!COS0]          ; Search window in contexts
-                 [:9 [:open "raycast://extensions/chrahe/airpods-noise-control/index"]]                ; Toggle airpods listening mode
-                 [:q [:open "raycast://extensions/benvp/audio-device/set-output-device"]]                  ; Switch Audio Output
-                 [:w [:open "raycast://extensions/benvp/audio-device/set-input-device"]]            ; Switch Audio Input
-                 [:o :!COS0]                 ; Search window in contexts
+                 [:spacebar :!COS8]
+                 [:open_bracket :!CTOSopen_bracket]          ; Search window in contexts
+                 [:9 [:open "raycast://extensions/chrahe/airpods-noise-control/index"]]
+                 [:q [:open "raycast://extensions/benvp/audio-device/set-output-device"]]
+                 [:w [:open "raycast://extensions/benvp/audio-device/set-input-device"]]
+                 [:o :!COS8]                 ; Search window in contexts
                  [:f :!CSOTf]                ; Invoke macVIM
                  [:d :!CSOTj]                ; Invoke macVIM scroll mode
                  [:f12 :!CO0]                ; Show sound outputs
                  [:s :!CTOp]                 ; Invoke Sip Colour Picker
-                 [:p :!CTSO0]                ; Invoke Paletro
-                 [:tab :!COS0]               ; Invoke Contexts Window Search
+                 [:p [:open "raycast://extensions/raycast/navigation/search-menu-items"]]
+                 [:tab :!COS8]               ; Invoke Contexts Window Search
                  [:period [:toggle-tiling-wm]]
                  [:semicolon [:open "raycast://extensions/HenriChabrand/notion/search-page"]]
                  [:s [:semicolon :w :q :return_or_enter]]]}
